@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>maket site</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <div class="header">
+            <a href="#"><img class="logo-img" src="{%  static 'img/1280px-Yandex_afisha.png' %}" alt="logo"></a>
+            <form>
+                <p><input type="search" name="q" placeholder="События, артисры и места"> 
+                <img class="search" src="{%  static 'img/search.png' %}" alt="search">
+            </form> 
+            <a class="city" href="#"><img class="marker-img" src="{%  static 'img/mapmarker.png' %}" alt="place">Москва</a>
+            <a class="login" href="#">Войти</a>          
+    </div>
+    <div class="container">
+        <div>
+            <ul class="menu">
+                <li><a href="#">Кино</a></li>
+                <li><a href="#">Концерты</a></li>
+                <li><a href="#">Театр</a></li>
+                <li><a href="#">Подарочные сертификаты</a></li>
+                <li><a href="#">Детям</a></li>
+                <li><a href="#">Спорт</a></li>
+                <li><a href="#">Бесплатно</a></li>
+                <li><a href="#">Ещё</a></li>
+            </ul>
+        </div>
+        <div class="header-bunner"><a href="#"></a></div>
+        <div class="page-content" >
+            <h1 class="page-title">Афиша событий в Москве</h1>
+            <div>
+            <ul class="menu-date">
+                <li><a href="#">Дата</a></li>
+                <li><a href="#">Сегодня</a></li>
+                <li><a href="#">Завтра</a></li>
+                <li><a href="#">На выходных</a></li>
+            </ul>
+        </div>
+            
+        </div>
+    </div>
+</body>
+
+</html>
