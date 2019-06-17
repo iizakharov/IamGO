@@ -164,3 +164,164 @@ body {
     box-shadow: 5px 10px 9px 3px rgba(0,0,0,0.2);
     
 }
+
+/* footer */
+
+.footer {
+    background: #f8f8f8;
+}
+
+.footer-wraper {
+    display: block;
+}
+
+.footer-subscribe {
+    position: relative;
+    padding: 30px 0;
+}
+
+.footer-subscribe-label {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 30px;
+    margin-bottom: 0;
+    width: 270px;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 23px;
+}
+
+.footer-subscribe-form {
+    display: inline-block;
+    vertical-align: middle;
+    height: 46px;
+}
+
+.subscribe-email {
+    padding: 15px 20px;
+    width: 360px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+    background: #fff;
+    border: solid #E0E0D9 1px;
+}
+
+.subscribe-email:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.subscribe-email:focus {
+    outline: none;
+}
+
+.subscribe-btn {
+    height: 46px;
+    line-height: 46px;
+    width: 140px;
+    margin-left: 20px;
+    border: 0;
+    border-radius: 3px;
+    background-color: #ffdb4d;
+    font-size: 15px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.subscribe-btn:hover {
+    background: #f5ae00;
+}
+
+.subscribe-btn:active {
+    box-shadow: 0 0 5px 1px rgba(33, 33, 33, 0.35);
+    position: relative;
+    top: 1px;
+}
+
+.footer-side {
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+.footer-main {
+    padding: 38px 0 33px;
+}
+
+.footer-main-block {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 30px;
+    width: 270px;
+}
+
+.footer-menu-title {
+    margin-bottom: 9px;
+    font-size: 15px;
+}
+
+.footer-menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 13px;
+}
+
+.footer-menu-item {
+    line-height: 24px;
+}
+
+.footer-link {
+    line-height: 24px;
+    color: #666;
+    text-decoration: none;
+    outline: 0;
+    touch-action: manipulation;
+    cursor: pointer;
+}
+
+.footer-link:hover {
+    color: #f44242;
+}
+
+.social-btn {
+    display: inline-block;
+    font-size: 12px;
+    text-align: center;
+    width: 26px;
+    height: 26px;
+    color: #fff;
+    border-radius: 50%;
+    margin-right: 10px;
+    padding: 6px;
+}
+
+.social-fb {
+    background: #5890ff;
+}
+
+.social-vk {
+    background: #4680C2;
+}
+
+.footer-block-label {
+    margin-top: 16px;
+    font-size: 13px;
+    line-height: 18px;
+    color: #999;
+}
+
+.footer-info {
+    white-space: nowrap;
+    font-size: 13px;
+    line-height: 62px;
+}
+
+.footer-info-block {
+    display: inline-block;
+    width: 300px;
+}
+
+.footer-info-title {
+    color: #666;
+}
+
