@@ -245,6 +245,8 @@ body {
 
 .footer-main {
     padding: 38px 0 33px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .footer-main-block {
