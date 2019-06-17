@@ -246,6 +246,7 @@ body {
 .footer {
     background: #f8f8f8;
     margin-top: 30px;
+    width: 100%
 }
 
 .footer-wraper {
@@ -457,4 +458,11 @@ body {
     line-height: 48px;
     font-size: 20px;
     color: black;
+}
+
+.content {
+    padding: 0 30px;
+    /* min-width: 1260px; */
+    width: 1260px;
+    margin: 0 auto;
 }
