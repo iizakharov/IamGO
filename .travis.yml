@@ -4,7 +4,7 @@ python:
   - 3.6
 
 env:
-  - DJANGO=2.2.2
+  - DJANGO=2.2.2 DB=sqlite
 
 before_install:
   - export DJANGO_SETTINGS_MODULE=IamGO.settings
