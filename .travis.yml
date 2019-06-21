@@ -18,3 +18,4 @@ install:
 
 script:
   - python manage.py test
+  - flake8 ./ --max-line-length=130 --exclude=migrations --max-complexity 10
