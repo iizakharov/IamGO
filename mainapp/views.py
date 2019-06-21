@@ -7,4 +7,3 @@ def main(request):
         'title': title
     }
     return render(request, 'mainapp/index.html', context)
-
