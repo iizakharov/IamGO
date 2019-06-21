@@ -9,7 +9,7 @@ env:
 
 before_install:
   - export DJANGO_SETTINGS_MODULE=IamGO.settings
-  - export PYTHONPATH=$HOME/builds/aleshkashell/IamGO
+#  - export PYTHONPATH=$HOME/builds/aleshkashell/IamGO
   - export PIP_USE_MIRRORS=true
 
 install:
