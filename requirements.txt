@@ -1,1 +1,4 @@
 django
+flake8
+flake8-django
+pytest
