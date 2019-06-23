@@ -1,202 +1,112 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿{% extends 'mainapp/base.html' %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>maket site</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-
-<body>
-    <div class="wrapper">  
-        <div class="header">
-                <a href="#"><img class="logo-img" src="{% static 'img/1280px-Yandex_afisha.png' %}" alt="logo"></a>
-                <form>
-                    <p><input type="search" name="q" placeholder="События, артисры и места"> 
-                    <img class="search" src="{% static 'img/search.png' %}" alt="search">
-                </form> 
-                <a class="city" href="#"><img class="marker-img" src="{% static 'img/mapmarker.png' %}" alt="place">Москва</a> 
-                <a class="login" href="#">Войти</a>          
-        </div>
-        <div class="container">
-            <div>
-                <ul class="menu">
-                    <li><a href="#">Кино</a></li>
-                    <li><a href="#">Концерты</a></li>
-                    <li><a href="#">Театр</a></li>
-                    <li><a href="#">Подарочные сертификаты</a></li>
-                    <li><a href="#">Детям</a></li>
-                    <li><a href="#">Спорт</a></li>
-                    <li><a href="#">Бесплатно</a></li>
-                    <li><a href="#">Ещё</a></li>
-                </ul>
-            </div>
-            <div class="header-bunner"><a href="#"></a></div>
-            <div class="page-content" >
-                <h1 class="page-title">Афиша событий в Москве</h1>
-                <div>
-                    <ul class="menu-date">
-                        <li><a href="#">Дата</a></li>
-                        <li><a href="#">Сегодня</a></li>
-                        <li><a href="#">Завтра</a></li>
-                        <li><a href="#">На выходных</a></li>
-                    </ul>
-                </div>
-                <div class="slide-show">
-                    <div class="slide"><a href="#"><img src="{% static 'img/bunners/s940x380.webp' %}" alt="slide"></a>
-                        <a href="#"><img class="slide-button-foword slide-button" src="{% static 'img/next-button.svg' %}" alt="foword"></a>
-                        <a href="#"><img class="slide-button-next slide-button" src="{% static 'img/next-button.svg' %}" alt="next"></a>
-                    </div>
-                </div>
-                <h1 class="page-title">События в ближайшие дни</h1>
-                <div class="nearest">
-                    <div>
-                        <a href="#"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-                        <h2>Ленинград</h2>
-                        <ul >
-                            <li><a href="#">14 июня</a></li>
-                            <li><a href="#">Открытие Арена</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <a href="#"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-                        <h2>Ленинград</h2>
-                        <ul >
-                            <li><a href="#">14 июня</a></li>
-                            <li><a href="#">Открытие Арена</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <a href="#"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-                        <h2>Ленинград</h2>
-                        <ul >
-                            <li><a href="#">14 июня</a></li>
-                            <li><a href="#">Открытие Арена</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <h1 class="page-title">Самые ожидаемые концерты</h1>
-                <div class="nearest">
-                    <div>
-                        <a href="#"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-                        <h2>Ленинград</h2>
-                        <ul >
-                            <li><a href="#">14 июня</a></li>
-                            <li><a href="#">Открытие Арена</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <a href="#"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-                        <h2>Ленинград</h2>
-                        <ul >
-                            <li><a href="#">14 июня</a></li>
-                            <li><a href="#">Открытие Арена</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <a href="#"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-                        <h2>Ленинград</h2>
-                        <ul >
-                            <li><a href="#">14 июня</a></li>
-                            <li><a href="#">Открытие Арена</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <h1 class="page-title">Подборки</h1>
-                <div class="selections">
-                    <div>
-                        <a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
-                        <h2>Lorem ipsum.</h2>
-                        <p>12 событий</p>
-                    </div>
-                    <div>
-                        <a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
-                        <h2>Lorem ipsum.</h2>
-                        <p>12 событий</p>
-                    </div>
-                    <div>
-                        <a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
-                        <h2>Lorem ipsum.</h2>
-                        <p>12 событий</p>
-                    </div>
-                    <div>
-                        <a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
-                        <h2>Lorem ipsum.</h2>
-                        <p>12 событий</p>
-                    </div>
-                    <div>
-                        <a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
-                        <h2>Lorem ipsum.</h2>
-                        <p>12 событий</p>
-                    </div>
-                    <div>
-                        <a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
-                        <h2>Lorem ipsum.</h2>
-                        <p>12 событий</p>
-                    </div>
-                    <a class="else" href="#">Показать ещё</a>
-                </div>
-                </div>
-            </div>
-    </div>
-        <div class="footer">
-            <div class="content">
-                <div class="footer-wraper page-content">
-                    <div class="footer-subscribe">
-                        <p class="footer-subscribe-label">Подпишитесь на акции <br> и анонсы событий</p>
-                        <form class="footer-subscribe-form">
-                            <input type="email" class="subscribe-email" id="email"
-                                   placeholder="Электронная почта">
-                            <input class="subscribe-btn" type="submit" value="Далее">
-                        </form>
-                    </div>
-                    <hr class="footer-side">
-                    <div class="footer-main">
-                        <div class="footer-main-block">
-                            <p class="footer-menu-title">Я ИДУ</p>
-                            <ul class="footer-menu">
-                                <li class="footer-menu-item"><a href="#" class="footer-link">О проекте</a></li>
-                                <li class="footer-menu-item"><a href="#" class="footer-link">Помощь</a></li>
-                                <li class="footer-menu-item"><a href="#" class="footer-link">Пользовательское соглашение</a></li>
-                                <li class="footer-menu-item"><a href="#" class="footer-link">Подарочные сертификаты</a></li>
-                                <li class="footer-menu-item"><a href="#" class="footer-link">Билеты в подарок</a></li>
-                            </ul>
-                        </div>
-                        <div class="footer-main-block">
-                            <p class="footer-menu-title">Партнёрам и организаторам</p>
-                            <ul class="footer-menu">
-                                <li class="footer-menu-item"><a href="#" class="footer-link">Инфорпартнёры</a></li>
-                                <li class="footer-menu-item"><a href="#" class="footer-link">Как стать инфопартнером</a></li>
-                                <li class="footer-menu-item"><a href="#" class="footer-link">Билетным партнерам</a></li>
-                                <li class="footer-menu-item"><a href="#" class="footer-link">Организаторам</a></li>
-                                <li class="footer-menu-item"><a href="#" class="footer-link">Корпоративным клиентам</a></li>
-                            </ul>
-                        </div>
-                        <div class="footer-main-block">
-                            <div class="footer-socials">
-                                <a href="#" class="social-btn social-fb" target="_blank"><i class="fab fa-facebook-f fa-2x"></i></a>
-                                <a href="#" class="social-btn social-vk" target="_blank"><i class="fab fa-vk fa-2x"></i></a>
-                                <p class="footer-block-label">Подписывайтесь на Я ИДУ <br> в социальных сетях</p>
-                            </div>
-                        </div>
-                        <div class="footer-main-block">
-                            <div class="footer-apps">
-                                <a href="#" class="footer-app-link"></a>
-                                <a href="#" class="app-btn"><img src="{% static 'img/app-store.svg' %}" alt="app-store"></a>
-                                <p class="footer-block-label">Скачайте приложение <br> Я ИДУ</p>
-                            </div>
-                        </div>
-                    </div>
-                    <hr class="footer-side">
-                    <div class="footer-info">
-                        <div class="footer-info-block">
-                            <p class="footer-info-title">&#169; 2019 «Я ИДУ»</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-</body>
-
-</html>
+{% block container %}
+	<div class="header-bunner"><a href="#"></a></div>
+	<div class="page-content" >
+		<h1 class="page-title">Афиша событий в Москве</h1>
+		<div>
+			<ul class="menu-date">
+				<li><a href="#">Дата</a></li>
+				<li><a href="#">Сегодня</a></li>
+				<li><a href="#">Завтра</a></li>
+				<li><a href="#">На выходных</a></li>
+			</ul>
+		</div>
+		<div class="slide-show">
+			<div class="slide"><a href="#"><img src="{% static 'img/bunners/s940x380.webp' %}" alt="slide"></a>
+				<a href="#"><img class="slide-button-foword slide-button" src="{% static 'img/next-button.svg' %}" alt="foword"></a>
+				<a href="#"><img class="slide-button-next slide-button" src="{% static 'img/next-button.svg' %}" alt="next"></a>
+			</div>
+		</div>
+		<h1 class="page-title">События в ближайшие дни</h1>
+		<div class="nearest">
+			<div>
+				<a href="{% url 'main:product' %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
+				<h2>Ленинград</h2>
+				<ul >
+					<li><a href="#">14 июня</a></li>
+					<li><a href="#">Открытие Арена</a></li>
+				</ul>
+			</div>
+			<div>
+				<a href="{% url 'main:product' %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
+				<h2>Ленинград</h2>
+				<ul >
+					<li><a href="#">14 июня</a></li>
+					<li><a href="#">Открытие Арена</a></li>
+				</ul>
+			</div>
+			<div>
+				<a href="{% url 'main:product' %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
+				<h2>Ленинград</h2>
+				<ul >
+					<li><a href="#">14 июня</a></li>
+					<li><a href="#">Открытие Арена</a></li>
+				</ul>
+			</div>
+		</div>
+		<h1 class="page-title">Самые ожидаемые концерты</h1>
+		<div class="nearest">
+			<div>
+				<a href="{% url 'main:product' %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
+				<h2>Ленинград</h2>
+				<ul >
+					<li><a href="#">14 июня</a></li>
+					<li><a href="#">Открытие Арена</a></li>
+				</ul>
+			</div>
+			<div>
+				<a href="{% url 'main:product' %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
+				<h2>Ленинград</h2>
+				<ul >
+					<li><a href="#">14 июня</a></li>
+					<li><a href="#">Открытие Арена</a></li>
+				</ul>
+			</div>
+			<div>
+				<a href="{% url 'main:product' %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
+				<h2>Ленинград</h2>
+				<ul >
+					<li><a href="#">14 июня</a></li>
+					<li><a href="#">Открытие Арена</a></li>
+				</ul>
+			</div>
+		</div>
+		<h1 class="page-title">Подборки</h1>
+		<div class="selections">
+			<div>
+				<a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
+				<h2>Lorem ipsum.</h2>
+				<p>12 событий</p>
+			</div>
+			<div>
+				<a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
+				<h2>Lorem ipsum.</h2>
+				<p>12 событий</p>
+			</div>
+			<div>
+				<a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
+				<h2>Lorem ipsum.</h2>
+				<p>12 событий</p>
+			</div>
+			<div>
+				<a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
+				<h2>Lorem ipsum.</h2>
+				<p>12 событий</p>
+			</div>
+			<div>
+				<a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
+				<h2>Lorem ipsum.</h2>
+				<p>12 событий</p>
+			</div>
+			<div>
+				<a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
+				<h2>Lorem ipsum.</h2>
+				<p>12 событий</p>
+			</div>
+			<a class="else" href="#">Показать ещё</a>
+		</div>
+		</div>
+	</div>
+{% endblock %}

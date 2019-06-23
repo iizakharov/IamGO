@@ -404,6 +404,9 @@ body {
 .footer-info-title {
     color: #666;
 }
+
+/*PRODUCT*/
+
 .selections {
     display: flex;
     justify-content: space-around;
@@ -465,4 +468,153 @@ body {
     /* min-width: 1260px; */
     width: 1260px;
     margin: 0 auto;
+}
+
+.event-block {
+    position: relative;
+    background: url(../img/events_pic/little-big.s1260x500.webp) no-repeat;
+    height: 450px;   
+    background-size: cover;
+}
+
+.event-block:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 2;
+}
+
+.description-event {
+    position: absolute;
+    top: 40px;
+    left: 20%;
+}
+
+.description-event ul{
+    display: flex;
+    list-style-type: none;
+    padding: 10px 20px;
+}
+
+.description-event li{
+    margin: 0 10px 0 0;
+    text-transform: uppercase;
+}
+
+
+
+.event-block-shadow {
+    position: relative;
+    z-index: 3;
+    color: #fff;
+    padding: 50px;
+}
+
+.event-description-title h1{
+    letter-spacing: .72px;
+    font-size: 72px;
+    line-height: 76px;
+    
+}
+
+.event-description-title {
+    margin-top: 150px;
+}
+
+.event-concert-description-quests {
+    margin-top: 18px;
+    font-size: 18px;
+    line-height: 21px;
+    opacity: .5;
+}
+
+.event-concert-description-tags {
+    margin-top: 18px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+}
+
+.event-concert-description-tags a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.event-concert-description-tags a:hover{
+    opacity: 0.8;
+}
+
+.event-concert-description-tags span{
+    padding: 0 5px;
+}
+
+.event-description {
+    width: 70%;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.event-description p{
+    padding-bottom: 20px;
+}
+
+.full p, .full [type="checkbox"] {
+  display: none;
+}
+
+.full [type="checkbox"]:checked ~ p {
+  display: block;
+}
+
+.full [type="checkbox"]:checked ~ span {
+  display: none;
+}
+
+.full span{
+    color: blue;
+}
+
+.event-block-places span{
+    font-size: 18px;
+    line-height: 20px;
+    margin-bottom: 20px;
+}
+
+.event-block-places {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.places {
+    background-color: #d8cece;
+    width: 95%;
+    height: 600px;
+}
+
+.event-adress {
+    display: flex;
+    flex-direction: column;
+}
+
+.event-adress a{
+    color: black;
+    font-weight: 700;
+    margin: 20px 20px;
+    
+}
+
+.event-adress ul{
+    display: flex;
+    margin-left: 20px;
+}
+
+.event-adress li{
+    list-style-type: none;
+    padding-right: 20px;
 }
