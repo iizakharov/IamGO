@@ -7,6 +7,6 @@ app_name = 'mainapp'
 
 
 urlpatterns = [
-	path('', mainapp.main, name='index'),
-	path('product/', mainapp.product, name='product'),
+    path('', mainapp.main, name='index'),
+    path('product/', mainapp.product, name='product'),
 ]
