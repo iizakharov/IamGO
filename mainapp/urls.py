@@ -1,5 +1,5 @@
 from django.urls import path
-from django.views.decorators.cache import cache_page
+# from django.views.decorators.cache import cache_page
 
 import mainapp.views as mainapp
 

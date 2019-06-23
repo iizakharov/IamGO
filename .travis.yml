@@ -1,0 +1,21 @@
+language: python
+dist: xenial
+
+python:
+  - 3.6
+
+env:
+  - DJANGO=2.2.2 DB=sqlite
+
+before_install:
+  - export DJANGO_SETTINGS_MODULE=IamGO.settings
+#  - export PYTHONPATH=$HOME/builds/aleshkashell/IamGO
+  - export PIP_USE_MIRRORS=true
+
+install:
+  - pip install -r requirements.txt
+  - pip install django==$DJANGO --quiet
+
+script:
+  - python manage.py test
+  - flake8 ./ --max-line-length=130 --exclude=migrations --max-complexity 10
