@@ -691,6 +691,7 @@ body {
 .registration-link:visited{
     color:  #0000FF;
 }
+
 .registration-form-input {
     width: 450px;
     font-size: 20px;
@@ -716,4 +717,97 @@ body {
 .registration-footer-link-support {
     padding-left: 10px;
     padding-right: 10px;
+}
+
+/*Login*/
+
+.login-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-family: Arial, sans-serif;
+    max-width: 1260px;
+    margin: 0 auto;
+    min-height: 100%;
+}
+
+.login-logo-img{
+    width: 150px;
+    margin-left: 60px;
+}
+
+.login-title{
+    font-family: 'YS Text',Arial,sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 50px;
+    margin-top: -40px;
+    margin-left: 72px;
+    color: #000;
+}
+
+.login-social-block{
+    margin-bottom: 16px;
+    margin-left: 70px;
+    margin-top: 70px;
+
+}
+
+.login-social-title{
+    text-align: left;
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(0,0,0,.4);
+}
+
+.login-social-icons{
+    display: flex;
+    text-align: center;
+    line-height: 60px;
+}
+
+.login-social-link{
+    display: inline-block;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 3px;
+    background-color: rgba(255,255,255,.3);
+    border: 1px solid rgba(0,0,0,.15);
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.login-social-link:hover{
+    background-color: #f7f7f7;
+    border-color: #c6c6c6;
+}
+
+.login-social-link-margin{
+    margin-left:0;
+}
+
+.social-color-ok{
+    color: #F2720C;
+}
+
+.social-color-twitter{
+    color: #00aced;
+}
+
+.social-color-vk{
+    color: #45668e
+}
+
+.social-color-google{
+    color: #dd4b39
+}
+
+.social-color-facebook{
+    color: #3b5998
+}
+
+.social-color-telegram{
+    color: #0088cc;
 }
