@@ -2,15 +2,9 @@ from django.contrib import admin
 from mainapp.models import Event, EventCategory, EventAgent, EventLocation, EventDate, EventGallery
 
 
-class ProductInline(admin.TabularInline):
-    model = Event
-    fields = 'name', 'description'
-    extra = 1
-
-
 @admin.register(EventCategory)
 class EventCategoryAdmin(admin.ModelAdmin):
-    inlines = ProductInline,
+    search_fields = 'name',
 
 
 @admin.register(EventAgent)
@@ -28,8 +22,14 @@ class EventDateAdmin(admin.ModelAdmin):
     search_fields = 'date',
 
 
+class EventGalleryInline(admin.TabularInline):
+    model = EventGallery
+    extra = 3
+
+
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
+    inlines = EventGalleryInline,
     search_fields = 'name', 'category__name',
     list_display = 'name', 'category',
 
@@ -37,3 +37,4 @@ class EventAdmin(admin.ModelAdmin):
 @admin.register(EventGallery)
 class EventGalleryAdmin(admin.ModelAdmin):
     search_fields = 'event',
+    list_display = 'event', 'image',
