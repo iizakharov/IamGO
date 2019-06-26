@@ -1,5 +1,5 @@
 .idea
-__pycache__
+__pycache__/
 .vscode
 env/
 migrations/
@@ -7,3 +7,4 @@ tmp/
 conf/
 db.sqlite3
 .pytest_cache
+.DS_Store
