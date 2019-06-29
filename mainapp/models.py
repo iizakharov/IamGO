@@ -91,6 +91,7 @@ class Event(models.Model):
     price = models.DecimalField(verbose_name='Цена', max_digits=8, decimal_places=2, default=0)
     is_free = models.BooleanField(verbose_name='Бесплатное', default=True)
     is_active = models.BooleanField(verbose_name='Активное', default=True)
+    is_hot = models.BooleanField(verbose_name='Популярное', default=True)
 
     def __str__(self):
         return f'{self.name} ({self.category.name})'
