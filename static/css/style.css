@@ -130,9 +130,15 @@ body {
     font-size: 34px;
     line-height: 40px;
     font-weight: 700;
+/*
     margin: 14px 0 0;
     padding-top: 10px;
     padding-bottom: 28px;
+*/
+}
+
+.first-title {
+    padding-top: 30px;
 }
 
 .page-content {
@@ -142,6 +148,7 @@ body {
 .menu-date {
     display: flex;
     list-style-type: none;
+    padding: 15px 0 25px;
 }
 
 .menu-date li{
@@ -208,6 +215,7 @@ body {
 .nearest {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     padding-bottom: 30px;
 }
 
@@ -617,6 +625,30 @@ body {
 .event-adress li{
     list-style-type: none;
     padding-right: 20px;
+}
+
+.event-category {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 25px;
+    padding-bottom: 28px;
+}
+
+.event-category a {
+    text-decoration: none;
+    color: black;
+}
+
+.view-all {
+    line-height: 40px;
+}
+
+.view-all:hover {
+    opacity: 0.8;
+}
+
+.event-preview {
+    padding-bottom: 25px;
 }
 
 /*Registration*/

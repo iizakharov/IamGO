@@ -19,7 +19,7 @@
 <body>
         <div class="wrapper-head">
             <div class="header wrapper">
-                    <a href="#"><img class="logo-img" src="{% static 'img/1280px-Yandex_afisha.png' %}" alt="logo"></a>
+                    <a href="{% url 'main:index' %}"><img class="logo-img" src="{% static 'img/1280px-Yandex_afisha.png' %}" alt="logo"></a>
                     <form>
                         <p><input type="search" name="q" placeholder="События, артисры и места"> 
                         <img class="search" src="{% static 'img/search.png' %}" alt="search">
