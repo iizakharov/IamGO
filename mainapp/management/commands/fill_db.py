@@ -61,19 +61,3 @@ class Command(BaseCommand):
 
             # print('{0} is done.'.format(event['name']))
         print("Events created")
-            # category_name = event['category']
-            # # Получаем категорию по имени
-            # _category = EventCategory.objects.get(name=category_name)
-            # _agent = EventAgent.objects.get(name=event['agent'])
-            # _location = EventLocation.objects.filter(name=event['location'])
-            # _date = event['date']
-            # event.pop('location', None)
-            # event.pop('date', None)
-            # # Заменяем название категории объектом
-            # # _event = Event.objects.create(**event)
-            # event['category'] = _category
-            # event['agent'] = _agent
-            # event['date'] = _date
-            # # event['location'] = _location
-            # event_object = Event.objects.create(**event)
-            # event_object.location.set(_location)
