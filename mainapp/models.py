@@ -81,7 +81,7 @@ class Event(models.Model):
         verbose_name_plural = 'События'
         ordering = ['name']
 
-    category = models.ForeignKey(EventCategory, on_delete=models.CASCADE, verbose_name='Категория')
+    category = models.ManyToManyField(EventCategory, verbose_name='Категория')
     agent = models.ForeignKey(EventAgent, on_delete=models.CASCADE, verbose_name='Организатор')
     name = models.CharField(verbose_name='Название события', max_length=128)
     description = models.CharField(verbose_name='Краткое описание события', max_length=128, blank=True)

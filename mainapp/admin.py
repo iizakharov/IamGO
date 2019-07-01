@@ -31,7 +31,7 @@ class EventGalleryInline(admin.TabularInline):
 class EventAdmin(admin.ModelAdmin):
     inlines = EventGalleryInline,
     search_fields = 'name', 'category__name',
-    list_display = 'name', 'category',
+    list_display = 'name',
 
 
 @admin.register(EventGallery)
