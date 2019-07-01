@@ -4,7 +4,7 @@
 {% block container %}
 	<div class="header-bunner"><a href="#"></a></div>
 	<div class="page-content" >
-		<h1 class="page-title">Афиша событий в Москве</h1>
+		<h1 class="page-title first-title">Афиша событий в Москве</h1>
 		<div>
 			<ul class="menu-date">
 				<li><a href="#">Дата</a></li>
@@ -19,7 +19,12 @@
 				<a href="#"><img class="slide-button-next slide-button" src="{% static 'img/next-button.svg' %}" alt="next"></a>
 			</div>
 		</div>
-		<h1 class="page-title">События в ближайшие дни</h1>
+		<div class="event-category">
+			<h1 class="page-title">События в ближайшие дни</h1>
+			<a href="{% url 'main:events' %}">
+				<h2 class="view-all" >Смотреть все ></h2>
+			</a>
+		</div>
 		<div class="nearest">
 			<div>
 				<a href="{% url 'main:product' %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
@@ -46,7 +51,12 @@
 				</ul>
 			</div>
 		</div>
-		<h1 class="page-title">Самые ожидаемые концерты</h1>
+		<div class="event-category">
+			<h1 class="page-title">Самые ожидаемые концерты</h1>
+			<a href="{% url 'main:events' %}">
+				<h2 class="view-all" >Смотреть все ></h2>
+			</a>
+		</div>
 		<div class="nearest">
 			<div>
 				<a href="{% url 'main:product' %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
