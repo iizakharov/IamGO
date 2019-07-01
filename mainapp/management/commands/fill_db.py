@@ -16,6 +16,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         # Create categories
         categories = load_from_json('categories')
+        print("Categories loaded")
         EventCategory.objects.all().delete()
         category_list = dict()
         for category in categories:
@@ -24,12 +25,13 @@ class Command(BaseCommand):
         print("Categories created")
         # Create agents
         agents = load_from_json('agents')
-        EventAgent.objects.all().delete()
         print("agents loaded")
+        EventAgent.objects.all().delete()
         agent_list = dict()
         for agent in agents:
             agent_list[agent['name']] = agent['description']
         [EventAgent.objects.create(name=key, description=value) for key, value in agent_list.items()]
+        print("Agents created")
         # Create locations
         locations = load_from_json('locations')
         print("Locations loaded")
@@ -45,20 +47,20 @@ class Command(BaseCommand):
         Event.objects.all().delete()
         for event in events:
             # Create event
-            print(event['agent'])
             event['agent'] = EventAgent.objects.get(name=event['agent'])
-            print(event['agent'])
             event_object = Event.objects.create(**event)
             # print('{0} created.'.format(event['name']))
+            # Add locations to event
             for location in locations:
                 if event['name'] == location['event']:
                     event_object.location.add(EventLocation.objects.get(name=location['name']))
+            # Add categories to event
             for category in categories:
                 if event['name'] == category['event']:
                     event_object.category.add(EventCategory.objects.get(name=category['name']))
 
             # print('{0} is done.'.format(event['name']))
-
+        print("Events created")
             # category_name = event['category']
             # # Получаем категорию по имени
             # _category = EventCategory.objects.get(name=category_name)
