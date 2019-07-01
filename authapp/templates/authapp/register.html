@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <div class="registration-container">
+        <div class="registration-block">
+            <div class="registration-header">
+                <h1 class="registration-header-descr">Регистрация</h1>
+            </div>
+            <form class="registration-form" method="post">
+                <input type="text" class="registration-form-input" placeholder="Имя">
+                <input type="text" class="registration-form-input" placeholder="Фамилия">
+                <input type="text" class="registration-form-input" placeholder="Придумайте логин">
+                <input type="password" class="registration-form-input" placeholder="Придумайте пароль">
+                <input type="password" class="registration-form-input" placeholder="Повторите пароль">
+                <input type="tel" class="registration-form-input" placeholder="Номер мобильного телефона">
+                <input class="registration-button" type="submit" value="Зарегистрироваться">
+            </form>
+        </div>
+        <div class="registration-auth">Уже есть аккаунт на Яндексе? <a class="registration-link" href="#">Войти</a>
+        </div>
+        <footer class="registration-footer">
+            <span class="registration-footer-text">Ru</span>
+            <a class="registration-link registration-footer-link-support" href="https://yandex.ru/support/passport/" target="_blank">Помощь</a>
+            <span class="registration-footer-text">&copy;&nbsp;2001-2019,&nbsp;</span><a class="registration-link" href="https://yandex.ru/" target="_blank">Яндекс</a>
+        </footer>
+    </div>
+</body>
+</html>
