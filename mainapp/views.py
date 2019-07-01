@@ -15,3 +15,11 @@ def product(request):
     }
 
     return render(request, 'mainapp/product.html', content)
+
+
+def events(request):
+    content = {
+        'title': 'Все похожие мероприятия',
+    }
+
+    return render(request, 'mainapp/events.html', content)
