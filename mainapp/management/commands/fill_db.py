@@ -40,6 +40,7 @@ class Command(BaseCommand):
             # _event = Event.objects.create(**event)
             event['category'] = _category
             event['agent'] = _agent
+            event['date'] = _date
             # event['location'] = _location
             event_object = Event.objects.create(**event)
             event_object.location.set(_location)
