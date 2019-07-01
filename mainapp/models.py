@@ -75,6 +75,20 @@ class EventDate(models.Model):
         return f'{self.date}'
 
 
+class EventCollection(models.Model):
+    class Meta:
+        verbose_name = 'Подборка'
+        verbose_name_plural = 'Подборки'
+        ordering = ['name']
+
+    name = models.CharField(verbose_name='Имя подборки', max_length=255, unique=True)
+    is_active = models.BooleanField(verbose_name='Активна', default=True)
+    image = models.ImageField(upload_to=path_and_rename, blank=True)
+
+    def __str__(self):
+        return {self.name}
+
+
 class Event(models.Model):
     class Meta:
         verbose_name = 'Событие'
@@ -92,6 +106,8 @@ class Event(models.Model):
     is_free = models.BooleanField(verbose_name='Бесплатное', default=True)
     is_active = models.BooleanField(verbose_name='Активное', default=True)
     is_hot = models.BooleanField(verbose_name='Популярное', default=True)
+    collections = models.ForeignKey(EventCollection, on_delete=models.CASCADE, verbose_name='Подборки', blank=True,
+                                    null=True)
 
     def __str__(self):
         return f'{self.name} ({self.category.name})'
