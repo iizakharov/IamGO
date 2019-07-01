@@ -60,7 +60,13 @@
         "is_active": "True"
     },
     {
-		"name": "Default",
-        "description": "admin django"
+        "name": "greatcircus.ru",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "name": "Lorem",
+        "description": "Lorem",
+        "is_active": "True"
     }
 ]
