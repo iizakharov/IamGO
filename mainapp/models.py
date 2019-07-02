@@ -62,19 +62,6 @@ class EventLocation(models.Model):
         return self.name
 
 
-class EventDate(models.Model):
-    class Meta:
-        verbose_name = 'Дата'
-        verbose_name_plural = 'Даты'
-        ordering = ['date']
-
-    date = models.DateField(verbose_name='Дата события', unique=True)
-    is_active = models.BooleanField(verbose_name='Активна', default=True)
-
-    def __str__(self):
-        return f'{self.date}'
-
-
 class EventCollection(models.Model):
     class Meta:
         verbose_name = 'Подборка'
@@ -101,8 +88,7 @@ class Event(models.Model):
     description = models.CharField(verbose_name='Краткое описание события', max_length=128, blank=True)
     body_text = models.TextField(verbose_name='Описание события', blank=True)
     location = models.ManyToManyField(EventLocation, verbose_name='Площадка')
-    date = models.ManyToManyField(EventDate, verbose_name='Дата')
-    price = models.DecimalField(verbose_name='Цена', max_digits=8, decimal_places=2, default=0)
+    price = models.DecimalField(verbose_name='Цена от', max_digits=8, decimal_places=2, default=0)
     is_free = models.BooleanField(verbose_name='Бесплатное', default=True)
     is_active = models.BooleanField(verbose_name='Активное', default=True)
     is_hot = models.BooleanField(verbose_name='Популярное', default=False)
@@ -126,8 +112,23 @@ class EventGallery(models.Model):
         width_field='image_width',
         verbose_name='Изображение события'
     )
+    is_avatar = models.BooleanField(verbose_name='Главное изображение события', default=False)
     image_height = models.PositiveIntegerField(null=True, blank=True, editable=False, default='100')
     image_width = models.PositiveIntegerField(null=True, blank=True, editable=False, default='100')
 
     def __str__(self):
         return f'{self.event.name}'
+
+
+class EventDate(models.Model):
+    class Meta:
+        verbose_name = 'Дата'
+        verbose_name_plural = 'Даты'
+        ordering = ['date']
+
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='dates', verbose_name='Название события')
+    date = models.DateTimeField(verbose_name='Дата события', unique=True)
+
+    def __str__(self):
+        return f'{self.event.name}{self.date}'
+

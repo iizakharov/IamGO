@@ -17,9 +17,9 @@ class EventLocationAdmin(admin.ModelAdmin):
     search_fields = 'name',
 
 
-@admin.register(EventDate)
-class EventDateAdmin(admin.ModelAdmin):
-    search_fields = 'date',
+class EventDateInline(admin.TabularInline):
+    model = EventDate
+    extra = 3
 
 
 class EventGalleryInline(admin.TabularInline):
@@ -29,12 +29,19 @@ class EventGalleryInline(admin.TabularInline):
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
-    inlines = EventGalleryInline,
+    inlines = EventDateInline, EventGalleryInline,
     search_fields = 'name', 'category__name',
     list_display = 'name',
+
+
+@admin.register(EventDate)
+class EventDateAdmin(admin.ModelAdmin):
+    search_fields = 'event',
+    list_display = 'event', 'date',
 
 
 @admin.register(EventGallery)
 class EventGalleryAdmin(admin.ModelAdmin):
     search_fields = 'event',
     list_display = 'event', 'image',
+
