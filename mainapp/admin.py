@@ -44,4 +44,3 @@ class EventDateAdmin(admin.ModelAdmin):
 class EventGalleryAdmin(admin.ModelAdmin):
     search_fields = 'event',
     list_display = 'event', 'image',
-
