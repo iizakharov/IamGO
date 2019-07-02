@@ -8,6 +8,7 @@ app_name = 'mainapp'
 
 urlpatterns = [
     path('', mainapp.main, name='index'),
+    path('', mainapp.main, name='events'),
     path('product/', mainapp.product, name='product'),
     path('events/', mainapp.events, name='events'),
 ]

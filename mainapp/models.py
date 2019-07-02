@@ -75,13 +75,27 @@ class EventDate(models.Model):
         return f'{self.date}'
 
 
+class EventCollection(models.Model):
+    class Meta:
+        verbose_name = 'Подборка'
+        verbose_name_plural = 'Подборки'
+        ordering = ['name']
+
+    name = models.CharField(verbose_name='Имя подборки', max_length=255, unique=True)
+    is_active = models.BooleanField(verbose_name='Активна', default=True)
+    image = models.ImageField(upload_to=path_and_rename, blank=True)
+
+    def __str__(self):
+        return {self.name}
+
+
 class Event(models.Model):
     class Meta:
         verbose_name = 'Событие'
         verbose_name_plural = 'События'
         ordering = ['name']
 
-    category = models.ForeignKey(EventCategory, on_delete=models.CASCADE, verbose_name='Категория')
+    category = models.ManyToManyField(EventCategory, verbose_name='Категория')
     agent = models.ForeignKey(EventAgent, on_delete=models.CASCADE, verbose_name='Организатор')
     name = models.CharField(verbose_name='Название события', max_length=128)
     description = models.CharField(verbose_name='Краткое описание события', max_length=128, blank=True)
@@ -91,6 +105,9 @@ class Event(models.Model):
     price = models.DecimalField(verbose_name='Цена', max_digits=8, decimal_places=2, default=0)
     is_free = models.BooleanField(verbose_name='Бесплатное', default=True)
     is_active = models.BooleanField(verbose_name='Активное', default=True)
+    is_hot = models.BooleanField(verbose_name='Популярное', default=False)
+    collections = models.ForeignKey(EventCollection, on_delete=models.CASCADE, verbose_name='Подборки', blank=True,
+                                    null=True)
 
     def __str__(self):
         return f'{self.name} ({self.category.name})'
