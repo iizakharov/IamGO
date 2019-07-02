@@ -11,7 +11,7 @@ def get_event_by_date():
 
 
 def get_expect_concert():
-    return Event.objects.filter(category='Концерты').filter(is_hot=True)
+    return Event.objects.filter(category__name='Концерты').filter(is_hot=True)
 
 
 def get_collections():

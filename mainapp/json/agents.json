@@ -1,6 +1,72 @@
 [
     {
-		"name": "Default",
-        "description": "admin django"
+        "name": "Adrenaline Stadium",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "name": "Главclub Green Concert",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "name": "Крокус Сити Холл",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "name": "Консерватория им. Чайковского",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "name": "Открытие Арена",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "name": "park.live",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "name": "volley.ru",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "name": "jazzseasons.ru",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "name": "russiantattooexpo.com",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "name": "culture.ru",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "name": "kudago.com",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "name": "vk.com",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "name": "greatcircus.ru",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "name": "Lorem",
+        "description": "Lorem",
+        "is_active": "True"
     }
 ]
