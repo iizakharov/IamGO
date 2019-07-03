@@ -15,6 +15,7 @@
                 <h1 class="registration-header-descr">Регистрация</h1>
             </div>
             <form class="registration-form" method="post">
+                {% csrf_token %}
                 <input type="text" class="registration-form-input" placeholder="Имя">
                 <input type="text" class="registration-form-input" placeholder="Фамилия">
                 <input type="text" class="registration-form-input" placeholder="Придумайте логин">
