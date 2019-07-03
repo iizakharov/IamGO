@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from mainapp.models import EventCategory, EventAgent, EventLocation, Event
+from mainapp.models import EventCategory, EventAgent, EventLocation, Event, EventDate
 from authapp.models import User
 
 import json
@@ -62,6 +62,14 @@ class Command(BaseCommand):
 
             # print('{0} is done.'.format(event['name']))
         print("Events created")
+        dates = load_from_json("eventdate")
+        print("Dates loaded")
+        EventDate.objects.all().delete()
+        for i in dates:
+            EventDate.objects.create(event=Event.objects.get(name=i["event"]), date=i["date"])
+
+        print("Recreate super users ...     ", end='')
         User.objects.all().delete()
         User.objects.create_superuser('django@geekshop.local', 'geekbrains')
         User.objects.create_superuser("admin@admin.com", "password")
+        print("Done")
