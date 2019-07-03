@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand
 from mainapp.models import EventCategory, EventAgent, EventLocation, Event
+from authapp.models import User
 
 import json
 import os
@@ -61,3 +62,6 @@ class Command(BaseCommand):
 
             # print('{0} is done.'.format(event['name']))
         print("Events created")
+        User.objects.all().delete()
+        User.objects.create_superuser('django@geekshop.local', 'geekbrains')
+        User.objects.create_superuser("admin@admin.com", "password")
