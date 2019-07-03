@@ -19,6 +19,7 @@
                 <h1 class="login-title">Войдите, чтобы продолжить</h1>
             </div>
             <form class="registration-form" method="post">
+                {% csrf_token %}
                 <input type="text" class="registration-form-input" placeholder="Введите логин, почту или телефон">
                 <input type="password" class="registration-form-input" placeholder="Пароль">
                 <input class="registration-button" type="submit" value="Войти">
