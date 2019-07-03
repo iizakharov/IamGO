@@ -127,7 +127,7 @@ class EventDate(models.Model):
         ordering = ['date']
 
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='dates', verbose_name='Название события')
-    date = models.DateTimeField(verbose_name='Дата события', unique=True)
+    date = models.DateTimeField(verbose_name='Дата события')
 
     def __str__(self):
         return f'{self.event.name}{self.date}'
