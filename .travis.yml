@@ -17,5 +17,7 @@ install:
   - pip install django==$DJANGO --quiet
 
 script:
+  - python manage.py makemigrations
+  - python manage.py migrate
   - python manage.py test
   - flake8 ./ --max-line-length=130 --exclude=migrations --max-complexity 10
