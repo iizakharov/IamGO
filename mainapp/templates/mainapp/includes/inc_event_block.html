@@ -2,16 +2,15 @@
 	<div class="event-block-shadow">
 		<div class="description-event">
 			<ul>
-				<li>Концерт</li>
-				 <li>&#8226;</li>
-				<li>поп</li>
-				 <li>&#8226;</li>
-				<li>12+</li>
+                {% for category in event.category.all %}
+                    <li>&#8226;</li>
+                    <li>{{ category }}</li>
+                {% endfor %}
 			</ul>
 			<div class="event-description-title">
-				<h1>Новое Радио Awards</h1>
+				<h1>{{ event.name }}</h1>
 			</div>
-			<div class="event-concert-description-quests">Баста, Руки Вверх, Little Big</div>
+			<div class="event-concert-description-quests">{{ event.description }}</div>
 			<div class="event-concert-description-tags">
 					<a  href="#">Концерт в Москве</a>
 					<span>&#8226;</span>
