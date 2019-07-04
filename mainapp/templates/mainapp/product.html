@@ -10,7 +10,7 @@
 	
 		<div class="event-block-places">
             {% language 'ru' %}
-			<span>{{ event.dates.first.date|date:"D, d M Y" }}</span>
+			<span>{{ event.dates.first.date|date:"l, d E Y" }}</span>
             {%  endlanguage %}
 			<div class="places"></div>
 		</div>
