@@ -1,5 +1,6 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block event-block %}
 {% include 'mainapp/includes/inc_event_block.html' %}
@@ -8,7 +9,9 @@
 	<div class="container wrapper">
 	
 		<div class="event-block-places">
-			<span>21 февраля, пятница, 20:00</span>
+            {% language 'ru' %}
+			<span>{{ event.dates.first.date|date:"D, d M Y" }}</span>
+            {%  endlanguage %}
 			<div class="places"></div>
 		</div>
 		<div class="event"> 

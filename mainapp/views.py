@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import EventCategory, Event, EventCollection
 
 
@@ -34,9 +34,15 @@ def main(request):
     return render(request, 'mainapp/index.html', context)
 
 
-def product(request):
+def product(request, pk=None):
+    print(pk)
+    # event = Event.objects.filter(pk=pk).prefetch_related().first()
+    event = get_object_or_404(Event, pk=pk)
+    print(event.dates.first().date)
+
     content = {
         'title': 'Мероприятие',
+        'event': event
     }
 
     return render(request, 'mainapp/product.html', content)
