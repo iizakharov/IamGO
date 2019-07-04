@@ -480,7 +480,7 @@ body {
 
 .event-block {
     position: relative;
-    background: url(../img/events_pic/little-big.s1260x500.webp) no-repeat;
+    /*background: url(../img/events_pic/little-big.s1260x500.webp) no-repeat;*/
     height: 450px;
     background-size: cover;
 }

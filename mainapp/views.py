@@ -38,11 +38,12 @@ def product(request, pk=None):
     print(pk)
     # event = Event.objects.filter(pk=pk).prefetch_related().first()
     event = get_object_or_404(Event, pk=pk)
-    print(event.dates.first().date)
+    print(event.images.filter(is_avatar=True).first().image.url)
 
     content = {
         'title': 'Мероприятие',
-        'event': event
+        'event': event,
+        'avatar': '/' + event.images.filter(is_avatar=True).first().image.url
     }
 
     return render(request, 'mainapp/product.html', content)
