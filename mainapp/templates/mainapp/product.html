@@ -17,32 +17,20 @@
 		<div class="event"> 
 			<h1 class="page-title">Что может понравиться</h1>
 			<div class="nearest">
+                {% for related in related_events %}
 				<div>
-					<a href="#"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-					<h2>Ленинград</h2>
+					<a href="#"><img src="/{{ related.images.first.image.url }}" alt="bunner1"></a>
+					<h2>{{ related.name }}</h2>
 					<ul>
-						<li><a href="#">14 июня</a></li>
-						<li><a href="#">Открытие Арена</a></li>
+                        {% language 'ru' %}
+						<li><a href="#">{{ related.dates.first.date|date:"d E" }}</a></li>
+                        {%  endlanguage %}
+						<li><a href="#">{{ related.location.first.name }}</a></li>
 					</ul>
 				</div>
-				<div>
-					<a href="#"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-					<h2>Ленинград</h2>
-					<ul >
-						<li><a href="#">14 июня</a></li>
-						<li><a href="#">Открытие Арена</a></li>
-					</ul>
-				</div>
-				<div>
-					<a href="#"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-					<h2>Ленинград</h2>
-					<ul >
-						<li><a href="#">14 июня</a></li>
-						<li><a href="#">Открытие Арена</a></li>
-					</ul>
-				</div>
+                {% endfor %}
 			</div>
-			<h1 class="page-title">О концерте</h1>
+			<h1 class="page-title">О событии</h1>
 			<div class="event-description">
             {% if event.body_text|length < 60 %}
                 <p>{{ event.body_text }}</p>
