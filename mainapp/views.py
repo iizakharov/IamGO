@@ -41,11 +41,15 @@ def product(request, pk=None):
     event = get_object_or_404(Event, pk=pk)
     related_events = Event.objects.filter(is_active=True).filter(~Q(pk=pk))[:3]
     print(related_events[0].images.first().image.url)
+    try:
+        avatar = '/' + event.images.filter(is_avatar=True).first().image.url
+    except AttributeError:
+        avatar = '/static/img/s372x223_lelingrad.webp'
 
     content = {
         'title': 'Мероприятие',
         'event': event,
-        'avatar': '/' + event.images.filter(is_avatar=True).first().image.url,
+        'avatar': avatar,
         'related_events': related_events
     }
 
