@@ -39,7 +39,7 @@ def product(request, pk=None):
     print(pk)
     # event = Event.objects.filter(pk=pk).prefetch_related().first()
     event = get_object_or_404(Event, pk=pk)
-    related_events = Event.objects.filter(is_active=True).filter(~Q(pk=pk))[:3]
+    related_events = Event.objects.filter(is_active=True).filter(~Q(pk=pk)).order_by("?")[:3]
     print(related_events[0].images.first().image.url)
     try:
         avatar = '/' + event.images.filter(is_avatar=True).first().image.url
