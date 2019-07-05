@@ -8,14 +8,26 @@
 {% block container %}
 	<div class="container wrapper">
 	
-		<div class="event-block-places">
-            {% language 'ru' %}
-			<span>{{ event.dates.first.date|date:"l, d E Y" }}</span>
-            {%  endlanguage %}
-			<div class="places"></div>
-		</div>
-		<div class="event"> 
-			<h1 class="page-title">Что может понравиться</h1>
+{#		<div class="event-block-places">#}
+{#            {% language 'ru' %}#}
+{#			<span>{{ event.dates.first.date|date:"l, d E Y" }}</span>#}
+{#            {%  endlanguage %}#}
+{#			<div class="places"></div>#}
+{#		</div>#}
+		<div class="event">
+            <div class="event-description">
+                <h1 class="page-title">Подробная информация на сайте организатора
+                    <a href="https://{{ event.agent.name }}">{{ event.agent.name }}</a>
+                </h1>
+                <h1 class="page-title">Даты проведения</h1>
+                {% for date in event.dates.all %}
+                    {% language 'ru' %}
+                <p>{{ date.date|date:"l, d E Y" }}</p>
+                    {% endlanguage %}
+                {% endfor %}
+                <h1 class="page-title">Цены</h1>
+                <p> от {{ event.price }} рублей</p>
+            </div>
 			<h1 class="page-title">О событии</h1>
 			<div class="event-description">
             {% if event.body_text|length < 60 %}
@@ -31,6 +43,7 @@
                     {% endif %}
 				</div>
 			</div>
+			<h1 class="page-title">Что может понравиться</h1>
 			<div class="nearest">
                 {% for related in related_events %}
 				<div>
