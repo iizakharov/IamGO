@@ -1,5 +1,6 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block event-block %}
 {% include 'mainapp/includes/inc_event_block.html' %}
@@ -7,64 +8,66 @@
 {% block container %}
 	<div class="container wrapper">
 	
-		<div class="event-block-places">
-			<span>21 февраля, пятница, 20:00</span>
-			<div class="places"></div>
-		</div>
-		<div class="event"> 
-			<h1 class="page-title">Что может понравиться</h1>
-			<div class="nearest">
-				<div>
-					<a href="#"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-					<h2>Ленинград</h2>
-					<ul >
-						<li><a href="#">14 июня</a></li>
-						<li><a href="#">Открытие Арена</a></li>
-					</ul>
-				</div>
-				<div>
-					<a href="#"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-					<h2>Ленинград</h2>
-					<ul >
-						<li><a href="#">14 июня</a></li>
-						<li><a href="#">Открытие Арена</a></li>
-					</ul>
-				</div>
-				<div>
-					<a href="#"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-					<h2>Ленинград</h2>
-					<ul >
-						<li><a href="#">14 июня</a></li>
-						<li><a href="#">Открытие Арена</a></li>
-					</ul>
-				</div>
-			</div>
-			<h1 class="page-title">О концерте</h1>
+{#		<div class="event-block-places">#}
+{#            {% language 'ru' %}#}
+{#			<span>{{ event.dates.first.date|date:"l, d E Y" }}</span>#}
+{#            {%  endlanguage %}#}
+{#			<div class="places"></div>#}
+{#		</div>#}
+		<div class="event">
+            <div class="event-description">
+                <h1 class="page-title">Подробная информация на сайте организатора
+                    <a href="https://{{ event.agent.name }}">{{ event.agent.name }}</a>
+                </h1>
+                <h1 class="page-title">Даты проведения</h1>
+                {% for date in event.dates.all %}
+                    {% language 'ru' %}
+                <p>{{ date.date|date:"l, d E Y" }}</p>
+                    {% endlanguage %}
+                {% endfor %}
+                <h1 class="page-title">Цены</h1>
+                <p> от {{ event.price }} рублей</p>
+            </div>
+			<h1 class="page-title">О событии</h1>
 			<div class="event-description">
-			   <p>"Новое Радио" представляет обновлённый формат музыкальной премии
-				Хедлайнерами события станут Баста, "Руки Вверх" и Little Big</p>
+            {% if event.body_text|length < 60 %}
+                <p>{{ event.body_text }}</p>
+            {% else %}
+			   <p>{{ event.body_text|slice:"0:400" }}</p>
 				<div class="full">
 					<input type="checkbox" id="slide1"/>
-					<p>"Новое Радио" меняет стереотип о российских музыкальных премиях! Cостоится качественно новое событие в развлекательной индустрии – "Новое Радио Awards". Церемония вручения наград лучшим исполнителям пройдёт в обновлённом формате – хедлайнерами шоу станут три артиста, которые неизменно собирают многотысячные залы.</p>
-
-					<p>Самый популярный в стране рэпер Баста, культовая группа "Руки Вверх" и провокационный рейв-проект Little Big выступят на церемонии "Нового Радио" с большими концертными программами. Также на сцену выйдут и другие яркие представители российской сцены, среди которых главные номинанты премии "Новое Радио Awards". В ходе церемонии награды получат топовые артисты, чьи песни на протяжении года занимали верхние строчки хит-парада радиостанции.</p>
-
-					<p>"Новое Радио" уже три года награждает самых востребованных представителей российского шоу-бизнеса. Среди тех, кто был удостоен статуэток в виде символа Премии – Золотой Сирены – Полина Гагарина, Дима Билан, Макс Барских, Елена Темникова, Loc Dog, Ёлка, Эмма М, Maruv, Мари Краймбрери и другие популярные хитмейкеры.</p> 
-
-					<p>Каждый раз Премия проходит с размахом и приковывает внимание общественности, модных блогеров и светской тусовки. Церемония собирает в зале более 5000 зрителей, а телеверсию события на федеральных каналах смотрят более 5 миллионов человек. Шоу "Нового Радио" получило высокую оценку ведущих профессионалов рынка и было названо лучшей Премией 2018 года.</p>
-					<label for="slide1">
+                    <p>{{ event.body_text|slice:"400:" }}</p>
+                    <label for="slide1">
 					<span>Развернуть/Скрыть полное описание</span>
 					</label>
+                    {% endif %}
 				</div>
+			</div>
+			<h1 class="page-title">Что может понравиться</h1>
+			<div class="nearest">
+                {% for related in related_events %}
+				<div>
+					<a href="#"><img src="/{{ related.images.first.image.url }}" alt="bunner1"></a>
+					<h2>{{ related.name }}</h2>
+					<ul>
+                        {% language 'ru' %}
+						<li><a href="#">{{ related.dates.first.date|date:"d E" }}</a></li>
+                        {%  endlanguage %}
+						<li><a href="#">{{ related.location.first.name }}</a></li>
+					</ul>
+				</div>
+                {% endfor %}
 			</div>
 			<div class="event-adress">
 				<h1 class="page-title">Адрес</h1>
 				<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A2b776ce032f9626db09c2e91c0f1fb369a75f83c3bb5b2bd00c7d21dec7c5241&amp;width=100%25&amp;height=300&amp;lang=ru_RU&amp;scroll=true"></script>
-				<a href="#">ВТБ Арена парк</a>
+				{% for place in event.location.all %}
+                <a href="#">{{ place.name }}</a>
 				<ul>
-					<li>Ленинградский просп., 36</li>
-					<li>метро: Петровский парк, Динамо</li>
+					<li>{{ place.location }}</li>
+{#					<li>метро: Петровский парк, Динамо</li>#}
 				</ul>
+                {% endfor %}
 			</div>
 		</div>
     </div>

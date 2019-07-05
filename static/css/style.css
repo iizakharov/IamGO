@@ -130,11 +130,11 @@ body {
     font-size: 34px;
     line-height: 40px;
     font-weight: 700;
-/*
+
     margin: 14px 0 0;
-    padding-top: 10px;
-    padding-bottom: 28px;
-*/
+    padding-top: 14px;
+    padding-bottom: 14px;
+
 }
 
 .first-title {
@@ -480,7 +480,7 @@ body {
 
 .event-block {
     position: relative;
-    background: url(../img/events_pic/little-big.s1260x500.webp) no-repeat;
+    /*background: url(../img/events_pic/little-big.s1260x500.webp) no-repeat;*/
     height: 450px;
     background-size: cover;
 }
@@ -513,8 +513,15 @@ body {
     text-transform: uppercase;
 }
 
+.event ul{
+    display: flex;
+    margin-left: 20px;
+}
 
-
+.event-adress li{
+    list-style-type: none;
+    padding-right: 20px;
+}
 .event-block-shadow {
     position: relative;
     z-index: 3;
