@@ -1,73 +1,58 @@
-<!DOCTYPE html>
+{% extends 'authapp/base.html' %}
 {% load static %}
-<html lang="ru">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Авторизация</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-          crossorigin="anonymous">
-</head>
+{% block content %}
 
-<body>
-    <div class="login-container">
-        <div class="registration-block">
-            <div class="registration-header">
-                <a href="https://yandex.ru/"><img class="login-logo-img" src="{% static 'img/yandex_logo.png' %}" alt="logo"></a>
-                <h1 class="login-title">Войдите, чтобы продолжить</h1>
+    <div class="registration-header">
+        <a href={% url 'main:index' %}><img class="login-logo-img" src="{% static 'img/yandex_logo.png' %}" alt="logo"></a>
+        <h1 class="login-title">Войдите, чтобы продолжить</h1>
+    </div>
+    <form class="registration-form" action="{% url 'auth:login' %}" method="post">
+        {% csrf_token %}
+        {% if next %}
+            <input type="hidden" name="next" value="{{ next }}">
+        {% endif %}
+        {{ login_form.as_p }}
+        <!--
+        <input type="text" class="registration-form-input" placeholder="Введите логин, почту или телефон">
+        <input type="password" class="registration-form-input" placeholder="Пароль">
+        -->
+        <input class="registration-button" type="submit" value="Войти">
+    </form>
+    <div class="login-social-block">
+        <h3 class="login-social-title">Войти с&nbsp;помощью соцсетей</h3>
+        <div class="login-social-icons">
+            <div>
+                <a href="#" class="login-social-link login-social-link-margin social-color-vk" target="_blank">
+                        <i class="fab fa-vk fa-2x"></i>
+                </a>
             </div>
-            <form class="registration-form" method="post">
-                {% csrf_token %}
-                <input type="text" class="registration-form-input" placeholder="Введите логин, почту или телефон">
-                <input type="password" class="registration-form-input" placeholder="Пароль">
-                <input class="registration-button" type="submit" value="Войти">
-            </form>
-            <div class="login-social-block">
-                <h3 class="login-social-title">Войти с&nbsp;помощью соцсетей</h3>
-                <div class="login-social-icons">
-                    <div>
-                        <a href="#" class="login-social-link login-social-link-margin social-color-vk" target="_blank">
-                                <i class="fab fa-vk fa-2x"></i>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#" class="login-social-link social-color-facebook" target="_blank">
-                            <i class="fab fa-facebook-f fa-2x"></i>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#" class="login-social-link social-color-google" target="_blank">
-                            <i class="fab fa-google fa-2x"></i>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#" class="login-social-link social-color-telegram" target="_blank">
-                            <i class="fab fa-telegram-plane fa-2x"></i>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#" class="login-social-link social-color-ok" target="_blank">
-                                <i class="fab fa-odnoklassniki fa-2x"></i>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#" class="login-social-link social-color-twitter" target="_blank">
-                                <i class="fab fa-twitter fa-2x"></i>
-                        </a>
-                    </div>
-                </div>
+            <div>
+                <a href="#" class="login-social-link social-color-facebook" target="_blank">
+                    <i class="fab fa-facebook-f fa-2x"></i>
+                </a>
+            </div>
+            <div>
+                <a href="#" class="login-social-link social-color-google" target="_blank">
+                    <i class="fab fa-google fa-2x"></i>
+                </a>
+            </div>
+            <div>
+                <a href="#" class="login-social-link social-color-telegram" target="_blank">
+                    <i class="fab fa-telegram-plane fa-2x"></i>
+                </a>
+            </div>
+            <div>
+                <a href="#" class="login-social-link social-color-ok" target="_blank">
+                        <i class="fab fa-odnoklassniki fa-2x"></i>
+                </a>
+            </div>
+            <div>
+                <a href="#" class="login-social-link social-color-twitter" target="_blank">
+                        <i class="fab fa-twitter fa-2x"></i>
+                </a>
             </div>
         </div>
-        <footer class="registration-footer">
-            <span class="registration-footer-text">Ru</span>
-            <a class="registration-link registration-footer-link-support" href="https://yandex.ru/support/passport/"
-                target="_blank">Помощь</a>
-            <span class="registration-footer-text">&copy;&nbsp;2001-2019,&nbsp;</span><a class="registration-link"
-                href="https://yandex.ru/" target="_blank">Яндекс</a>
-        </footer>
     </div>
-</body>
 
-</html>
+{% endblock %}
