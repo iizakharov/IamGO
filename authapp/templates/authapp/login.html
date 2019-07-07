@@ -15,13 +15,19 @@
     <div class="login-container">
         <div class="registration-block">
             <div class="registration-header">
-                <a href="https://yandex.ru/"><img class="login-logo-img" src="{% static 'img/yandex_logo.png' %}" alt="logo"></a>
+                <a href={% url 'main:index' %}><img class="login-logo-img" src="{% static 'img/yandex_logo.png' %}" alt="logo"></a>
                 <h1 class="login-title">Войдите, чтобы продолжить</h1>
             </div>
-            <form class="registration-form" method="post">
+            <form class="registration-form" action="{% url 'auth:login' %}" method="post">
                 {% csrf_token %}
+                {% if next %}
+                    <input type="hidden" name="next" value="{{ next }}">
+                {% endif %}
+                {{ login_form.as_p }}
+                <!--
                 <input type="text" class="registration-form-input" placeholder="Введите логин, почту или телефон">
                 <input type="password" class="registration-form-input" placeholder="Пароль">
+                -->
                 <input class="registration-button" type="submit" value="Войти">
             </form>
             <div class="login-social-block">
@@ -61,11 +67,8 @@
             </div>
         </div>
         <footer class="registration-footer">
-            <span class="registration-footer-text">Ru</span>
-            <a class="registration-link registration-footer-link-support" href="https://yandex.ru/support/passport/"
-                target="_blank">Помощь</a>
-            <span class="registration-footer-text">&copy;&nbsp;2001-2019,&nbsp;</span><a class="registration-link"
-                href="https://yandex.ru/" target="_blank">Яндекс</a>
+            <span class="registration-footer-text">&#169; 2019</span>
+            <a href="{% url 'main:index' %}" class="registration-link">«Я ИДУ»</a>
         </footer>
     </div>
 </body>
