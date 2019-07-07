@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="ru">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>
+        {% block title %}
+		    IamGO / {{ title|default:"страница"|title }}
+        {% endblock %}
+	</title>
+
+	{% block css %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+              crossorigin="anonymous">
+	{% endblock %}
+
+	{% block js %}
+	{% endblock %}
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="registration-block">
+            {% block content %}
+            {% endblock %}
+        </div>
+        {% block footer %}
+            <footer class="registration-footer">
+                <span class="registration-footer-text">&#169; 2019</span>
+                <a href="{% url 'main:index' %}" class="registration-link">«Я ИДУ»</a>
+            </footer>
+        {% endblock %}
+    </div>
+
+</body>
+</html>
