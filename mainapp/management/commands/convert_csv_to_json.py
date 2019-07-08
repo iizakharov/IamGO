@@ -40,7 +40,7 @@ def get_agents(input, output):
 
 def get_gallery(input, output):
     with open(input) as f:
-        reader = csv.DictReader(f, fieldnames=('event', 'image'),
+        reader = csv.DictReader(f, fieldnames=('event', 'image', 'is_avatar'),
                                 delimiter=';')
         out = json.dumps([row for row in reader], ensure_ascii=False, indent=4)
     with open(output, 'w') as f:
