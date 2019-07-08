@@ -1,11 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib import auth
 from django.urls import reverse
-<<<<<<< HEAD
-from authapp.forms import UserRegisterForm, UserLoginForm
-=======
 from authapp.forms import UserRegisterForm, UserLoginForm, UserProfileEditForm, UserEditForm
->>>>>>> Added edit_view, UserEditForm, UserProfileEditForm in authapp
 
 
 def register_view(request):
