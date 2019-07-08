@@ -1,6 +1,6 @@
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
-from .models import EventCategory, Event, EventCollection
+from .models import EventCategory, Event, EventCollection, EventLocation
 
 
 def get_main_menu():
@@ -17,6 +17,14 @@ def get_expect_concert():
 
 def get_collections():
     return EventCollection.objects.filter(is_active=True)
+
+
+def get_events():
+    events_all = Event.objects.filter(is_active=True, category__is_active=True)
+
+    return events_all
+
+
 
 
 def main(request):
@@ -56,9 +64,36 @@ def product(request, pk=None):
     return render(request, 'mainapp/product.html', content)
 
 
-def events(request):
+def events(request, pk=None):
+    print(pk)
+
+    title = 'мероприятие'
+    links_menu = EventCategory.objects.all()
+
+    if pk is not None:
+        if pk == 0:
+            events = Event.objects.all().order_by('price')
+            category = {'name': 'все'}
+        else:
+            category = get_object_or_404(EventCategory, pk=pk)
+            events = Event.objects.filter(category__pk=pk).order_by('price')
+
+        content = {
+            'title': title,
+            'links_menu': links_menu,
+            'category': category,
+            'events': events,
+        }
+
+        return render(request, 'mainapp/events_list.html', content)
+
+    events_all = get_events()
+
     content = {
-        'title': 'Все похожие мероприятия',
+        'title': title,
+        'links_menu': links_menu,
+        'events_all': events_all,
     }
 
     return render(request, 'mainapp/events.html', content)
+
