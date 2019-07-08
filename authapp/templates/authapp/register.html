@@ -1,36 +1,20 @@
-<!DOCTYPE html>
+{% extends 'authapp/base.html' %}
 {% load static %}
-<html lang="ru">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Регистрация</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-</head>
+{% block content %}
 
-<body>
-    <div class="registration-container">
-        <div class="registration-block">
-            <div class="registration-header">
-                <h1 class="registration-header-descr">Регистрация</h1>
-            </div>
-            <form class="registration-form" method="post">
-                {% csrf_token %}
-                <input type="text" class="registration-form-input" placeholder="Имя">
-                <input type="text" class="registration-form-input" placeholder="Фамилия">
-                <input type="text" class="registration-form-input" placeholder="Придумайте логин">
-                <input type="password" class="registration-form-input" placeholder="Придумайте пароль">
-                <input type="password" class="registration-form-input" placeholder="Повторите пароль">
-                <input type="tel" class="registration-form-input" placeholder="Номер мобильного телефона">
-                <input class="registration-button" type="submit" value="Зарегистрироваться">
-            </form>
-        </div>
-        <div class="registration-auth">Уже есть аккаунт на Яндексе? <a class="registration-link" href="#">Войти</a>
-        </div>
-        <footer class="registration-footer">
-            <span class="registration-footer-text">&#169; 2019</span>
-            <a href="{% url 'main:index' %}" class="registration-link">«Я ИДУ»</a>
-        </footer>
+    <div class="registration-header">
+        <h1 class="registration-header-descr">Регистрация</h1>
     </div>
-</body>
-</html>
+
+    <form class="registration-form" action="{% url 'auth:register' %}" method="post">
+        {% csrf_token %}
+        {{ register_form.as_p }}
+        <input class="registration-button" type="submit" value="Зарегистрироваться">
+    </form>
+
+    <div class="registration-auth">Уже есть аккаунт?
+        <a class="registration-link" href="{% url 'auth:login' %}">Войти</a>
+    </div>
+
+{% endblock %}
