@@ -1,13 +1,25 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib import auth
 from django.urls import reverse
-from authapp.forms import UserLoginForm
+from authapp.forms import UserRegisterForm, UserLoginForm
 
 
 def register_view(request):
+    title = 'Регистрация'
+
+    if request.method == 'POST':
+        register_form = UserRegisterForm(request.POST, request.FILES)
+
+        if register_form.is_valid():
+            new_user = register_form.save()
+            auth.login(request, new_user, backend='django.contrib.auth.backends.ModelBackend')
+            return HttpResponseRedirect(reverse('main:index'))
+    else:
+        register_form = UserRegisterForm()
 
     my_context = {
-        'title': 'Регистрация',
+        'title': title,
+        'register_form': register_form
     }
 
     return render(request, 'authapp/register.html', my_context)
@@ -27,10 +39,7 @@ def login_view(request):
         user = auth.authenticate(username=username, password=password)
         if user and user.is_active:
             auth.login(request, user)
-            if 'next' in request.POST.keys():
-                return HttpResponseRedirect(request.POST['next'])
-            else:
-                return HttpResponseRedirect(reverse('main:index'))
+            return HttpResponseRedirect(reverse('main:index'))
 
     my_context = {
         'title': title,
