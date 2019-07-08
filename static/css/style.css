@@ -889,3 +889,7 @@ body {
     padding-bottom: 5px;
     display: block;
 }
+
+.user-avatar{
+    width: 50px;
+}
