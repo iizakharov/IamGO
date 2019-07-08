@@ -1,12 +1,7 @@
 <div>
 	<ul class="menu wrapper">
-		<li><a href="{% url 'main:category' 12 %}">Выставки</a></li>
-		<li><a href="{% url 'main:category' 11 %}">Концерты</a></li>
-		<li><a href="{% url 'main:category' 10 %}">Фестивали</a></li>
-		<li><a href="#">Подарочные сертификаты</a></li>
-		<li><a href="{% url 'main:category' 4 %}">Детям</a></li>
-		<li><a href="{% url 'main:category' 16 %}">Спорт</a></li>
-		<li><a href="#">Бесплатно</a></li>
-		<li><a href="{% url 'main:category' 19 %}">На воздухе</a></li>
+		{% for category in main_menu %}
+			<li><a href="{% url 'main:category' category.pk %}">{{ category.name }}</a></li>
+		{% endfor %}
 	</ul>
 </div>
