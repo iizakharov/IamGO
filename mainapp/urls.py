@@ -11,4 +11,5 @@ urlpatterns = [
     path('', mainapp.main, name='events'),
     path('product/<int:pk>/', mainapp.product, name='product'),
     path('events/', mainapp.events, name='events'),
+    path('category/<int:pk>/', mainapp.events, name='category'),
 ]

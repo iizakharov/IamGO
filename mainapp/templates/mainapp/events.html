@@ -5,110 +5,115 @@
 <div class="page-content" >
     <h1 class="page-title first-title">Все концерты в Москве</h1>
     <div>
-        <ul class="menu-date">
-            <li><a href="#">Дата</a></li>
-            <li><a href="#">Сегодня</a></li>
-            <li><a href="#">Завтра</a></li>
-            <li><a href="#">На выходных</a></li>
-        </ul>
+        {% include 'mainapp/includes/inc_date_menu.html' %}
     </div>
     <div class="nearest all">
+        {% for product in products_all %}
         <div class="event-preview">
-            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-            <h2>Ленинград</h2>
+            <a href="{% url 'events:event' event.pk %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
+            <h2>{{ event.name }}</h2>
             <ul >
                 <li><a href="#">14 июня</a></li>
                 <li><a href="#">Открытие Арена</a></li>
             </ul>
         </div>
-        <div class="event-preview">
-            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-            <h2>Ленинград</h2>
-            <ul >
-                <li><a href="#">14 июня</a></li>
-                <li><a href="#">Открытие Арена</a></li>
-            </ul>
-        </div>
-        <div class="event-preview">
-            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-            <h2>Ленинград</h2>
-            <ul >
-                <li><a href="#">14 июня</a></li>
-                <li><a href="#">Открытие Арена</a></li>
-            </ul>
-        </div>
-        <div class="event-preview">
-            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-            <h2>Ленинград</h2>
-            <ul >
-                <li><a href="#">14 июня</a></li>
-                <li><a href="#">Открытие Арена</a></li>
-            </ul>
-        </div>
-        <div class="event-preview">
-            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-            <h2>Ленинград</h2>
-            <ul >
-                <li><a href="#">14 июня</a></li>
-                <li><a href="#">Открытие Арена</a></li>
-            </ul>
-        </div>
-        <div class="event-preview">
-            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-            <h2>Ленинград</h2>
-            <ul >
-                <li><a href="#">14 июня</a></li>
-                <li><a href="#">Открытие Арена</a></li>
-            </ul>
-        </div>
-        <div class="event-preview">
-            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-            <h2>Ленинград</h2>
-            <ul >
-                <li><a href="#">14 июня</a></li>
-                <li><a href="#">Открытие Арена</a></li>
-            </ul>
-        </div>
-        <div class="event-preview">
-            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-            <h2>Ленинград</h2>
-            <ul >
-                <li><a href="#">14 июня</a></li>
-                <li><a href="#">Открытие Арена</a></li>
-            </ul>
-        </div>
-        <div class="event-preview">
-            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-            <h2>Ленинград</h2>
-            <ul >
-                <li><a href="#">14 июня</a></li>
-                <li><a href="#">Открытие Арена</a></li>
-            </ul>
-        </div>
-        <div class="event-preview">
-            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-            <h2>Ленинград</h2>
-            <ul >
-                <li><a href="#">14 июня</a></li>
-                <li><a href="#">Открытие Арена</a></li>
-            </ul>
-        </div>
-        <div class="event-preview">
-            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-            <h2>Ленинград</h2>
-            <ul >
-                <li><a href="#">14 июня</a></li>
-                <li><a href="#">Открытие Арена</a></li>
-            </ul>
-        </div>
-        <div class="event-preview">
-            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
-            <h2>Ленинград</h2>
-            <ul >
-                <li><a href="#">14 июня</a></li>
-                <li><a href="#">Открытие Арена</a></li>
-            </ul>
-        </div>
+        {% endfor %}
+<!--        <div class="event-preview">-->
+<!--            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>-->
+<!--            <h2>Ленинград</h2>-->
+<!--            <ul >-->
+<!--                <li><a href="#">14 июня</a></li>-->
+<!--                <li><a href="#">Открытие Арена</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="event-preview">-->
+<!--            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>-->
+<!--            <h2>Ленинград</h2>-->
+<!--            <ul >-->
+<!--                <li><a href="#">14 июня</a></li>-->
+<!--                <li><a href="#">Открытие Арена</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="event-preview">-->
+<!--            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>-->
+<!--            <h2>Ленинград</h2>-->
+<!--            <ul >-->
+<!--                <li><a href="#">14 июня</a></li>-->
+<!--                <li><a href="#">Открытие Арена</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="event-preview">-->
+<!--            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>-->
+<!--            <h2>Ленинград</h2>-->
+<!--            <ul >-->
+<!--                <li><a href="#">14 июня</a></li>-->
+<!--                <li><a href="#">Открытие Арена</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="event-preview">-->
+<!--            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>-->
+<!--            <h2>Ленинград</h2>-->
+<!--            <ul >-->
+<!--                <li><a href="#">14 июня</a></li>-->
+<!--                <li><a href="#">Открытие Арена</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="event-preview">-->
+<!--            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>-->
+<!--            <h2>Ленинград</h2>-->
+<!--            <ul >-->
+<!--                <li><a href="#">14 июня</a></li>-->
+<!--                <li><a href="#">Открытие Арена</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="event-preview">-->
+<!--            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>-->
+<!--            <h2>Ленинград</h2>-->
+<!--            <ul >-->
+<!--                <li><a href="#">14 июня</a></li>-->
+<!--                <li><a href="#">Открытие Арена</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="event-preview">-->
+<!--            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>-->
+<!--            <h2>Ленинград</h2>-->
+<!--            <ul >-->
+<!--                <li><a href="#">14 июня</a></li>-->
+<!--                <li><a href="#">Открытие Арена</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="event-preview">-->
+<!--            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>-->
+<!--            <h2>Ленинград</h2>-->
+<!--            <ul >-->
+<!--                <li><a href="#">14 июня</a></li>-->
+<!--                <li><a href="#">Открытие Арена</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="event-preview">-->
+<!--            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>-->
+<!--            <h2>Ленинград</h2>-->
+<!--            <ul >-->
+<!--                <li><a href="#">14 июня</a></li>-->
+<!--                <li><a href="#">Открытие Арена</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="event-preview">-->
+<!--            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>-->
+<!--            <h2>Ленинград</h2>-->
+<!--            <ul >-->
+<!--                <li><a href="#">14 июня</a></li>-->
+<!--                <li><a href="#">Открытие Арена</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="event-preview">-->
+<!--            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>-->
+<!--            <h2>Ленинград</h2>-->
+<!--            <ul >-->
+<!--                <li><a href="#">14 июня</a></li>-->
+<!--                <li><a href="#">Открытие Арена</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
 
     </div>
 </div>
