@@ -147,6 +147,9 @@ def create_gallery():
         if data:
             event_image = EventGallery.objects.create(event=Event.objects.get(name=i["event"]))
             event_image.image.save(i["event"] + f'{idx}', data['image'])
+            if i.get('is_avatar'):
+                event_image.is_avatar = True
+                event_image.save()
             time.sleep(1)
             print("Done")
         else:
