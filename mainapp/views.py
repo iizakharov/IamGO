@@ -25,8 +25,6 @@ def get_events():
     return events_all
 
 
-
-
 def main(request):
     title = 'Главная'
     main_menu = get_main_menu()
@@ -96,4 +94,3 @@ def events(request, pk=None):
     }
 
     return render(request, 'mainapp/events.html', content)
-
