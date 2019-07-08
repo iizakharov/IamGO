@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, ReadOnlyPasswordHashField
-
-from authapp.models import User
+from authapp.models import User, UserProfile
 
 
 class UserAdminCreationForm(forms.ModelForm):
@@ -45,15 +44,20 @@ class UserAdminChangeForm(forms.ModelForm):
         return self.initial["password"]
 
 
+<<<<<<< HEAD
 class UserRegisterForm(forms.ModelForm):
     # Форма для регистрации.
     password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Подтвердите пароль', widget=forms.PasswordInput)
 
+=======
+class UserEditForm(forms.ModelForm):
+>>>>>>> Added edit_view, UserEditForm, UserProfileEditForm in authapp
     class Meta:
         model = User
         fields = ('email',)
 
+<<<<<<< HEAD
     def clean_password2(self):
         # Проверка, что две записи пароля совпадают.
         password1 = self.cleaned_data.get("password1")
@@ -94,6 +98,27 @@ class UserRegisterForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+=======
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'edit-form-input'
+            field.help_text = ''
+
+
+class UserProfileEditForm(forms.ModelForm):
+    avatar = forms.ImageField(label=('Фото'), widget=forms.FileInput)
+
+    class Meta:
+        model = UserProfile
+        fields = ('age', 'gender', 'avatar',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'edit-form-input'
+        self.fields['avatar'].widget.attrs['class'] = 'edit-form-file'
+>>>>>>> Added edit_view, UserEditForm, UserProfileEditForm in authapp
 
 
 class UserLoginForm(AuthenticationForm):
