@@ -28,6 +28,7 @@
         </form>
         <a class="city" href="#"><img class="marker-img" src="{% static 'img/mapmarker.png' %}" alt="place">Москва</a>
         {% if user.is_authenticated %}
+            <a href="{% url 'auth:edit' %}"><img class="user-avatar" src="{% static 'img/default_user_avatar.png' %}" alt="avatar"></a>
             <a href="{% url 'auth:logout' %}" class="login">Выйти</a>
         {% else %}
             <a href="{% url 'auth:login' %}" class="login">Войти</a>

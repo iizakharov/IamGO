@@ -845,3 +845,51 @@ body {
 .social-color-telegram{
     color: #0088cc;
 }
+
+.edit-form{
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.edit-form-file {
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: block;
+    width: 450px;
+}
+
+.edit-form-input {
+    width: 450px;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    border-bottom: 1px silver solid;
+    margin-bottom: 40px;
+
+    padding-bottom: 5px;
+    display: block;
+}
+
+.edit-form-input:focus {
+    border-bottom: 2px #ffdb4d solid;
+}
+
+.edit-form label{
+    display: block;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+.edit-form a{
+    width: 450px;
+    font-size: 20px;
+    padding-bottom: 5px;
+    display: block;
+}
+
+.user-avatar{
+    width: 50px;
+}

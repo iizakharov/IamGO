@@ -1,0 +1,12 @@
+{% extends 'authapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1 class="registration-header-descr">Пользователь</h1>
+  <form class="edit-form" action="{% url 'auth:edit' %}" method="post">
+        {% csrf_token %}
+        {{ edit_form.as_p }}
+        {{ profile_form.as_p }}
+        <input class="registration-button" type="submit" value="Изменить">
+  </form>
+{% endblock %}

@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, ReadOnlyPasswordHashField
-
-from authapp.models import User
+from authapp.models import User, UserProfile
 
 
 class UserAdminCreationForm(forms.ModelForm):
@@ -94,6 +93,32 @@ class UserRegisterForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class UserEditForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('email',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'edit-form-input'
+            field.help_text = ''
+
+
+class UserProfileEditForm(forms.ModelForm):
+    avatar = forms.ImageField(label=('Фото'), required=False, widget=forms.FileInput)
+
+    class Meta:
+        model = UserProfile
+        fields = ('age', 'gender', 'avatar',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'edit-form-input'
+        self.fields['avatar'].widget.attrs['class'] = 'edit-form-file'
 
 
 class UserLoginForm(AuthenticationForm):

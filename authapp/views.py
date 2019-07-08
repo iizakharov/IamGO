@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib import auth
 from django.urls import reverse
-from authapp.forms import UserRegisterForm, UserLoginForm
+from authapp.forms import UserRegisterForm, UserLoginForm, UserProfileEditForm, UserEditForm
 
 
 def register_view(request):
@@ -53,3 +53,24 @@ def login_view(request):
 def logout_view(request):
     auth.logout(request)
     return HttpResponseRedirect(reverse('main:index'))
+
+
+def edit_view(request):
+    if request.method == 'POST':
+        edit_form = UserEditForm(request.POST, request.FILES, instance=request.user)
+        profile_form = UserProfileEditForm(request.POST, request.FILES, instance=request.user.userprofile)
+
+        if edit_form.is_valid()and profile_form.is_valid():
+            edit_form.save()
+            return HttpResponseRedirect(reverse('mainapp:index'))
+    else:
+        edit_form = UserEditForm(instance=request.user)
+        profile_form = UserProfileEditForm(instance=request.user.userprofile)
+
+    my_context = {
+        'title': 'Страница пользователя',
+        'edit_form': edit_form,
+        'profile_form': profile_form,
+    }
+
+    return render(request, 'authapp/edit.html', my_context)
