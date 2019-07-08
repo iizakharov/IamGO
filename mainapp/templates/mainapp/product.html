@@ -47,13 +47,13 @@
 			<div class="nearest">
                 {% for related in related_events %}
 				<div>
-					<a href="#"><img src="/{{ related.images.first.image.url }}" alt="bunner1"></a>
+					<a href="{% url 'mainapp:product' related.pk %}"><img src="/{{ related.images.first.image.url }}" alt="bunner1"></a>
 					<h2>{{ related.name }}</h2>
 					<ul>
                         {% language 'ru' %}
-						<li><a href="#">{{ related.dates.first.date|date:"d E" }}</a></li>
+						<li><a href="{% url 'mainapp:product' related.pk %}">{{ related.dates.first.date|date:"d E" }}</a></li>
                         {%  endlanguage %}
-						<li><a href="#">{{ related.location.first.name }}</a></li>
+						<li><a href="{% url 'mainapp:product' related.pk %}">{{ related.location.first.name }}</a></li>
 					</ul>
 				</div>
                 {% endfor %}
