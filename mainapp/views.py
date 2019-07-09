@@ -4,15 +4,17 @@ from .models import EventCategory, Event, EventCollection
 
 
 def get_main_menu():
-    return EventCategory.objects.filter(is_active=True)
+    return EventCategory.objects.filter(is_active=True).order_by('-name')
 
 
+# не работает!
 def get_event_by_date():
     return Event.objects.filter(is_active=True).order_by('date')
 
 
 def get_expect_concert():
-    return Event.objects.filter(category__name='Концерты').filter(is_hot=True)
+    # return Event.objects.filter(category__name='Концерты').filter(is_hot=True)
+    return Event.objects.filter(category__name='Концерт')
 
 
 def get_collections():
@@ -20,16 +22,19 @@ def get_collections():
 
 
 def get_events():
-    events_all = Event.objects.filter(is_active=True, category__is_active=True)
+    return Event.objects.filter(is_active=True, category__is_active=True)
 
-    return events_all
+
+def get_events_first_filter():
+    return Event.objects.all().order_by("price")[5:8]
 
 
 def main(request):
     title = 'Главная'
-    main_menu = get_main_menu()
+    main_menu = get_main_menu()[:8]
     event_by_date = get_event_by_date()[:3]
-    expect_concert = get_expect_concert()
+    first_filter = get_events_first_filter()
+    expect_concert = get_expect_concert()[1:4]
     collections = get_collections()
     context = {
         'title': title,
@@ -37,6 +42,7 @@ def main(request):
         'event_by_date': event_by_date,
         'expect_concert': expect_concert,
         'collections': collections,
+        'first_filter': first_filter,
     }
     return render(request, 'mainapp/index.html', context)
 
@@ -44,6 +50,7 @@ def main(request):
 def product(request, pk=None):
     print(pk)
     # event = Event.objects.filter(pk=pk).prefetch_related().first()
+    main_menu = get_main_menu()[:8]
     event = get_object_or_404(Event, pk=pk)
     related_events = Event.objects.filter(is_active=True).filter(~Q(pk=pk)).order_by("?")[:3]
     print(related_events[0].images.first().image.url)
@@ -56,7 +63,8 @@ def product(request, pk=None):
         'title': 'Мероприятие',
         'event': event,
         'avatar': avatar,
-        'related_events': related_events
+        'related_events': related_events,
+        'main_menu': main_menu,
     }
 
     return render(request, 'mainapp/product.html', content)
@@ -67,6 +75,7 @@ def events(request, pk=None):
 
     title = 'мероприятие'
     links_menu = EventCategory.objects.all()
+    main_menu = get_main_menu()[:8]
 
     if pk is not None:
         if pk == 0:
@@ -81,6 +90,7 @@ def events(request, pk=None):
             'links_menu': links_menu,
             'category': category,
             'events': events,
+            'main_menu': main_menu,
         }
 
         return render(request, 'mainapp/events_list.html', content)
@@ -91,6 +101,7 @@ def events(request, pk=None):
         'title': title,
         'links_menu': links_menu,
         'events_all': events_all,
+        'main_menu': main_menu,
     }
 
     return render(request, 'mainapp/events.html', content)
