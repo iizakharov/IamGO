@@ -1,2 +1,5 @@
 django
 flake8
+Pillow
+pyexcel-ods
+requests

@@ -1,0 +1,23 @@
+﻿{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block container %}
+<div class="page-content" >
+    <h1 class="page-title first-title">Все концерты в Москве</h1>
+    <div>
+        {% include 'mainapp/includes/inc_date_menu.html' %}
+    </div>
+    <div class="nearest all">
+        {% for product in events_all %}
+        <div class="event-preview">
+            <a href="{% url 'main:product' product.pk %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
+            <h2>{{ product.name }}</h2>
+            <ul >
+                <li><a href="#">{{ product.location.name }}</a></li>
+                <li><a href="#">от {{ product.price }}руб.</a></li>
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

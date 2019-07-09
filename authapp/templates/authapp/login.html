@@ -1,0 +1,60 @@
+{% extends 'authapp/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="registration-header">
+        <div class="registration-header">
+            <h1 class="registration-header-descr">Вход</h1>
+        </div>
+    </div>
+
+    <form class="registration-form" action="{% url 'auth:login' %}" method="post">
+        {% csrf_token %}
+
+        {{ login_form.as_p }}
+
+        <input class="registration-button" type="submit" value="Войти">
+    </form>
+
+    <div class="registration-auth">Нет аккаунта?
+        <a class="registration-link" href="{% url 'auth:register' %}">Зарегистрироваться</a>
+    </div>
+
+    <div class="login-social-block">
+        <h3 class="login-social-title">Войти с помощью соцсетей</h3>
+        <div class="login-social-icons">
+            <div>
+                <a href="#" class="login-social-link login-social-link-margin social-color-vk">
+                    <i class="fab fa-vk fa-2x"></i>
+                </a>
+            </div>
+            <div>
+                <a href="#" class="login-social-link social-color-facebook">
+                    <i class="fab fa-facebook-f fa-2x"></i>
+                </a>
+            </div>
+            <div>
+                <a href="#" class="login-social-link social-color-google">
+                    <i class="fab fa-google fa-2x"></i>
+                </a>
+            </div>
+            <div>
+                <a href="#" class="login-social-link social-color-telegram">
+                    <i class="fab fa-telegram-plane fa-2x"></i>
+                </a>
+            </div>
+            <div>
+                <a href="#" class="login-social-link social-color-ok">
+                    <i class="fab fa-odnoklassniki fa-2x"></i>
+                </a>
+            </div>
+            <div>
+                <a href="#" class="login-social-link social-color-twitter">
+                    <i class="fab fa-twitter fa-2x"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

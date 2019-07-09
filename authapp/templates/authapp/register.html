@@ -1,0 +1,20 @@
+{% extends 'authapp/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="registration-header">
+        <h1 class="registration-header-descr">Регистрация</h1>
+    </div>
+
+    <form class="registration-form" action="{% url 'auth:register' %}" method="post">
+        {% csrf_token %}
+        {{ register_form.as_p }}
+        <input class="registration-button" type="submit" value="Зарегистрироваться">
+    </form>
+
+    <div class="registration-auth">Уже есть аккаунт?
+        <a class="registration-link" href="{% url 'auth:login' %}">Войти</a>
+    </div>
+
+{% endblock %}
