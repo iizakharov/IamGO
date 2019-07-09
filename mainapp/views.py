@@ -96,7 +96,6 @@ def events(request, pk=None):
         return render(request, 'mainapp/events_list.html', content)
 
     events_all = get_events()
-    test_event = Event.objects.all()
 
     content = {
         'title': title,
