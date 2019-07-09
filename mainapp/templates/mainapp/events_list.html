@@ -11,11 +11,11 @@
     <div class="nearest all">
         {% for event in events %}
         <div class="event-preview">
-            <a href="{% url 'main:product' 290 %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
+            <a href="{% url 'main:product' event.pk %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
             <h2>{{ event.name }}</h2>
             <ul >
-                <li><a href="#">{{ event.date }}</a></li>
-                <li><a href="#">{{ event.location }}</a></li>
+<!--                <li><a href="#">{{ event.date }}</a></li>-->
+                <li><a href="#">{{ event.location.name }}</a></li>
                 <li><a href="#">от {{ event.price }} руб.</a></li>
 
             </ul>
