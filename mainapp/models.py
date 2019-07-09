@@ -98,6 +98,14 @@ class Event(models.Model):
     def __str__(self):
         return f'{self.name} ({self.category.name})'
 
+    @property
+    def get_avatar(self):
+        try:
+            avatar = '/' + self.images.filter(is_avatar=True).first().image.url
+        except AttributeError:
+            avatar = '/static/img/s372x223_lelingrad.webp'
+        return avatar
+
 
 class EventGallery(models.Model):
     class Meta:
