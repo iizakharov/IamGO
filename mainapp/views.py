@@ -22,7 +22,7 @@ def get_collections():
 
 
 def get_events():
-    return Event.objects.filter(is_active=True, category__is_active=True)
+    return Event.objects.filter(is_active=True)
 
 
 def get_events_first_filter():
@@ -96,6 +96,7 @@ def events(request, pk=None):
         return render(request, 'mainapp/events_list.html', content)
 
     events_all = get_events()
+    test_event = Event.objects.all()
 
     content = {
         'title': title,

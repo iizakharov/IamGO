@@ -10,7 +10,7 @@
     <div class="nearest all">
         {% for product in events_all %}
         <div class="event-preview">
-            <a href="{% url 'main:product' product.pk %}"><img src="{% static 'img/s372x223_lelingrad.webp' %}" alt="bunner1"></a>
+            <a href="{% url 'main:product' product.pk %}"><img src="{{ product.get_avatar }}" alt="bunner1"></a>
             <h2>{{ product.name }}</h2>
             <ul >
                 <li><a href="#">{{ product.location.name }}</a></li>
