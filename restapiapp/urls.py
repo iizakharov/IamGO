@@ -2,6 +2,7 @@ from django.urls import path
 from django.conf.urls import url, include
 from tastypie.api import Api
 from restapiapp.api import EventResource, EventCategoryResource, EventAgentResource, EventLocationResource
+from restapiapp.api import EventGalleryResource, EventDateResource
 from rest_framework import routers
 
 from restapiapp.views import UserList
@@ -11,6 +12,8 @@ v1_api.register(EventResource())
 v1_api.register(EventCategoryResource())
 v1_api.register(EventAgentResource())
 v1_api.register(EventLocationResource())
+v1_api.register(EventGalleryResource())
+v1_api.register(EventDateResource())
 event_resource = EventResource()
 app_name = 'restapiapp'
 
