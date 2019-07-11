@@ -3,3 +3,7 @@ flake8
 Pillow
 pyexcel-ods
 requests
+#-- django-tastypie --#
+python-dateutil
+python-mimeparse
+django-tastypie
