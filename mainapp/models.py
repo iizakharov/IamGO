@@ -92,8 +92,8 @@ class Event(models.Model):
     is_free = models.BooleanField(verbose_name='Бесплатное', default=True)
     is_active = models.BooleanField(verbose_name='Активное', default=True)
     is_hot = models.BooleanField(verbose_name='Популярное', default=False)
-    collections = models.ForeignKey(EventCollection, on_delete=models.CASCADE, verbose_name='Подборки', blank=True,
-                                    null=True)
+    # collections = models.ForeignKey(EventCollection, on_delete=models.CASCADE, verbose_name='Подборки', blank=True,
+    #                                 null=True)
 
     def __str__(self):
         return f'{self.name} ({self.category.name})'
