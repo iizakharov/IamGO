@@ -96,7 +96,10 @@ class Event(models.Model):
     #                                 null=True)
 
     def __str__(self):
-        return f'{self.name} ({self.category.name})'
+        return f'{self.name}'
+
+    def __unicode__(self):
+        return f'{self.name}'
 
     @property
     def get_avatar(self):
