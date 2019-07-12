@@ -9,12 +9,12 @@ from restapiapp.serializers import EventDateSerializer, EventLocationSerializer,
 from mainapp.models import Event, EventCategory, EventGallery, EventDate, EventLocation, EventAgent
 
 
-# @api_view(['GET'])
-# def api_root(request, format=None):
-#     return Response({
-#         'events': reverse('events', request=request, format=format),
-#         # 'snippets': reverse('snippet-list', request=request, format=format)
-#     })
+@api_view(['GET'])
+def api_root(request, format=None):
+    return Response({
+        'events': reverse('restapiapp:event-list', request=request, format=format),
+        # 'snippets': reverse('snippet-list', request=request, format=format)
+    })
 
 
 class EventViewSet(viewsets.ModelViewSet):
