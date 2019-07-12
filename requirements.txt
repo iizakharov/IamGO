@@ -3,7 +3,14 @@ flake8
 Pillow
 pyexcel-ods
 requests
-#-- django-tastypie --#
+# drf and recommend dependencies
+djangorestframework
+coreapi
+Markdown
+Pygments
+django-filter
+django-guardian
+# django-tastypie
 python-dateutil
 python-mimeparse
 django-tastypie
