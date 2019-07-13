@@ -7,6 +7,8 @@ class EventSerializer(serializers.ModelSerializer):
     # gallery = serializers.ReadOnlyField(source='EventGallery.id')
     images = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='restapiapp:eventgallery-detail')
     category = serializers.HyperlinkedIdentityField(many=True, read_only=True, view_name='restapiapp:eventcategory-detail')
+    location = serializers.HyperlinkedIdentityField(many=True, read_only=True,
+                                                    view_name='restapiapp:eventlocation-detail')
     class Meta:
         model = Event
         fields = ('__all__')
