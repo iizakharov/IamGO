@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User, Group
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.reverse import reverse
@@ -20,28 +21,40 @@ def api_root(request, format=None):
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filterset_fields = ('name',)
 
 
 class EventCategoryViewSet(viewsets.ModelViewSet):
     queryset = EventCategory.objects.all()
     serializer_class = EventCategorySerializer
+    filter_backends = (DjangoFilterBackend,)
+    filterset_fields = ('name',)
 
 
 class EventGalleryViewSet(viewsets.ModelViewSet):
     queryset = EventGallery.objects.all()
     serializer_class = EventGallerySerializer
+    filter_backends = (DjangoFilterBackend,)
+    filterset_fields = ('event',)
 
 
 class EventDateViewSet(viewsets.ModelViewSet):
     queryset = EventDate.objects.all()
     serializer_class = EventDateSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filterset_fields = ('event',)
 
 
 class EventLocationViewSet(viewsets.ModelViewSet):
     queryset = EventLocation.objects.all()
     serializer_class = EventLocationSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filterset_fields = ('name', 'location')
 
 
 class EventAgentViewSet(viewsets.ModelViewSet):
     queryset = EventAgent.objects.all()
     serializer_class = EventAgentSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filterset_fields = ('name',)
