@@ -25,4 +25,3 @@ urlpatterns = [
     path('test/', api_root)
     # path('events/', include(event_resource.urls))
 ]
-print(router.urls)
