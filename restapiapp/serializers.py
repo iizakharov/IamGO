@@ -25,6 +25,13 @@ class EventGallerySerializer(serializers.ModelSerializer):
     class Meta:
         model = EventGallery
         fields = ('__all__')
+        read_only_fields = ['image']
+
+
+class EventGalleryImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EventGallery
+        fields = ['image']
 
 
 class EventDateSerializer(serializers.ModelSerializer):
