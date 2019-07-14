@@ -31,13 +31,13 @@ def create_categories():
         category.pop('event')
         unique_categories[category['name']] = category
     EventCategory.objects.all().delete()
-    for name, category in unique_categories.items():
-        request = requests.post(url=url, auth=requests.auth.HTTPBasicAuth(username, password), json=category)
+    for name, data in unique_categories.items():
+        request = requests.post(url=url, auth=requests.auth.HTTPBasicAuth(username, password), json=data)
         if request.status_code == 201:
             print(f"{name} created")
         else:
             print(f"{name}: {request.status_code}\t{request.text}")
-    print("Categories created")
+    print(10 * "=", "Categories created", 10 * "=")
 
 
 def create_agents():
@@ -52,19 +52,26 @@ def create_agents():
             print(f"{agent['name']} created")
         else:
             print(f"{agent['name']}: {request.status_code}\t{request.text}")
-    print("Agents created")
+    print(10 * "=", "Agents created", 10 * "=")
 
 
 def create_locations():
     # Create locations
+    url = base_url + 'locations/'
     locations = load_from_json('locations')
     print("Locations loaded")
     EventLocation.objects.all().delete()
-    location_list = dict()
+    unique_locations = dict()
     for location in locations:
-        location_list[location['name']] = location['location']
-    [EventLocation.objects.create(name=key, location=value) for key, value in location_list.items()]
-    print("Locations created")
+        location.pop('event')
+        unique_locations[location['name']] = location
+    for name, data in unique_locations.items():
+        request = requests.post(url=url, auth=requests.auth.HTTPBasicAuth(username, password), json=data)
+        if request.status_code == 201:
+            print(f"{name} created")
+        else:
+            print(f"{name}: {request.status_code}\t{request.text}")
+    print(10 * "=", "Locations created", 10 * "=")
 
 
 def create_events():
@@ -112,7 +119,7 @@ class Command(BaseCommand):
         User.objects.create_superuser(username, password)
         create_categories()
         create_agents()
-        # create_locations()
+        create_locations()
         # create_events()
         # create_dates()
         # create_gallery()
