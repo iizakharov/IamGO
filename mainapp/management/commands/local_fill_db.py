@@ -15,6 +15,28 @@ base_url = 'http://127.0.0.1:8000/api/v1/'
 username = 'admin@admin.com'
 password = 'password'
 
+_category_cache = dict()
+_location_cache = dict()
+
+
+def get_url(name):
+    return base_url + name + '/'
+
+
+def get_category_id(name):
+    if _category_cache.get(name):
+        return _category_cache.get(name)
+    else:
+        payload = {'name': name }
+        request = requests.get(get_url('category'), params=payload)
+        if request.status_code == 200:
+            if len(request.json()) > 0:
+                _category_cache[request.json()[0]['name']] = request.json()[0]['id']
+                return request.json()[0]['id']
+            else:
+                return None
+        return None
+
 
 def load_from_json(file_name):
     with open(os.path.join(JSON_PATH, file_name + '.json'), 'r', encoding='utf-8') as infile:
@@ -23,7 +45,7 @@ def load_from_json(file_name):
 
 def create_categories():
     # Create categories
-    url = base_url + 'categories/'
+    url = get_url('categories')
     categories = load_from_json('categories')
     print("Categories loaded")
     unique_categories = dict()
