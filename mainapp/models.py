@@ -18,7 +18,7 @@ class PathAndRename(object):
         return os.path.join(self.path, filename)
 
 
-path_and_rename = PathAndRename("static/img/tmp")
+path_and_rename = PathAndRename("/static/img/tmp")
 
 
 class EventCategory(models.Model):
