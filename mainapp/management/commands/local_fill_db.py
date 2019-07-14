@@ -26,26 +26,32 @@ def create_categories():
     url = base_url + 'categories/'
     categories = load_from_json('categories')
     print("Categories loaded")
-    EventCategory.objects.all().delete()
+    unique_categories = dict()
     for category in categories:
         category.pop('event')
+        unique_categories[category['name']] = category
+    EventCategory.objects.all().delete()
+    for name, category in unique_categories.items():
         request = requests.post(url=url, auth=requests.auth.HTTPBasicAuth(username, password), json=category)
         if request.status_code == 201:
-            print(f"{category['name']} created")
+            print(f"{name} created")
         else:
-            print(f"{category['name']}: {request.status_code}\t{request.text}")
+            print(f"{name}: {request.status_code}\t{request.text}")
     print("Categories created")
 
 
 def create_agents():
     # Create agents
+    url = base_url + 'agents/'
     agents = load_from_json('agents')
     print("agents loaded")
     EventAgent.objects.all().delete()
-    agent_list = dict()
     for agent in agents:
-        agent_list[agent['name']] = agent['description']
-    [EventAgent.objects.create(name=key, description=value) for key, value in agent_list.items()]
+        request = requests.post(url=url, auth=requests.auth.HTTPBasicAuth(username, password), json=agent)
+        if request.status_code == 201:
+            print(f"{agent['name']} created")
+        else:
+            print(f"{agent['name']}: {request.status_code}\t{request.text}")
     print("Agents created")
 
 
@@ -105,7 +111,7 @@ class Command(BaseCommand):
         User.objects.create_superuser('django@geekshop.local', 'geekbrains')
         User.objects.create_superuser(username, password)
         create_categories()
-        # create_agents()
+        create_agents()
         # create_locations()
         # create_events()
         # create_dates()
