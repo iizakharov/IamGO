@@ -10,7 +10,3 @@ Markdown
 Pygments
 django-filter
 django-guardian
-# django-tastypie
-python-dateutil
-python-mimeparse
-django-tastypie
