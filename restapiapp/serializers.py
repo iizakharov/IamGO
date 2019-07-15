@@ -6,13 +6,16 @@ from mainapp.models import Event, EventCategory, EventGallery, EventDate, EventL
 class EventSerializer(serializers.ModelSerializer):
     # gallery = serializers.ReadOnlyField(source='EventGallery.id')
     images = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='restapiapp:eventgallery-detail')
-    category = serializers.HyperlinkedIdentityField(many=True, read_only=True, view_name='restapiapp:eventcategory-detail')
-    location = serializers.HyperlinkedIdentityField(many=True, read_only=True,
-                                                    view_name='restapiapp:eventlocation-detail')
-    agent = serializers.HyperlinkedRelatedField(many=False, read_only=True, view_name='restapiapp:eventagent-detail')
+    category = serializers.HyperlinkedRelatedField(many=True, read_only=True,
+                                                   view_name='restapiapp:eventcategory-detail')
+    location = serializers.HyperlinkedRelatedField(many=True, read_only=True,
+                                                   view_name='restapiapp:eventlocation-detail')
+    dates = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='restapiapp:eventdate-detail')
+    # agent = serializers.HyperlinkedRelatedField(many=False, read_only=False, view_name='restapiapp:eventagent-detail')
+
     class Meta:
         model = Event
-        fields = ('__all__')
+        fields = '__all__'
 
 
 class EventCategorySerializer(serializers.ModelSerializer):

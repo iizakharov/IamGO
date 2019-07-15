@@ -30,6 +30,10 @@ def get_agent_id(name):
     return get_id('agents', name)
 
 
+def get_event_id(name):
+    return get_id('events', name)
+
+
 def get_id(model, name):
     if _id_cache[model].get(name):
         return _id_cache[model].get(name)
@@ -105,8 +109,6 @@ def create_locations():
 
 def create_events():
     # Create events
-    locations = load_from_json('locations')
-    categories = load_from_json('categories')
     url = get_url('events')
     events = load_from_json('events')
     print("Events loaded")
@@ -134,12 +136,19 @@ def create_events():
 
 
 def create_dates():
+    # Create dates
+    url = get_url('dates')
     dates = load_from_json("eventdate")
     print("Dates loaded")
     EventDate.objects.all().delete()
-    for i in dates:
-        EventDate.objects.create(event=Event.objects.get(name=i["event"]), date=i["date"])
-    print("Dates created")
+    for date in dates:
+        date['event'] = get_event_id(date['event'])
+        request = requests.post(url=url, auth=requests.auth.HTTPBasicAuth(username, password), json=date)
+        if request.status_code == 201:
+            print(f"{date['date']} created")
+        else:
+            print(f"{date['date']}: {request.status_code}\t{request.text}")
+    print(10 * "=", "Dates created", 10 * "=")
 
 
 def create_gallery():
@@ -155,7 +164,7 @@ class Command(BaseCommand):
         create_agents()
         create_locations()
         create_events()
-        # create_dates()
+        create_dates()
         # create_gallery()
         #
         # print("Recreate users: ", end='')
