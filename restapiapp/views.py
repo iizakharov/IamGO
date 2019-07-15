@@ -46,6 +46,7 @@ class EventGalleryViewSet(viewsets.ModelViewSet):
     )
     def image(self, request, pk):
         obj = self.get_object()
+        print(request.data['image'])
         serializer = self.serializer_class(obj, data=request.data,
                                            partial=True)
         if serializer.is_valid():
