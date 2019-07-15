@@ -4,8 +4,9 @@ from rest_framework import generics, viewsets, decorators, parsers, status
 from rest_framework.decorators import api_view
 from rest_framework.reverse import reverse
 from rest_framework.response import Response
-from restapiapp.serializers import EventSerializer, EventCategorySerializer, EventGallerySerializer, EventGalleryImageSerializer
-from restapiapp.serializers import EventDateSerializer, EventLocationSerializer, EventAgentSerializer, UpdateEventLocationSerializer
+from restapiapp.serializers import EventSerializer, EventCategorySerializer, EventGallerySerializer
+from restapiapp.serializers import EventDateSerializer, EventLocationSerializer, EventAgentSerializer
+from restapiapp.serializers import EventGalleryImageSerializer, UpdateEventLocationSerializer, UpdateEventCategorySerializer
 
 from mainapp.models import Event, EventCategory, EventGallery, EventDate, EventLocation, EventAgent
 
@@ -31,6 +32,21 @@ class EventViewSet(viewsets.ModelViewSet):
         parser_classes=[parsers.MultiPartParser],
     )
     def location(self, request, pk):
+        obj = self.get_object()
+        serializer = self.serializer_class(obj, data=request.data,
+                                           partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
+
+    @decorators.action(
+        detail=True,
+        methods=['PUT', 'GET'],
+        serializer_class=UpdateEventCategorySerializer,
+        parser_classes=[parsers.MultiPartParser],
+    )
+    def category(self, request, pk):
         obj = self.get_object()
         serializer = self.serializer_class(obj, data=request.data,
                                            partial=True)

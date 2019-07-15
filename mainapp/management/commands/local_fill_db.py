@@ -184,7 +184,7 @@ def create_gallery():
     print(10 * "=", "Images created and uploaded", 10 * "=")
 
 
-def add_location_to_event():
+def update_locations_in_event():
     locations = load_from_json('locations')
     url = get_url('events')
     events_id = defaultdict(list)
@@ -205,6 +205,25 @@ def add_location_to_event():
     print(10 * "=", "Links locations and events created", 10 * "=")
 
 
+def update_categories_in_event():
+    categories = load_from_json('categories')
+    url = get_url('events')
+    events_id = defaultdict(list)
+    for category in categories:
+        event_id = get_event_id(category['event'])
+        category_id = get_category_id(category['name'])
+        events_id[event_id].append(category_id)
+    for key, value in events_id.items():
+        data = list()
+        for val in value:
+            data.append(("category", (None, val)))
+        request = requests.put(url=f"{url}{key}/category/", auth=requests.auth.HTTPBasicAuth(username, password),
+                               files=data)
+        if request.status_code == 200:
+            print(f"{key} created")
+        else:
+            print(f"{key}: {request.status_code}\t{request.text}")
+    print(10 * "=", "Links categories and events created", 10 * "=")
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
@@ -217,5 +236,6 @@ class Command(BaseCommand):
         # create_events()
         # create_dates()
         # create_gallery()
-        add_location_to_event()
+        # update_locations_in_event()
+        update_categories_in_event()
 
