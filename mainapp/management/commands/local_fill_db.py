@@ -1,6 +1,7 @@
 import json
 import os
 import time
+import shutil
 
 import requests
 import tempfile
@@ -8,6 +9,7 @@ from collections import defaultdict
 
 from django.core import files
 from django.core.management.base import BaseCommand
+from django.conf import settings
 from mainapp.models import EventCategory, EventAgent, EventLocation, Event, EventDate, EventGallery
 from authapp.models import User
 
@@ -152,20 +154,43 @@ def create_dates():
 
 
 def create_gallery():
-    pass
+    url = get_url('galleries')
+    galleries = load_from_json('eventgallery')
+    print("Galleries loaded")
+    EventGallery.objects.all().delete()
+    shutil.rmtree(f"{settings.STATICFILES_DIRS[0]}/img/tmp/")
+    for image in galleries:
+        image['event'] = get_event_id(image['event'])
+        image['is_avatar'] = True if image['is_avatar'] == "true" else False
+        # Create image
+        request = requests.post(url=url, auth=requests.auth.HTTPBasicAuth(username, password), json=image)
+        if request.status_code == 201:
+            print(f"{image['image']:50} created... \t", end='')
+            # Upload image
+            file = {'image': (f"{image['image']}.png",
+                              open(f"{settings.STATICFILES_DIRS[0]}/img/origin/{image['image']}", 'rb'))}
+            upload = requests.put(url=f"{url}{request.json()['id']}/image/",
+                                  auth=requests.auth.HTTPBasicAuth(username, password), files=file)
+            if upload.status_code == 200:
+                print(f"uploaded")
+            else:
+                print(f"fail upload: {request.status_code}\t{request.text}")
+        else:
+            print(f"{image['image']}: {request.status_code}\t{request.text}")
+    print(10 * "=", "Images created and uploaded", 10 * "=")
 
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        User.objects.all().delete()
-        User.objects.create_superuser('django@geekshop.local', 'geekbrains')
-        User.objects.create_superuser(username, password)
-        create_categories()
-        create_agents()
-        create_locations()
-        create_events()
-        create_dates()
-        # create_gallery()
+        # User.objects.all().delete()
+        # User.objects.create_superuser('django@geekshop.local', 'geekbrains')
+        # User.objects.create_superuser(username, password)
+        # create_categories()
+        # create_agents()
+        # create_locations()
+        # create_events()
+        # create_dates()
+        create_gallery()
         #
         # print("Recreate users: ", end='')
         # User.objects.all().delete()
