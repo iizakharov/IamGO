@@ -894,3 +894,12 @@ body {
 .user-avatar{
     width: 50px;
 }
+
+.verification-box{
+    margin: 50px;
+}
+
+.verification-p{
+    font-size: 20px;
+    color: grey;
+}
