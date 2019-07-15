@@ -159,7 +159,8 @@ def create_gallery():
     galleries = load_from_json('eventgallery')
     print("Galleries loaded")
     EventGallery.objects.all().delete()
-    shutil.rmtree(f"{settings.STATICFILES_DIRS[0]}/img/tmp/")
+    if os.path.exists(f"{settings.STATICFILES_DIRS[0]}/img/tmp/"):
+        shutil.rmtree(f"{settings.STATICFILES_DIRS[0]}/img/tmp/")
     for image in galleries:
         image['event'] = get_event_id(image['event'])
         image['is_avatar'] = True if image['is_avatar'] == "true" else False
