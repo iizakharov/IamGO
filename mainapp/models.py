@@ -104,7 +104,7 @@ class Event(models.Model):
     @property
     def get_avatar(self):
         try:
-            avatar = '/' + self.images.filter(is_avatar=True).first().image.url
+            avatar = self.images.filter(is_avatar=True).first().image.url
         except AttributeError:
             avatar = '/static/img/s372x223_lelingrad.webp'
         return avatar

@@ -179,6 +179,14 @@ def create_gallery():
                 print(f"uploaded")
             else:
                 print(f"fail upload: {request.status_code}\t{request.text}")
+                file = {'image': (f"{image['image']}.png",
+                                  open(f"{settings.STATICFILES_DIRS[0]}/img/s372x223_lelingrad.webp", 'rb'))}
+                upload = requests.put(url=f"{url}{request.json()['id']}/image/",
+                                      auth=requests.auth.HTTPBasicAuth(username, password), files=file)
+                if upload.status_code == 200:
+                    print(f"{image['image']:50} uploaded temp file")
+                else:
+                    print(f"{image['image']:50} fail upload temp file: {request.status_code}\t{request.text}")
         else:
             print(f"{image['image']}: {request.status_code}\t{request.text}")
     print(10 * "=", "Images created and uploaded", 10 * "=")
@@ -225,17 +233,18 @@ def update_categories_in_event():
             print(f"{key}: {request.status_code}\t{request.text}")
     print(10 * "=", "Links categories and events created", 10 * "=")
 
+
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        # User.objects.all().delete()
-        # User.objects.create_superuser('django@geekshop.local', 'geekbrains')
-        # User.objects.create_superuser(username, password)
-        # create_categories()
-        # create_agents()
-        # create_locations()
-        # create_events()
-        # create_dates()
-        # create_gallery()
-        # update_locations_in_event()
+        User.objects.all().delete()
+        User.objects.create_superuser('django@geekshop.local', 'geekbrains')
+        User.objects.create_superuser(username, password)
+        create_categories()
+        create_agents()
+        create_locations()
+        create_events()
+        create_dates()
+        create_gallery()
+        update_locations_in_event()
         update_categories_in_event()
 
