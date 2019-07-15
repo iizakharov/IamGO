@@ -1,13 +1,10 @@
 import json
 import os
-import time
 import shutil
-
-import requests
-import tempfile
 from collections import defaultdict
 
-from django.core import files
+import requests
+
 from django.core.management.base import BaseCommand
 from django.conf import settings
 from mainapp.models import EventCategory, EventAgent, EventLocation, Event, EventDate, EventGallery
@@ -247,4 +244,3 @@ class Command(BaseCommand):
         create_gallery()
         update_locations_in_event()
         update_categories_in_event()
-

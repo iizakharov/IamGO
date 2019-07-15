@@ -1,5 +1,5 @@
-from django.urls import path, reverse
-from django.conf.urls import url, include
+from django.urls import path
+from django.conf.urls import include
 from rest_framework import routers
 from restapiapp.views import EventViewSet, EventCategoryViewSet, EventGalleryViewSet
 from restapiapp.views import EventDateViewSet, EventLocationViewSet, EventAgentViewSet
@@ -14,9 +14,6 @@ router.register(r'locations', EventLocationViewSet)
 router.register(r'agents', EventAgentViewSet)
 
 app_name = 'restapiapp'
-
-#router = routers.DefaultRouter()
-#router.register(r'main', MainViewSet.as_view(), base_name='test')
 
 urlpatterns = [
     # path('', UserList.as_view()),
