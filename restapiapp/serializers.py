@@ -18,6 +18,12 @@ class EventSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class UpdateEventLocationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Event
+        fields = ['location']
+
+
 class EventCategorySerializer(serializers.ModelSerializer):
     # event = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     class Meta:
