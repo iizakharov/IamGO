@@ -32,6 +32,10 @@ def get_agent_id(name):
     return get_id('agents', name)
 
 
+def get_location_id(name):
+    return get_id('locations', name)
+
+
 def get_event_id(name):
     return get_id('events', name)
 
@@ -180,6 +184,28 @@ def create_gallery():
     print(10 * "=", "Images created and uploaded", 10 * "=")
 
 
+def add_location_to_event():
+    locations = load_from_json('locations')
+    url = get_url('events')
+    events_id = defaultdict(list)
+    for location in locations:
+        event_id = get_event_id(location['event'])
+        location_id = get_location_id(location['name'])
+        events_id[event_id].append(location_id)
+    for key, value in events_id.items():
+        data = list()
+        for val in value:
+            data.append(("location", (None, val)))
+        request = requests.put(url=f"{url}{key}/location/", auth=requests.auth.HTTPBasicAuth(username, password),
+                               files=data)
+        if request.status_code == 200:
+            print(f"{key} created")
+        else:
+            print(f"{key}: {request.status_code}\t{request.text}")
+    print(10 * "=", "Links locations and events created", 10 * "=")
+
+
+
 class Command(BaseCommand):
     def handle(self, *args, **options):
         # User.objects.all().delete()
@@ -190,10 +216,6 @@ class Command(BaseCommand):
         # create_locations()
         # create_events()
         # create_dates()
-        create_gallery()
-        #
-        # print("Recreate users: ", end='')
-        # User.objects.all().delete()
-        # User.objects.create_superuser('django@geekshop.local', 'geekbrains')
-        # User.objects.create_superuser("admin@admin.com", "password")
-        # print("Done")
+        # create_gallery()
+        add_location_to_event()
+
