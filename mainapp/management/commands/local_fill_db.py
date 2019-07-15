@@ -4,6 +4,7 @@ import time
 
 import requests
 import tempfile
+from collections import defaultdict
 
 from django.core import files
 from django.core.management.base import BaseCommand
@@ -14,9 +15,7 @@ JSON_PATH = 'mainapp/json'
 base_url = 'http://127.0.0.1:8000/api/v1/'
 username = 'admin@admin.com'
 password = 'password'
-
-_category_cache = dict()
-_location_cache = dict()
+_id_cache = defaultdict(dict)
 
 
 def get_url(name):
@@ -24,14 +23,22 @@ def get_url(name):
 
 
 def get_category_id(name):
-    if _category_cache.get(name):
-        return _category_cache.get(name)
+    return get_id('categories', name)
+
+
+def get_agent_id(name):
+    return get_id('agents', name)
+
+
+def get_id(model, name):
+    if _id_cache[model].get(name):
+        return _id_cache[model].get(name)
     else:
-        payload = {'name': name }
-        request = requests.get(get_url('category'), params=payload)
+        payload = {'name': name}
+        request = requests.get(get_url(model), params=payload)
         if request.status_code == 200:
             if len(request.json()) > 0:
-                _category_cache[request.json()[0]['name']] = request.json()[0]['id']
+                _id_cache[model][request.json()[0]['name']] = request.json()[0]['id']
                 return request.json()[0]['id']
             else:
                 return None
@@ -64,7 +71,7 @@ def create_categories():
 
 def create_agents():
     # Create agents
-    url = base_url + 'agents/'
+    url = get_url('agents')
     agents = load_from_json('agents')
     print("agents loaded")
     EventAgent.objects.all().delete()
@@ -79,7 +86,7 @@ def create_agents():
 
 def create_locations():
     # Create locations
-    url = base_url + 'locations/'
+    url = get_url('locations')
     locations = load_from_json('locations')
     print("Locations loaded")
     EventLocation.objects.all().delete()
@@ -100,25 +107,30 @@ def create_events():
     # Create events
     locations = load_from_json('locations')
     categories = load_from_json('categories')
+    url = get_url('events')
     events = load_from_json('events')
     print("Events loaded")
     Event.objects.all().delete()
     for event in events:
         # Create event
-        event['agent'] = EventAgent.objects.get(name=event['agent'])
-        event_object = Event.objects.create(**event)
+        event['agent'] = get_agent_id(event['agent'])
+        request = requests.post(url=url, auth=requests.auth.HTTPBasicAuth(username, password), json=event)
+        if request.status_code == 201:
+            print(f"{event['name']} created")
+        else:
+            print(f"{event['name']}: {request.status_code}\t{request.text}")
         # print('{0} created.'.format(event['name']))
         # Add locations to event
-        for location in locations:
-            if event['name'] == location['event']:
-                event_object.location.add(EventLocation.objects.get(name=location['name']))
-        # Add categories to event
-        for category in categories:
-            if event['name'] == category['event']:
-                event_object.category.add(EventCategory.objects.get(name=category['name']))
-
-        # print('{0} is done.'.format(event['name']))
-    print("Events created")
+        # for location in locations:
+        #     if event['name'] == location['event']:
+        #         event_object.location.add(EventLocation.objects.get(name=location['name']))
+        # # Add categories to event
+        # for category in categories:
+        #     if event['name'] == category['event']:
+        #         event_object.category.add(EventCategory.objects.get(name=category['name']))
+        #
+        # # print('{0} is done.'.format(event['name']))
+    print(10 * "=", "Events created", 10 * "=")
 
 
 def create_dates():
@@ -142,7 +154,7 @@ class Command(BaseCommand):
         create_categories()
         create_agents()
         create_locations()
-        # create_events()
+        create_events()
         # create_dates()
         # create_gallery()
         #
