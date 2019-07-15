@@ -9,6 +9,7 @@ class EventSerializer(serializers.ModelSerializer):
     category = serializers.HyperlinkedIdentityField(many=True, read_only=True, view_name='restapiapp:eventcategory-detail')
     location = serializers.HyperlinkedIdentityField(many=True, read_only=True,
                                                     view_name='restapiapp:eventlocation-detail')
+    agent = serializers.HyperlinkedRelatedField(many=False, read_only=True, view_name='restapiapp:eventagent-detail')
     class Meta:
         model = Event
         fields = ('__all__')
