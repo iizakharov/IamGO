@@ -31,7 +31,7 @@ def get_event_today():
     return EventDate.objects.filter(date__contains=datetime.date.today())
 
 
-def get_events_tomorrow ():
+def get_events_tomorrow():
     return EventDate.objects.filter(date__contains=datetime.date.today() + datetime.timedelta(days=1))
 
 
