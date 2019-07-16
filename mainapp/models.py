@@ -57,6 +57,7 @@ class EventLocation(models.Model):
 
     name = models.CharField(verbose_name='Название площадки', max_length=64, unique=True)
     location = models.CharField(verbose_name='Адрес площадки', max_length=500)
+    yandex_map = models.CharField(verbose_name='Метка яндекс карты', max_length=500)
 
     def __str__(self):
         return self.name
