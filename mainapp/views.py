@@ -1,15 +1,38 @@
+import datetime
+
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
-from .models import EventCategory, Event, EventCollection
+from .models import EventCategory, Event, EventCollection, EventDate
 
 
 def get_main_menu():
     return EventCategory.objects.filter(is_active=True).order_by('-name')
 
 
-# не работает!
 def get_event_by_date():
     return Event.objects.filter(is_active=True).order_by('date')
+
+
+# def get_date(date):
+#     # поиск по имени мероприятия:
+#     # event_today = EventDate.objects.filter(event__name__contains='eventname')
+#     today_events = EventDate.objects.filter(date__contains=datetime.date.today())
+#     # tomorrow = datetime.date.today() + datetime.timedelta(days=1)
+#     tomorrow_events = EventDate.objects.filter(date__contains=datetime.date.today() + datetime.timedelta(days=1))
+#     if date == today_events:
+#         return today_events
+#     elif date == tomorrow_events:
+#         return tomorrow_events
+#     else:
+#         return get_object_or_404
+
+
+def get_event_today():
+    return EventDate.objects.filter(date__contains=datetime.date.today())
+
+
+def get_events_tomorrow():
+    return EventDate.objects.filter(date__contains=datetime.date.today() + datetime.timedelta(days=1))
 
 
 def get_expect_concert():
@@ -36,6 +59,8 @@ def main(request):
     first_filter = get_events_first_filter()
     expect_concert = get_expect_concert()[1:4]
     collections = get_collections()
+    today = get_event_today()
+    tomorrow = get_events_tomorrow()
     context = {
         'title': title,
         "main_menu": main_menu,
@@ -43,6 +68,8 @@ def main(request):
         'expect_concert': expect_concert,
         'collections': collections,
         'first_filter': first_filter,
+        'today': today,
+        'tomorrow': tomorrow,
     }
     return render(request, 'mainapp/index.html', context)
 
@@ -71,6 +98,8 @@ def events(request, pk=None):
     title = 'мероприятие'
     links_menu = EventCategory.objects.all()
     main_menu = get_main_menu()[:8]
+    dates = get_object_or_404(EventDate, pk=pk)
+    events_by_date = Event.objects.filter(dates__pk=pk).order_by('price')
 
     if pk is not None:
         if pk == 0:
@@ -86,17 +115,24 @@ def events(request, pk=None):
             'category': category,
             'events': events,
             'main_menu': main_menu,
+            'events_by_date': events_by_date,
         }
 
         return render(request, 'mainapp/events_list.html', content)
 
     events_all = get_events()
+    today = get_event_today()
+    tomorrow = get_events_tomorrow()
 
     content = {
         'title': title,
         'links_menu': links_menu,
         'events_all': events_all,
         'main_menu': main_menu,
+        'dates': dates,
+        'events_by_date': events_by_date,
+        'today': today,
+        'tomorrow': tomorrow,
     }
 
     return render(request, 'mainapp/events.html', content)
