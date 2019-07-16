@@ -1,0 +1,23 @@
+{% extends 'authapp/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="registration-header">
+        <h1 class="registration-header-descr">Регистрация</h1>
+    </div>
+
+    <div class="verification-box">
+        {% if request.resolver_match.url_name == 'verify' %}
+            {% if user %}
+                <p class="verification-p">Поздравляем! Вы успешно зарегистрированы.</p>
+            {% else %}
+                <p class="verification-p">Что-то пошло не так. Повторите еще раз.</p>
+            {% endif %}
+        {% else %}
+            <p class="verification-p">Вам отправлено сообщение.
+                Пройдите по ссылке в сообщении для дальнейшей регистрации.</p>
+        {% endif %}
+    </div>
+
+{% endblock %}

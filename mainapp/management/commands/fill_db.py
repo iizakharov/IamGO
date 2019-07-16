@@ -1,33 +1,55 @@
 import json
 import os
-import time
+import shutil
+from collections import defaultdict
 
 import requests
-import tempfile
 
-from django.core import files
 from django.core.management.base import BaseCommand
+from django.conf import settings
 from mainapp.models import EventCategory, EventAgent, EventLocation, Event, EventDate, EventGallery
 from authapp.models import User
 
 JSON_PATH = 'mainapp/json'
+base_url = 'http://127.0.0.1:8000/api/v1/'
+username = 'admin@admin.com'
+password = 'password'
+_id_cache = defaultdict(dict)
 
-headers = {
-    "Host": "afisha.yandex.ru",
-    "User-Agent": "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:67.0) Gecko/20100101 Firefox/67.0",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    "Accept-Language": "ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3",
-    "Accept-Encoding": "gzip, deflate, br",
-    "Connection": "keep-alive",
-    'Cookie': 'yandexuid=8953047361557745751; i=TeW7KHmTTXDHc/IK27qr82slIxctisPJphlfm+/cHPfquMeg8djvt0DJhCig1G3+QryGKK'
-              'kXfSZWFl8jwNKCgA1PpTc=; fuid01=5cd950593ec24d5a.rjvCB4G_QlaL4H_pnZ-s_nQH7X5pU-a1x64HBf2DUqItGK5R-pIDtDc'
-              'OhdGN_D6NPiJ6rctFTHhYEAd8HmRtokT6eAhqgQ3UN50MuYfH2xdq4dIdVRfAesg1NBcZaN9T; _ym_uid=1557745754438948091; '
-              'mda=0; yp=1574990764.szm.1:1920x1080:1920x924#1561875279.ygu.1; my=YwA=; bltsr=1; afisha.sid=s%3A_BGOD5Z'
-              'wk9cVviTDNAMGi5gmdmtt5QgT.s3JSccAJyqfsaUFfgBSm1LHSk89D3p7bIxyBDbSA3t0; _ym_d=1560772064; specific=1; _cs'
-              'rf=4GNHJF55ZDRKQ6p6vKaxWaVl; device_id="be5bcd72413e8c264213e909aaef7d63eeb1fd6e4"; rheftjdd=rheftjddVal'
-              '; ys=wprid.1561727583382782-1701657974762114286500035-man1-3604',
-    "Upgrade-Insecure-Requests": "1"
-}
+
+def get_url(name):
+    return base_url + name + '/'
+
+
+def get_category_id(name):
+    return get_id('categories', name)
+
+
+def get_agent_id(name):
+    return get_id('agents', name)
+
+
+def get_location_id(name):
+    return get_id('locations', name)
+
+
+def get_event_id(name):
+    return get_id('events', name)
+
+
+def get_id(model, name):
+    if _id_cache[model].get(name):
+        return _id_cache[model].get(name)
+    else:
+        payload = {'name': name}
+        request = requests.get(get_url(model), params=payload)
+        if request.status_code == 200:
+            if len(request.json()) > 0:
+                _id_cache[model][request.json()[0]['name']] = request.json()[0]['id']
+                return request.json()[0]['id']
+            else:
+                return None
+        return None
 
 
 def load_from_json(file_name):
@@ -35,139 +57,191 @@ def load_from_json(file_name):
         return json.load(infile)
 
 
-def get_image_from_url(image_url):
-    # Steam the image from the url
-    request = requests.get(image_url, stream=True, headers=headers)
-
-    # Was the request OK?
-    if request.status_code != requests.codes.ok:
-        # Nope, error handling, skip file etc etc etc
-        return False
-
-    # Get the filename from the url, used for saving later
-    # file_name = image_url.split('/')[-1]
-
-    # Create a temporary file
-    lf = tempfile.NamedTemporaryFile()
-
-    # Read the streamed image in sections
-    for block in request.iter_content(1024 * 8):
-
-        # If no more file then stop
-        if not block:
-            break
-
-        # Write image block to temporary file
-        lf.write(block)
-    # image = Image()
-
-    # Save the temporary image to the model#
-    # This saves the model so be sure that is it valid
-    # image.image.save(file_name, files.File(lf))
-    # return image
-    return {"image": files.File(lf)}
-
-
 def create_categories():
     # Create categories
+    url = get_url('categories')
     categories = load_from_json('categories')
     print("Categories loaded")
-    EventCategory.objects.all().delete()
-    category_list = dict()
+    unique_categories = dict()
     for category in categories:
-        category_list[category['name']] = category['description']
-    [EventCategory.objects.create(name=key, description=value) for key, value in category_list.items()]
-    print("Categories created")
+        category.pop('event')
+        unique_categories[category['name']] = category
+    EventCategory.objects.all().delete()
+    for name, data in unique_categories.items():
+        request = requests.post(url=url, auth=requests.auth.HTTPBasicAuth(username, password), json=data)
+        if request.status_code == 201:
+            print(f"{name} created")
+        else:
+            print(f"{name}: {request.status_code}\t{request.text}")
+    print(10 * "=", "Categories created", 10 * "=")
 
 
 def create_agents():
     # Create agents
+    url = get_url('agents')
     agents = load_from_json('agents')
     print("agents loaded")
     EventAgent.objects.all().delete()
-    agent_list = dict()
     for agent in agents:
-        agent_list[agent['name']] = agent['description']
-    [EventAgent.objects.create(name=key, description=value) for key, value in agent_list.items()]
-    print("Agents created")
+        request = requests.post(url=url, auth=requests.auth.HTTPBasicAuth(username, password), json=agent)
+        if request.status_code == 201:
+            print(f"{agent['name']} created")
+        else:
+            print(f"{agent['name']}: {request.status_code}\t{request.text}")
+    print(10 * "=", "Agents created", 10 * "=")
 
 
 def create_locations():
     # Create locations
+    url = get_url('locations')
     locations = load_from_json('locations')
     print("Locations loaded")
     EventLocation.objects.all().delete()
-    location_list = dict()
+    unique_locations = dict()
     for location in locations:
-        location_list[location['name']] = location['location']
-    [EventLocation.objects.create(name=key, location=value) for key, value in location_list.items()]
-    print("Locations created")
+        location.pop('event')
+        unique_locations[location['name']] = location
+    for name, data in unique_locations.items():
+        request = requests.post(url=url, auth=requests.auth.HTTPBasicAuth(username, password), json=data)
+        if request.status_code == 201:
+            print(f"{name} created")
+        else:
+            print(f"{name}: {request.status_code}\t{request.text}")
+    print(10 * "=", "Locations created", 10 * "=")
 
 
 def create_events():
     # Create events
-    locations = load_from_json('locations')
-    categories = load_from_json('categories')
+    url = get_url('events')
     events = load_from_json('events')
     print("Events loaded")
     Event.objects.all().delete()
     for event in events:
         # Create event
-        event['agent'] = EventAgent.objects.get(name=event['agent'])
-        event_object = Event.objects.create(**event)
+        event['agent'] = get_agent_id(event['agent'])
+        request = requests.post(url=url, auth=requests.auth.HTTPBasicAuth(username, password), json=event)
+        if request.status_code == 201:
+            print(f"{event['name']} created")
+        else:
+            print(f"{event['name']}: {request.status_code}\t{request.text}")
         # print('{0} created.'.format(event['name']))
         # Add locations to event
-        for location in locations:
-            if event['name'] == location['event']:
-                event_object.location.add(EventLocation.objects.get(name=location['name']))
-        # Add categories to event
-        for category in categories:
-            if event['name'] == category['event']:
-                event_object.category.add(EventCategory.objects.get(name=category['name']))
-
-        # print('{0} is done.'.format(event['name']))
-    print("Events created")
+        # for location in locations:
+        #     if event['name'] == location['event']:
+        #         event_object.location.add(EventLocation.objects.get(name=location['name']))
+        # # Add categories to event
+        # for category in categories:
+        #     if event['name'] == category['event']:
+        #         event_object.category.add(EventCategory.objects.get(name=category['name']))
+        #
+        # # print('{0} is done.'.format(event['name']))
+    print(10 * "=", "Events created", 10 * "=")
 
 
 def create_dates():
+    # Create dates
+    url = get_url('dates')
     dates = load_from_json("eventdate")
     print("Dates loaded")
     EventDate.objects.all().delete()
-    for i in dates:
-        EventDate.objects.create(event=Event.objects.get(name=i["event"]), date=i["date"])
-    print("Dates created")
+    for date in dates:
+        date['event'] = get_event_id(date['event'])
+        request = requests.post(url=url, auth=requests.auth.HTTPBasicAuth(username, password), json=date)
+        if request.status_code == 201:
+            print(f"{date['date']} created")
+        else:
+            print(f"{date['date']}: {request.status_code}\t{request.text}")
+    print(10 * "=", "Dates created", 10 * "=")
 
 
 def create_gallery():
-    images = load_from_json("eventgallery")
-    print("Gallery loaded")
-    for idx, i in enumerate(images):
-        print(f"Try get {idx}: ", end='')
-        data = get_image_from_url(i['image'])
-        if data:
-            event_image = EventGallery.objects.create(event=Event.objects.get(name=i["event"]))
-            event_image.image.save(i["event"] + f'{idx}', data['image'])
-            if i.get('is_avatar'):
-                event_image.is_avatar = True
-                event_image.save()
-            time.sleep(1)
-            print("Done")
+    url = get_url('galleries')
+    galleries = load_from_json('eventgallery')
+    print("Galleries loaded")
+    EventGallery.objects.all().delete()
+    if os.path.exists(f"{settings.STATICFILES_DIRS[0]}/img/tmp/"):
+        shutil.rmtree(f"{settings.STATICFILES_DIRS[0]}/img/tmp/")
+    for image in galleries:
+        image['event'] = get_event_id(image['event'])
+        image['is_avatar'] = True if image['is_avatar'] == "true" else False
+        # Create image
+        request = requests.post(url=url, auth=requests.auth.HTTPBasicAuth(username, password), json=image)
+        if request.status_code == 201:
+            print(f"{image['image']:50} created... \t", end='')
+            # Upload image
+            file = {'image': (f"{image['image']}.png",
+                              open(f"{settings.STATICFILES_DIRS[0]}/img/origin/{image['image']}", 'rb'))}
+            upload = requests.put(url=f"{url}{request.json()['id']}/image/",
+                                  auth=requests.auth.HTTPBasicAuth(username, password), files=file)
+            if upload.status_code == 200:
+                print(f"uploaded")
+            else:
+                print(f"fail upload: {request.status_code}\t{request.text}")
+                file = {'image': (f"{image['image']}.png",
+                                  open(f"{settings.STATICFILES_DIRS[0]}/img/s372x223_lelingrad.webp", 'rb'))}
+                upload = requests.put(url=f"{url}{request.json()['id']}/image/",
+                                      auth=requests.auth.HTTPBasicAuth(username, password), files=file)
+                if upload.status_code == 200:
+                    print(f"{image['image']:50} uploaded temp file")
+                else:
+                    print(f"{image['image']:50} fail upload temp file: {request.status_code}\t{request.text}")
         else:
-            print("Fail")
-    print("EventGallery done")
+            print(f"{image['image']}: {request.status_code}\t{request.text}")
+    print(10 * "=", "Images created and uploaded", 10 * "=")
+
+
+def update_locations_in_event():
+    locations = load_from_json('locations')
+    url = get_url('events')
+    events_id = defaultdict(list)
+    for location in locations:
+        event_id = get_event_id(location['event'])
+        location_id = get_location_id(location['name'])
+        events_id[event_id].append(location_id)
+    for key, value in events_id.items():
+        data = list()
+        for val in value:
+            data.append(("location", (None, val)))
+        request = requests.put(url=f"{url}{key}/location/", auth=requests.auth.HTTPBasicAuth(username, password),
+                               files=data)
+        if request.status_code == 200:
+            print(f"{key} created")
+        else:
+            print(f"{key}: {request.status_code}\t{request.text}")
+    print(10 * "=", "Links locations and events created", 10 * "=")
+
+
+def update_categories_in_event():
+    categories = load_from_json('categories')
+    url = get_url('events')
+    events_id = defaultdict(list)
+    for category in categories:
+        event_id = get_event_id(category['event'])
+        category_id = get_category_id(category['name'])
+        events_id[event_id].append(category_id)
+    for key, value in events_id.items():
+        data = list()
+        for val in value:
+            data.append(("category", (None, val)))
+        request = requests.put(url=f"{url}{key}/category/", auth=requests.auth.HTTPBasicAuth(username, password),
+                               files=data)
+        if request.status_code == 200:
+            print(f"{key} created")
+        else:
+            print(f"{key}: {request.status_code}\t{request.text}")
+    print(10 * "=", "Links categories and events created", 10 * "=")
 
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
+        User.objects.all().delete()
+        User.objects.create_superuser('django@geekshop.local', 'geekbrains')
+        User.objects.create_superuser(username, password)
         create_categories()
         create_agents()
         create_locations()
         create_events()
         create_dates()
         create_gallery()
-
-        print("Recreate users: ", end='')
-        User.objects.all().delete()
-        User.objects.create_superuser('django@geekshop.local', 'geekbrains')
-        User.objects.create_superuser("admin@admin.com", "password")
-        print("Done")
+        update_locations_in_event()
+        update_categories_in_event()

@@ -1,6 +1,8 @@
+import hashlib
+import random
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, ReadOnlyPasswordHashField
-from authapp.models import User, UserProfile
+from authapp.models import User, UserProfile, UserActivation
 
 
 class UserAdminCreationForm(forms.ModelForm):
@@ -92,6 +94,13 @@ class UserRegisterForm(forms.ModelForm):
         user.set_password(self.cleaned_data["password1"])
         if commit:
             user.save()
+        # Авторизация через email
+        user.active = False
+        salt = hashlib.sha1(str(random.random()).encode('utf8')).hexdigest()[:6]
+        user_activation = UserActivation()
+        user_activation.user = user
+        user_activation.activation_key = hashlib.sha1((user.email + salt).encode('utf8')).hexdigest()
+        user_activation.save()
         return user
 
 
