@@ -136,11 +136,11 @@ STATICFILES_DIRS = (
 
 DOMAIN_NAME = 'http://localhost:8000'
 
-EMAIL_HOST = config.get('smtp', 'EMAIL_HOST')
-EMAIL_PORT = config.get('smtp', 'EMAIL_PORT')
-EMAIL_HOST_USER = config.get('smtp', 'EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config.get('smtp', 'EMAIL_HOST_PASSWORD')
-EMAIL_USE_SSL = config.getboolean('smtp', 'EMAIL_USE_SSL')
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = '25'
+EMAIL_HOST_USER = 'django@geekshop.local'
+EMAIL_HOST_PASSWORD = 'geekshop'
+EMAIL_USE_SSL = False
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = 'tmp/email_messages/'
