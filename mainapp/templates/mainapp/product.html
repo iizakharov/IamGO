@@ -7,13 +7,6 @@
 {% endblock %}
 {% block container %}
 	<div class="container wrapper">
-	
-{#		<div class="event-block-places">#}
-{#            {% language 'ru' %}#}
-{#			<span>{{ event.dates.first.date|date:"l, d E Y" }}</span>#}
-{#            {%  endlanguage %}#}
-{#			<div class="places"></div>#}
-{#		</div>#}
 		<div class="event">
             <div class="event-description">
                 <h1 class="page-title">Подробная информация на сайте организатора
@@ -47,7 +40,7 @@
 			<div class="nearest">
                 {% for related in related_events %}
 				<div>
-					<a href="{% url 'mainapp:product' related.pk %}"><img src="/{{ related.images.first.image.url }}" alt="bunner1"></a>
+					<a href="{% url 'mainapp:product' related.pk %}"><img src="{{ related.get_avatar }}" alt="bunner1"></a>
 					<h2>{{ related.name }}</h2>
 					<ul>
                         {% language 'ru' %}
