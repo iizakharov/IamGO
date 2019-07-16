@@ -3,3 +3,10 @@ flake8
 Pillow
 pyexcel-ods
 requests
+# drf and recommend dependencies
+djangorestframework
+coreapi
+Markdown
+Pygments
+django-filter
+django-guardian
