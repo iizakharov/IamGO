@@ -110,6 +110,14 @@ class Event(models.Model):
             avatar = '/static/img/s372x223_lelingrad.webp'
         return avatar
 
+    @property
+    def get_location_url(self):
+        try:
+            url = self.location.first().yandex_map
+        except AttributeError:
+            url = None
+        return url
+
 
 class EventGallery(models.Model):
     class Meta:
