@@ -98,7 +98,7 @@ body {
     display: flex;
     justify-content: space-around;
     list-style-type: none;
-    margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 
 .menu a{
@@ -130,10 +130,9 @@ body {
     font-size: 34px;
     line-height: 40px;
     font-weight: 700;
-
-    margin: 14px 0 0;
-    padding-top: 14px;
-    padding-bottom: 14px;
+    /*margin: 14px 0 0;*/
+    /*padding-top: 14px;*/
+    /*padding-bottom: 14px;*/
 
 }
 
@@ -167,13 +166,13 @@ body {
     border-radius: 18px;
     text-decoration: none;
     background: white;
-    border: 0px solid white;
-    box-shadow: 3px 4px 6px 0px rgba(0,0,0,0.6);
+    border: 0px solid #bfbaba;
+    box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.2)
 }
 
 .menu-date a:hover{
-    top: -5px;
-    box-shadow: 5px 10px 9px 3px rgba(0,0,0,0.2);
+    top: -1px;
+    box-shadow: 3px 6px 9px -1px rgba(0,0,0,0.2)
 
 }
 
@@ -892,4 +891,13 @@ body {
 
 .user-avatar{
     width: 50px;
+}
+
+.verification-box{
+    margin: 50px;
+}
+
+.verification-p{
+    font-size: 20px;
+    color: grey;
 }
