@@ -2,56 +2,133 @@
     {
         "event": "Todd",
         "name": "Adrenaline Stadium",
-        "location": "Ленинградский просп., 80, стр. 17"
+        "location": "Ленинградский просп., 80, стр. 17",
+        "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2242.1435638824028!2d37.5086293161994!3d55.808107980568145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b548351529d9a3%3A0x64ce87e9305fab1c!2sAdrenaline+Stadium!5e0!3m2!1sru!2sru!4v1563281698350!5m2!1sru!2sru"
     },
     {
         "event": "Леди Совершенство с Нонной Гришаевой",
         "name": "Областной ТЮЗ",
-        "location": "ул. Прохладная, 28"
+        "location": "ул. Прохладная, 28",
+        "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d563.2947357058819!2d37.67248382928279!3d55.61630199878231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x414a9e1805555555%3A0xbaf81d36872132b1!2z0JzQvtGB0LrQvtCy0YHQutC40Lkg0L7QsdC70LDRgdGC0L3QvtC5INGC0LXQsNGC0YAg0Y7QvdC-0LPQviDQt9GA0LjRgtC10LvRjw!5e0!3m2!1sru!2sru!4v1563282160789!5m2!1sru!2sru"
     },
     {
         "event": "Все оттенки голубого",
         "name": "Планета КВН",
-        "location": "ул. Шереметьевская, 2"
+        "location": "ул. Шереметьевская, 2",
+        "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2242.9550755645732!2d37.615545316199054!3d55.794017980564426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a078908fb2b%3A0x8b57fe4496c3c4c3!2z0J_Qu9Cw0L3QtdGC0LAg0JrQktCd!5e0!3m2!1sru!2sru!4v1563282200921!5m2!1sru!2sru"
     },
     {
         "event": "Сияние",
         "name": "Электротеатр Станиславский",
-        "location": "ул. Тверская, 23"
+        "location": "ул. Тверская, 23",
+        "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.5247265312764!2d37.59880631619804!3d55.766757980557124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a38b0bf0d8b%3A0x6d66eb5218f3a18e!2z0K3Qu9C10LrRgtGA0L7RgtC10LDRgtGAINCh0YLQsNC90LjRgdC70LDQstGB0LrQuNC5!5e0!3m2!1sru!2sru!4v1563282229031!5m2!1sru!2sru"
     },
     {
         "event": "Russian Tattoo Expo",
         "name": "КВЦ «Сокольники»",
-        "location": "5-й Лучевой просек, 7, стр. 1"
+        "location": "5-й Лучевой просек, 7, стр. 1",
+        "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2242.6513476337136!2d37.67222741619917!3d55.79929178056578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd9de7d023442de6b!2z0JrQktCmICLQodC-0LrQvtC70YzQvdC40LrQuCIsINCf0LDQstC40LvRjNC-0L0gMg!5e0!3m2!1sru!2sru!4v1563282269583!5m2!1sru!2sru"
     },
     {
         "event": "Чемпионат Европы по пляжному волейболу 2019",
         "name": "Лужники / Luzhniki Sports Complex",
-        "location": "Лужнецкая наб., 24"
+        "location": "Лужнецкая наб., 24",
+        "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8989.491874635665!2d37.54515564984554!3d55.717270238700884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x65b83e6741430782!2z0KHRgtCw0LTQuNC-0L0g0JvRg9C20L3QuNC60Lg!5e0!3m2!1sru!2sru!4v1563282309608!5m2!1sru!2sru"
     },
     {
         "event": "Park Live 2019",
         "name": "Парк Горького",
-        "location": "ул. Крымский Вал, 9"
+        "location": "ул. Крымский Вал, 9",
+        "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2246.7557811756683!2d37.599359608262326!3d55.727996241811326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54b08f8fdcbc3%3A0x4375cd8bcd701ff0!2z0KbQtdC90YLRgNCw0LvRjNC90YvQuSDQv9Cw0YDQuiDQutGD0LvRjNGC0YPRgNGLINC4INC-0YLQtNGL0YXQsCDQuNC8LiDQnC7Qk9C-0YDRjNC60L7Qs28!5e0!3m2!1sru!2sru!4v1563282355841!5m2!1sru!2sru"
     },
     {
         "event": "Песчаная сказка",
         "name": "Большой цирк на проспекте Вернадского",
-        "location": "просп. Вернадского, 7"
+        "location": "просп. Вернадского, 7",
+        "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2248.6822863728667!2d37.53804336619594!3d55.694511280537924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa6d383628e16a176!2z0JHQvtC70YzRiNC-0Lkg0JzQvtGB0LrQvtCy0YHQutC40Lkg0JPQvtGB0YPQtNCw0YDRgdGC0LLQtdC90L3Ri9C5INCm0LjRgNC6!5e0!3m2!1sru!2sru!4v1563282388863!5m2!1sru!2sru"
     },
     {
         "event": "Moscow Classic 2019. 2 этап",
         "name": "Lorem",
-        "location": "Волоколамский р-н, дер. Шелудьково"
+        "location": "Волоколамский р-н, дер. Шелудьково",
+        "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1326.8483504036221!2d36.26223315186125!3d55.992967852549015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b5847737402d27%3A0xb416ba91e76d059!2z0KjQtdC70YPQtNGM0LrQvtCy0L4sINCc0L7RgdC60L7QstGB0LrQsNGPINC-0LHQuy4sIDE0MzY1MA!5e0!3m2!1sru!2sru!4v1563282424776!5m2!1sru!2sru"
     },
     {
         "event": "Дикая мята 2019",
         "name": "Lorem",
-        "location": "Тульская обл., Алексинский р-н, дер. Бунырёво"
+        "location": "Тульская обл., Алексинский р-н, дер. Бунырёво",
+        "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9251.345226419193!2d37.142933099262066!3d54.571636634063665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4134fbb6b492ef63%3A0xac5046ca17866aa2!2z0JHRg9C90YvRgNC10LLQviwg0KLRg9C70YzRgdC60LDRjyDQvtCx0LsuLCAzMDEzNjc!5e0!3m2!1sru!2sru!4v1563282457191!5m2!1sru!2sru"
     },
     {
         "event": "Джазовые сезоны",
         "name": "Горки Ленинские",
-        "location": "Московская обл., р/п Горки Ленинские, ул. Центральная, 1"
+        "location": "Московская обл., р/п Горки Ленинские, ул. Центральная, 1",
+        "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9037.363604921462!2d37.76532879973892!3d55.50900968782065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x414aa544af4da613%3A0xde01216197fef97f!2z0JzRg9C30LXQuS3Qt9Cw0L_QvtCy0LXQtNC90LjQuiAi0JPQvtGA0LrQuCDQm9C10L3QuNC90YHQutC40LUi!5e0!3m2!1sru!2sru!4v1563282497168!5m2!1sru!2sru"
+    },
+        {
+        "event": "1_Todd",
+        "name": "Adrenaline Stadium",
+        "location": "Ленинградский просп., 80, стр. 17",
+        "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2242.1435638824028!2d37.5086293161994!3d55.808107980568145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b548351529d9a3%3A0x64ce87e9305fab1c!2sAdrenaline+Stadium!5e0!3m2!1sru!2sru!4v1563281698350!5m2!1sru!2sru"
+    },
+    {
+        "event": "1_Леди Совершенство с Нонной Гришаевой",
+        "name": "Областной ТЮЗ",
+        "location": "ул. Прохладная, 28",
+        "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d563.2947357058819!2d37.67248382928279!3d55.61630199878231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x414a9e1805555555%3A0xbaf81d36872132b1!2z0JzQvtGB0LrQvtCy0YHQutC40Lkg0L7QsdC70LDRgdGC0L3QvtC5INGC0LXQsNGC0YAg0Y7QvdC-0LPQviDQt9GA0LjRgtC10LvRjw!5e0!3m2!1sru!2sru!4v1563282160789!5m2!1sru!2sru"
+    },
+    {
+        "event": "1_Все оттенки голубого",
+        "name": "Планета КВН",
+        "location": "ул. Шереметьевская, 2",
+        "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2242.9550755645732!2d37.615545316199054!3d55.794017980564426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a078908fb2b%3A0x8b57fe4496c3c4c3!2z0J_Qu9Cw0L3QtdGC0LAg0JrQktCd!5e0!3m2!1sru!2sru!4v1563282200921!5m2!1sru!2sru"
+    },
+    {
+        "event": "1_Сияние",
+        "name": "Электротеатр Станиславский",
+        "location": "ул. Тверская, 23",
+        "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.5247265312764!2d37.59880631619804!3d55.766757980557124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a38b0bf0d8b%3A0x6d66eb5218f3a18e!2z0K3Qu9C10LrRgtGA0L7RgtC10LDRgtGAINCh0YLQsNC90LjRgdC70LDQstGB0LrQuNC5!5e0!3m2!1sru!2sru!4v1563282229031!5m2!1sru!2sru"
+    },
+    {
+        "event": "1_Russian Tattoo Expo",
+        "name": "КВЦ «Сокольники»",
+        "location": "5-й Лучевой просек, 7, стр. 1",
+        "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2242.6513476337136!2d37.67222741619917!3d55.79929178056578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd9de7d023442de6b!2z0JrQktCmICLQodC-0LrQvtC70YzQvdC40LrQuCIsINCf0LDQstC40LvRjNC-0L0gMg!5e0!3m2!1sru!2sru!4v1563282269583!5m2!1sru!2sru"
+    },
+    {
+        "event": "1_Чемпионат Европы по пляжному волейболу 2019",
+        "name": "Лужники / Luzhniki Sports Complex",
+        "location": "Лужнецкая наб., 24",
+        "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8989.491874635665!2d37.54515564984554!3d55.717270238700884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x65b83e6741430782!2z0KHRgtCw0LTQuNC-0L0g0JvRg9C20L3QuNC60Lg!5e0!3m2!1sru!2sru!4v1563282309608!5m2!1sru!2sru"
+    },
+    {
+        "event": "1_Park Live 2019",
+        "name": "Парк Горького",
+        "location": "ул. Крымский Вал, 9",
+        "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2246.7557811756683!2d37.599359608262326!3d55.727996241811326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54b08f8fdcbc3%3A0x4375cd8bcd701ff0!2z0KbQtdC90YLRgNCw0LvRjNC90YvQuSDQv9Cw0YDQuiDQutGD0LvRjNGC0YPRgNGLINC4INC-0YLQtNGL0YXQsCDQuNC8LiDQnC7Qk9C-0YDRjNC60L7Qs28!5e0!3m2!1sru!2sru!4v1563282355841!5m2!1sru!2sru"
+    },
+    {
+        "event": "1_Песчаная сказка",
+        "name": "Большой цирк на проспекте Вернадского",
+        "location": "просп. Вернадского, 7",
+        "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2248.6822863728667!2d37.53804336619594!3d55.694511280537924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa6d383628e16a176!2z0JHQvtC70YzRiNC-0Lkg0JzQvtGB0LrQvtCy0YHQutC40Lkg0JPQvtGB0YPQtNCw0YDRgdGC0LLQtdC90L3Ri9C5INCm0LjRgNC6!5e0!3m2!1sru!2sru!4v1563282388863!5m2!1sru!2sru"
+    },
+    {
+        "event": "1_Moscow Classic 2019. 2 этап",
+        "name": "Lorem",
+        "location": "Волоколамский р-н, дер. Шелудьково",
+        "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1326.8483504036221!2d36.26223315186125!3d55.992967852549015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b5847737402d27%3A0xb416ba91e76d059!2z0KjQtdC70YPQtNGM0LrQvtCy0L4sINCc0L7RgdC60L7QstGB0LrQsNGPINC-0LHQuy4sIDE0MzY1MA!5e0!3m2!1sru!2sru!4v1563282424776!5m2!1sru!2sru"
+    },
+    {
+        "event": "1_Дикая мята 2019",
+        "name": "Lorem",
+        "location": "Тульская обл., Алексинский р-н, дер. Бунырёво",
+        "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9251.345226419193!2d37.142933099262066!3d54.571636634063665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4134fbb6b492ef63%3A0xac5046ca17866aa2!2z0JHRg9C90YvRgNC10LLQviwg0KLRg9C70YzRgdC60LDRjyDQvtCx0LsuLCAzMDEzNjc!5e0!3m2!1sru!2sru!4v1563282457191!5m2!1sru!2sru"
+    },
+    {
+        "event": "1_Джазовые сезоны",
+        "name": "Горки Ленинские",
+        "location": "Московская обл., р/п Горки Ленинские, ул. Центральная, 1",
+        "google_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9037.363604921462!2d37.76532879973892!3d55.50900968782065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x414aa544af4da613%3A0xde01216197fef97f!2z0JzRg9C30LXQuS3Qt9Cw0L_QvtCy0LXQtNC90LjQuiAi0JPQvtGA0LrQuCDQm9C10L3QuNC90YHQutC40LUi!5e0!3m2!1sru!2sru!4v1563282497168!5m2!1sru!2sru"
     }
 ]

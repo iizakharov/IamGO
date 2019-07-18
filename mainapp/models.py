@@ -57,6 +57,7 @@ class EventLocation(models.Model):
 
     name = models.CharField(verbose_name='Название площадки', max_length=64, unique=True)
     location = models.CharField(verbose_name='Адрес площадки', max_length=500)
+    google_map = models.CharField(verbose_name='Метка яндекс карты', max_length=500)
 
     def __str__(self):
         return self.name
@@ -108,6 +109,14 @@ class Event(models.Model):
         except AttributeError:
             avatar = '/static/img/s372x223_lelingrad.webp'
         return avatar
+
+    @property
+    def get_location_url(self):
+        try:
+            url = self.location.first().google_map
+        except AttributeError:
+            url = None
+        return url
 
 
 class EventGallery(models.Model):
