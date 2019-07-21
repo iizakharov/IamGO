@@ -2,7 +2,7 @@ import hashlib
 import random
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, ReadOnlyPasswordHashField
-from authapp.models import User, UserProfile, UserActivation
+from authapp.models import User, UserProfile, UserActivation, UserSending
 
 
 class UserAdminCreationForm(forms.ModelForm):
@@ -155,3 +155,18 @@ class UserLoginForm(AuthenticationForm):
                 'placeholder': 'Пароль'
             }
         )
+
+
+class UserSendingForm(forms.ModelForm):
+    # Форма для рассылки.
+
+    class Meta:
+        model = UserSending
+        fields = ('email',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'edit-form-input'
+            field.help_text = ''
+

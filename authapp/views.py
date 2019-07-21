@@ -3,7 +3,7 @@ from django.contrib import auth
 from django.urls import reverse
 from django.core.mail import send_mail
 from django.conf import settings
-from authapp.forms import User, UserRegisterForm, UserLoginForm, UserProfileEditForm, UserEditForm
+from authapp.forms import User, UserRegisterForm, UserLoginForm, UserProfileEditForm, UserEditForm, UserSendingForm
 
 
 def register_view(request):
@@ -103,3 +103,20 @@ def verify(request, email, activation_key):
     except Exception as e:
         print(f'error activation user : {e.args}')
         return HttpResponseRedirect(reverse('auth:login'))
+
+
+def sending_view(request):
+    title = 'Подписка на рассылку'
+
+    sending_form = UserSendingForm(data=request.POST or None)
+
+    if request.method == 'POST' and sending_form.is_valid():
+        sending_form.save()
+        return render(request, 'authapp/verification.html')
+
+    my_context = {
+        'title': title,
+        'sending_form': sending_form,
+    }
+
+    return render(request, 'authapp/sending.html', my_context)

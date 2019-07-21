@@ -164,3 +164,17 @@ class UserActivation(models.Model):
             return False
         else:
             return True
+
+
+class UserSending(models.Model):
+    class Meta:
+        verbose_name = 'Подписчик'
+        verbose_name_plural = 'Подписчики'
+
+    email = models.EmailField(
+        verbose_name='Адрес электронной почты',
+        max_length=255,
+        unique=True,
+    )
+
+    is_active = models.BooleanField(default=True, verbose_name='Активна рассылка')
