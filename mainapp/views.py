@@ -3,7 +3,7 @@ import datetime
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from .models import EventCategory, Event, EventCollection, EventDate
-from .utils import weekend_events, kid_events
+from .utils import weekend_events, kid_events, free_events, health_events
 
 
 def get_main_menu():
@@ -30,7 +30,9 @@ def get_expect_concert():
 def get_collections():
     return {
         "Куда сходить в выходные": weekend_events(),
-        "Куда сходить с детьми": kid_events()
+        "Куда сходить с детьми": kid_events(),
+        "Бесплатно": free_events(),
+        "Здоровый образ жизни": health_events()
     }
 
 
