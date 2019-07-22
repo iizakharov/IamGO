@@ -98,7 +98,7 @@ def events(request, pk=None):
     title = 'мероприятие'
     links_menu = EventCategory.objects.all()
     main_menu = get_main_menu()[:8]
-    dates = get_object_or_404(EventDate, pk=pk)
+    # dates = get_object_or_404(EventDate, pk=pk)
     events_by_date = Event.objects.filter(dates__pk=pk).order_by('price')
 
     if pk is not None:
@@ -129,7 +129,7 @@ def events(request, pk=None):
         'links_menu': links_menu,
         'events_all': events_all,
         'main_menu': main_menu,
-        'dates': dates,
+        # 'dates': dates,
         'events_by_date': events_by_date,
         'today': today,
         'tomorrow': tomorrow,
