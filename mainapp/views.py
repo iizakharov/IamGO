@@ -3,7 +3,7 @@ import datetime
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from .models import EventCategory, Event, EventCollection, EventDate
-
+from .utils import weekend_events, kid_events
 
 def get_main_menu():
     return EventCategory.objects.filter(is_active=True).order_by('-name')
@@ -41,6 +41,8 @@ def get_expect_concert():
 
 
 def get_collections():
+    weekend_events()
+    kid_events()
     return EventCollection.objects.filter(is_active=True)
 
 
