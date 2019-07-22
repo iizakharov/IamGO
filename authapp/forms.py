@@ -184,4 +184,3 @@ class UserSendingForm(forms.ModelForm):
                 'placeholder': 'Email'
             }
         )
-

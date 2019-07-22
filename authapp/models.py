@@ -179,4 +179,3 @@ class UserSending(models.Model):
     )
 
     is_active = models.BooleanField(default=True, verbose_name='Активна рассылка')
-
