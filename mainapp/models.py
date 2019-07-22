@@ -2,6 +2,7 @@ import os
 from uuid import uuid4
 
 from django.db import models
+from django.db.models import Q
 from django.utils.deconstruct import deconstructible
 
 
@@ -77,6 +78,18 @@ class EventCollection(models.Model):
         return {self.name}
 
 
+class EventManager(models.Manager):
+    def search(self, query=None):
+        qs = self.get_queryset()
+        if query is not None:
+            or_lookup = (
+                    Q(name__icontains=query) |
+                    Q(description__icontains=query)
+            )
+            qs = qs.filter(or_lookup).distinct()  # distinct() is often necessary with Q lookups
+        return qs
+
+
 class Event(models.Model):
     class Meta:
         verbose_name = 'Событие'
@@ -95,6 +108,8 @@ class Event(models.Model):
     is_hot = models.BooleanField(verbose_name='Популярное', default=False)
     # collections = models.ForeignKey(EventCollection, on_delete=models.CASCADE, verbose_name='Подборки', blank=True,
     #                                 null=True)
+
+    objects = EventManager()
 
     def __str__(self):
         return f'{self.name}'
