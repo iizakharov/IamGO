@@ -14,7 +14,6 @@ body {
     padding: 0;
     font-size: 14px;
     font-weight: 400;
-    background-color: #fff;
 }
 
 .header {
@@ -78,7 +77,6 @@ body {
 
 .login {
     padding: 8px 16px;
-    border-radius: 50px;
     border-width: 1px;
     border-style: solid;
     border-color: rgba(0, 0, 0, 0.1);
@@ -102,7 +100,6 @@ body {
 }
 
 .menu a{
-    text-decoration: none;
     line-height: 36px;
     padding-right: 16px;
     padding-left: 16px;
@@ -240,13 +237,6 @@ body {
     text-decoration: none;
     color: #777;
 }
-
-
-
-
-
-
-
 
 /* footer */
 
@@ -925,7 +915,6 @@ body {
     padding: 0;
     font-size: 14px;
     font-weight: 400;
-    background-color: #fff;
 }
 
 .header {
@@ -990,7 +979,6 @@ body {
 
 .login {
     padding: 8px 16px;
-    border-radius: 50px;
     border-width: 1px;
     border-style: solid;
     border-color: rgba(0, 0, 0, 0.1);
@@ -1023,7 +1011,6 @@ body {
     display: flex;
     align-items: center;
     border-radius: 18px;
-    text-decoration: none;
     background: none;
     transition: background-color 0.15s ease 0s;
 }
@@ -1079,8 +1066,8 @@ body {
     border-radius: 18px;
     text-decoration: none;
     background: white;
-    border: 0px solid white;
-    box-shadow: 3px 4px 6px 0px rgba(0,0,0,0.6);
+    border: 0 solid white;
+    box-shadow: 3px 4px 6px 0 rgba(0,0,0,0.6);
 }
 
 .menu-date a:hover{
@@ -1154,13 +1141,6 @@ body {
     color: #777;
 }
 
-
-
-
-
-
-
-
 /* footer */
 
 .footer {
@@ -1174,7 +1154,7 @@ body {
 }
 
 .footer-subscribe {
-    position: relative;
+    display: block;
     padding: 30px 0;
 }
 
@@ -1214,26 +1194,20 @@ body {
 }
 
 .subscribe-btn {
-    height: 46px;
-    line-height: 46px;
-    width: 140px;
-    margin-left: 20px;
-    border: 0;
-    border-radius: 3px;
+    font-size: 18px;
+    text-align: center;
+    color: black;
     background-color: #ffdb4d;
-    font-size: 15px;
-    font-weight: 400;
-    cursor: pointer;
+    padding: 13px 40px;
+    text-decoration: none;
+    line-height: 50px;
+    outline: none;
 }
 
 .subscribe-btn:hover {
-    background: #f5ae00;
-}
-
-.subscribe-btn:active {
-    box-shadow: 0 0 5px 1px rgba(33, 33, 33, 0.35);
-    position: relative;
-    top: 1px;
+    background-color: #ffd633;
+    text-decoration: none;
+    color: black;
 }
 
 .footer-side {
@@ -1285,14 +1259,13 @@ body {
 
 .social-btn {
     display: inline-block;
-    font-size: 12px;
     text-align: center;
-    width: 26px;
-    height: 26px;
+    width: 45px;
+    height: 45px;
     color: #fff;
     border-radius: 50%;
     margin-right: 10px;
-    padding: 6px;
+    padding-top: 8px;
 }
 
 .social-fb {
@@ -1383,6 +1356,12 @@ body {
     color: black;
 }
 
+.else:hover{
+    background-color: #ffd633;
+    text-decoration: none;
+    color: black;
+}
+
 .content {
     padding: 0 30px;
     /* min-width: 1260px; */
@@ -1437,10 +1416,9 @@ body {
 }
 
 .event-description-title h1{
-    letter-spacing: .72px;
+    letter-spacing: 72px;
     font-size: 72px;
     line-height: 76px;
-
 }
 
 .event-description-title {
@@ -1610,8 +1588,8 @@ body {
 }
 
 .registration-form {
-    justify-content: center;
     display: flex;
+    padding-left: 80px;
     flex-wrap: wrap;
 }
 
@@ -1806,6 +1784,17 @@ body {
 }
 
 .verification-p{
+    font-size: 20px;
+    color: grey;
+}
+
+.sending_checkbox{
+    width: 50px;
+    height: 20px;
+    margin-bottom: 30px;
+}
+
+.registration-form label{
     font-size: 20px;
     color: grey;
 }

@@ -4,7 +4,11 @@
 {% block content %}
 
     <div class="registration-header">
-        <h1 class="registration-header-descr">Регистрация</h1>
+        {% if request.resolver_match.url_name == 'sending' %}
+            <h1 class="registration-header-descr">Подписка</h1>
+        {% else %}
+            <h1 class="registration-header-descr">Регистрация</h1>
+        {% endif %}
     </div>
 
     <div class="verification-box">
@@ -14,6 +18,8 @@
             {% else %}
                 <p class="verification-p">Что-то пошло не так. Повторите еще раз.</p>
             {% endif %}
+        {% elif request.resolver_match.url_name == 'sending' %}
+            <p class="verification-p">Поздравляем! Вы успешно подписаны на рассылку.</p>
         {% else %}
             <p class="verification-p">Вам отправлено сообщение.
                 Пройдите по ссылке в сообщении для дальнейшей регистрации.</p>
