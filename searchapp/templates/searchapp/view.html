@@ -1,0 +1,13 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block container %}
+<div class="page-content" >
+    <h1 class="page-title first-title">Результаты поиска</h1>
+    <div>
+        {% include 'mainapp/includes/inc_date_menu.html' %}
+    </div>
+    <div class="nearest all">
+    </div>
+</div>
+{% endblock %}

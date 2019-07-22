@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mainapp.apps.MainappConfig',
     'authapp.apps.AuthappConfig',
+    'searchapp.apps.SearchappConfig',
     'rest_framework',
     'django_filters',
 ]

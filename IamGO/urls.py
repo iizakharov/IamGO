@@ -20,6 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('mainapp.urls', namespace='main')),
     path('auth/', include('authapp.urls', namespace='auth')),
+    path('search/', include('searchapp.urls', namespace='search')),
     # path('api-auth/', include('rest_framework.urls')),
     path('api/v1/', include('restapiapp.urls', namespace='restapi')),
 ]
