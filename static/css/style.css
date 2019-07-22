@@ -513,7 +513,7 @@ body {
 }
 
 .event ul{
-    display: flex;
+    /*display: flex;*/
     margin-left: 20px;
 }
 
