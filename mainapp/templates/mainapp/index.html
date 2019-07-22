@@ -93,39 +93,13 @@
             {% for name, collection in collections.items %}
                 {% if collection|length > 0 %}
 			<div>
-				<a href="#"><img src="{{ collection.0.get_avatar }}" alt="">
+				<a href="{% url 'mainapp:collections' forloop.counter0 %}"><img src="{{ collection.0.get_avatar }}" alt="">
 				<h2>{{ name }}</h2>
 				<p>{{ collection|length }} событий</p>
                 </a>
 			</div>
                 {% endif %}
             {% endfor %}
-			<div>
-				<a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
-				<h2>Lorem ipsum.</h2>
-				<p>12 событий</p>
-			</div>
-			<div>
-				<a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
-				<h2>Lorem ipsum.</h2>
-				<p>12 событий</p>
-			</div>
-			<div>
-				<a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
-				<h2>Lorem ipsum.</h2>
-				<p>12 событий</p>
-			</div>
-			<div>
-				<a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
-				<h2>Lorem ipsum.</h2>
-				<p>12 событий</p>
-			</div>
-			<div>
-				<a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
-				<h2>Lorem ipsum.</h2>
-				<p>12 событий</p>
-			</div>
-			<a class="else" href="#">Показать ещё</a>
 		</div>
 		</div>
 	</div>
