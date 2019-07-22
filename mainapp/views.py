@@ -2,7 +2,7 @@ import datetime
 
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
-from .models import EventCategory, Event, EventCollection, EventDate
+from .models import EventCategory, Event, EventDate
 from .utils import weekend_events, kid_events, free_events, health_events
 
 
@@ -88,7 +88,7 @@ def collections_view(request, pk):
         pk = 0
     title = 'Мероприятия'
     category = dict()
-    category['name']= list(collections.keys())[pk]
+    category['name'] = list(collections.keys())[pk]
     events = list(collections.values())[pk]
     links_menu = EventCategory.objects.all()
     main_menu = get_main_menu()[:8]

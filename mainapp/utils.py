@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from mainapp.models import EventCategory, Event, EventCollection, EventDate
+from mainapp.models import Event
 
 
 def kid_events():
