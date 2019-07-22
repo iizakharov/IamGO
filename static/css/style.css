@@ -905,10 +905,10 @@ body {
     margin: 50px;
 }
 
-.verification-p{
+.verification-p {
     font-size: 20px;
     color: grey;
-=======
+}
 * {
     margin: 0;
     padding: 0;
@@ -1423,11 +1423,6 @@ body {
 .description-event li{
     margin: 0 10px 0 0;
     text-transform: uppercase;
-}
-
-.event ul{
-    display: flex;
-    margin-left: 20px;
 }
 
 .event-adress li{
