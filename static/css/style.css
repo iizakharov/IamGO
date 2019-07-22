@@ -645,6 +645,14 @@ body {
     color: black;
 }
 
+.category-link{
+    color: white;
+}
+
+.category-link:hover{
+    color: white;
+}
+
 .view-all {
     line-height: 40px;
 }

@@ -5,7 +5,7 @@
 			<ul>
                 {% for category in event.category.all %}
                     <li>&#8226;</li>
-                    <li>{{ category }}</li>
+                    <li><a href="{% url 'mainapp:category' category.pk %}" class="category-link">{{ category }}</a></li>
                 {% endfor %}
 			</ul>
 			<div class="event-description-title">
