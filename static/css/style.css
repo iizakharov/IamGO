@@ -363,7 +363,7 @@ body {
     color: #fff;
     border-radius: 50%;
     margin-right: 10px;
-    padding: 6px;
+    padding-top: 8px;
 }
 
 .social-fb {
@@ -691,8 +691,8 @@ body {
 }
 
 .registration-form {
-    justify-content: center;
     display: flex;
+    padding-left: 80px;
     flex-wrap: wrap;
 }
 
@@ -887,6 +887,17 @@ body {
 }
 
 .verification-p{
+    font-size: 20px;
+    color: grey;
+}
+
+.sending_checkbox{
+    width: 50px;
+    height: 20px;
+    margin-bottom: 30px;
+}
+
+.registration-form label{
     font-size: 20px;
     color: grey;
 }

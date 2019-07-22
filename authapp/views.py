@@ -14,6 +14,9 @@ def register_view(request):
 
         if register_form.is_valid():
             new_user = register_form.save()
+            if new_user.is_sending:
+                sending_form = UserSendingForm(data=request.POST)
+                sending_form.save()
             if send_verify_mail(new_user):
                 # print('confirmation message sent')
                 return render(request, 'authapp/verification.html')

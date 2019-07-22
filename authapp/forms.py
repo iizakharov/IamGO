@@ -53,7 +53,7 @@ class UserRegisterForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email',)
+        fields = ('email', 'password1', 'password2', 'is_sending')
 
     def clean_password2(self):
         # Проверка, что две записи пароля совпадают.
@@ -66,8 +66,9 @@ class UserRegisterForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
-            self.fields[field_name].label = ''
-            self.fields[field_name].widget.attrs.update({'class': 'registration-form-input'})
+            if field_name != 'is_sending':
+                self.fields[field_name].label = ''
+                self.fields[field_name].widget.attrs.update({'class': 'registration-form-input'})
 
         self.fields['email'].widget.attrs.update(
             {
@@ -85,6 +86,12 @@ class UserRegisterForm(forms.ModelForm):
             {
                 'type': 'password',
                 'placeholder': 'Повторите пароль'
+            }
+        )
+        self.fields['is_sending'].widget.attrs.update(
+            {
+                'type': 'checkbox',
+                'class': 'sending_checkbox'
             }
         )
 
@@ -168,5 +175,13 @@ class UserSendingForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'edit-form-input'
+            self.fields[field_name].label = ''
             field.help_text = ''
+
+        self.fields['email'].widget.attrs.update(
+            {
+                'type': 'text',
+                'placeholder': 'Email'
+            }
+        )
 

@@ -84,6 +84,7 @@ class User(AbstractBaseUser):
     active = models.BooleanField(default=True, verbose_name='Активный')
     staff = models.BooleanField(default=False, verbose_name='Сотрудник')  # a admin user; non super-user
     admin = models.BooleanField(default=False, verbose_name='Администратор')  # a superuser
+    is_sending = models.BooleanField(default=False, verbose_name='Подписка на рассылку')
 
     objects = UserManager()
 
@@ -178,3 +179,4 @@ class UserSending(models.Model):
     )
 
     is_active = models.BooleanField(default=True, verbose_name='Активна рассылка')
+
