@@ -421,7 +421,9 @@ body {
 .selections img {
     width: 540px;
     border-radius: 15px;
-    opacity: 0.7
+    opacity: 0.7;
+    max-height: 277px;
+    overflow: hidden;
 }
 
 .selections h2 {
