@@ -118,6 +118,21 @@ class Event(models.Model):
             url = None
         return url
 
+    @property
+    def get_location_name(self):
+        try:
+            print(self.location.first())
+            return self.location.first().name
+        except AttributeError:
+            return None
+
+    @property
+    def get_dates(self):
+        try:
+            return self.dates.all()
+        except AttributeError:
+            return None
+
 
 class EventGallery(models.Model):
     class Meta:
@@ -150,4 +165,4 @@ class EventDate(models.Model):
     date = models.DateTimeField(verbose_name='Дата события')
 
     def __str__(self):
-        return f'{self.event.name}{self.date}'
+        return f'{self.date}'

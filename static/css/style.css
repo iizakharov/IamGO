@@ -1,44 +1,43 @@
 * {
     margin: 0;
-    padding: 0;
+    padding: 0
 }
 
 body {
-    font-family: Arial,sans-serif;
+    font: 400 14px Arial, sans-serif;
     color: #000;
     background: #fff;
     position: relative;
     z-index: 0;
     height: 100%;
     margin: 0 auto;
-    padding: 0;
-    font-size: 14px;
+    padding: 0
 }
 
 .header {
     height: 88px;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: center
 }
 
 .container {
     padding: 0 30px;
-    min-width: 1260px;
+    min-width: 1260px
 }
 
 .logo-img {
     width: 150px;
-    height: 110px;
+    height: 110px
 }
 
 .header form {
-    position: relative;
+    position: relative
 }
 
-.header a{
+.header a {
     text-decoration: none;
-    color: black;
+    color: #000
 }
 
 .header input {
@@ -47,11 +46,11 @@ body {
     border-radius: 50px;
     background: #f0f0f0;
     border: 1px solid #e2cccc;
-    text-align: center;
+    text-align: center
 }
 
 .header input:focus {
-    outline: none;
+    outline: 0
 }
 
 .search {
@@ -61,18 +60,18 @@ body {
     top: 13px;
     left: 10px;
     color: #6c6c6c;
-    opacity: 0.5;
+    opacity: 0.5
 }
 
 .marker-img {
     width: 14px;
     height: 15px;
     margin-right: 8px;
-    opacity: 0.5;
+    opacity: 0.5
 }
 
-.city:hover .marker-img{
-    opacity: 1;
+.city:hover .marker-img {
+    opacity: 1
 }
 
 .login {
@@ -82,24 +81,23 @@ body {
     border-color: rgba(0, 0, 0, 0.1);
     border-image: initial;
     border-radius: 18px;
-    background: rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.07)
 }
 
 .login:hover {
     border-color: transparent;
-    background: rgba(0, 0, 0, 0.07);
-
+    background: rgba(0, 0, 0, 0.07)
 }
-
 
 .menu {
+    padding-bottom: 10px;
     display: flex;
     justify-content: space-around;
-    list-style-type: none;
-    margin-bottom: 10px;
+    list-style: none;
+    margin-bottom: 10px
 }
 
-.menu a{
+.menu a {
     text-decoration: none;
     line-height: 36px;
     padding-right: 16px;
@@ -110,16 +108,17 @@ body {
     align-items: center;
     border-radius: 18px;
     background: none;
-    transition: background-color 0.15s ease 0s;
+    transition: background-color 0.15s ease 0s
 }
 
-.menu a:hover{
-    background: rgba(0, 0, 0, 0.07);
+.menu a:hover {
+    background: rgba(0, 0, 0, 0.07)
 }
+
 .header-bunner {
     width: 100%;
     height: 80px;
-    background-color: #8b0bffb8;
+    background-color: #8b0bffb8
 }
 
 .page-title {
@@ -127,32 +126,30 @@ body {
     font-size: 34px;
     line-height: 40px;
     font-weight: 700;
-
     margin: 14px 0 0;
     padding-top: 14px;
-    padding-bottom: 14px;
-
+    padding-bottom: 14px
 }
 
 .first-title {
-    padding-top: 30px;
+    padding-top: 30px
 }
 
 .page-content {
-    margin: 0 30px;
+    margin: 0 30px
 }
 
 .menu-date {
     display: flex;
-    list-style-type: none;
-    padding: 15px 0 25px;
+    list-style: none;
+    padding: 15px 0 25px
 }
 
-.menu-date li{
-    padding: 0 10px;
+.menu-date li {
+    padding: 0 10px
 }
 
-.menu-date a{
+.menu-date a {
     position: relative;
     line-height: 36px;
     padding-right: 16px;
@@ -163,25 +160,24 @@ body {
     align-items: center;
     border-radius: 18px;
     text-decoration: none;
-    background: white;
-    border: 0 solid white;
-    box-shadow: 3px 4px 6px 0 rgba(0,0,0,0.6);
+    background: #fff;
+    border: 0 solid #fff;
+    box-shadow: 3px 4px 6px 0 rgba(0, 0, 0, 0.6)
 }
 
-.menu-date a:hover{
+.menu-date a:hover {
     top: -5px;
-    box-shadow: 5px 10px 9px 3px rgba(0,0,0,0.2);
-
+    box-shadow: 5px 10px 9px 3px rgba(0, 0, 0, 0.2)
 }
 
 .slide {
-    position: relative;
+    position: relative
 }
 
 .slide-show {
     padding-top: 40px;
     display: flex;
-    justify-content: center;
+    justify-content: center
 }
 
 .slide-button-foword {
@@ -189,57 +185,53 @@ body {
     top: 45%;
     left: -3%;
     transform: scale(-1, 1);
-    width: 60px;
+    width: 60px
 }
 
 .slide-button-next {
     position: absolute;
     top: 45%;
     right: -25px;
-    width: 60px;
+    width: 60px
 }
 
 .slide-button:hover {
-    top: 44%;
-    /*    box-shadow: 5px 10px 9px 3px rgba(0,0,0,0.2);*/
+    top: 44%
 }
 
 .wrapper {
     width: 1260px;
-    margin: 0 auto;
+    margin: 0 auto
 }
 
 .nearest {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding-bottom: 30px;
+    padding-bottom: 30px
 }
 
-.nearest div{
+.nearest div {
+    width: 360px
+}
+
+.nearest img {
     width: 360px;
-
+    border-radius: 25px
 }
 
-.nearest img{
-    width: 360px;
-    border-radius: 25px;
+.nearest h2 {
+    padding-top: 10px
 }
 
-.nearest h2{
-    padding-top: 10px;
+.nearest li {
+    list-style: none
 }
 
-.nearest li{
-    list-style-type: none;
-}
-
-.nearest a{
+.nearest a {
     text-decoration: none;
-    color: #777;
+    color: #777
 }
-
-/* footer */
 
 .footer {
     background: #f8f8f8;
@@ -248,12 +240,13 @@ body {
 }
 
 .footer-wraper {
-    display: block;
+    display: block
 }
 
 .footer-subscribe {
+    position: relative;
     display: block;
-    padding: 30px 0;
+    padding: 30px 0
 }
 
 .footer-subscribe-label {
@@ -264,13 +257,13 @@ body {
     width: 270px;
     font-size: 17px;
     font-weight: 600;
-    line-height: 23px;
+    line-height: 23px
 }
 
 .footer-subscribe-form {
     display: inline-block;
     vertical-align: middle;
-    height: 46px;
+    height: 46px
 }
 
 .subscribe-email {
@@ -280,66 +273,79 @@ body {
     font-weight: 400;
     color: #000;
     background: #fff;
-    border: solid #E0E0D9 1px;
+    border: solid #E0E0D9 1px
 }
 
 .subscribe-email:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)
 }
 
 .subscribe-email:focus {
-    outline: none;
+    outline: 0
 }
 
 .subscribe-btn {
+    height: 46px;
+    width: 140px;
+    margin-left: 20px;
+    border: 0;
+    border-radius: 3px;
+    font-weight: 400;
+    cursor: pointer;
     font-size: 18px;
     text-align: center;
-    color: black;
+    color: #000;
     background-color: #ffdb4d;
     padding: 13px 40px;
     text-decoration: none;
     line-height: 50px;
-    outline: none;
+    outline: 0
 }
 
 .subscribe-btn:hover {
-    background-color: #ffd633;
+    background: #ffd633;
     text-decoration: none;
-    color: black;
+    color: #000
+}
+
+.subscribe-btn:active {
+    box-shadow: 0 0 5px 1px rgba(33, 33, 33, 0.35);
+    position: relative;
+    top: 1px
 }
 
 .footer-side {
     border: 0;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #eee
 }
 
 .footer-main {
     padding: 38px 0 33px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between
 }
 
 .footer-main-block {
     display: inline-block;
     vertical-align: top;
     margin-right: 30px;
-    width: 270px;
+    width: 270px
 }
 
 .footer-menu-title {
     margin-bottom: 9px;
-    font-size: 15px;
+    font-size: 15px
 }
 
 .footer-menu {
     margin: 0;
     padding: 0;
     list-style: none;
-    font-size: 13px;
+    font-size: 13px
 }
 
 .footer-menu-item {
-    line-height: 24px;
+    line-height: 24px
 }
 
 .footer-link {
@@ -348,78 +354,79 @@ body {
     text-decoration: none;
     outline: 0;
     touch-action: manipulation;
-    cursor: pointer;
+    cursor: pointer
 }
 
 .footer-link:hover {
-    color: #f44242;
+    color: #f44242
 }
 
 .social-btn {
+    font-size: 12px;
+    padding: 8px 6px 6px;
     display: inline-block;
     text-align: center;
     width: 45px;
     height: 45px;
     color: #fff;
     border-radius: 50%;
-    margin-right: 10px;
-    padding-top: 8px;
+    margin-right: 10px
 }
 
 .social-fb {
-    background: #5890ff;
+    background: #5890ff
 }
 
 .social-vk {
-    background: #4680C2;
+    background: #4680C2
 }
 
 .footer-block-label {
     margin-top: 16px;
     font-size: 13px;
     line-height: 18px;
-    color: #999;
+    color: #999
 }
 
 .footer-info {
     white-space: nowrap;
     font-size: 13px;
-    line-height: 62px;
+    line-height: 62px
 }
 
 .footer-info-block {
     display: inline-block;
-    width: 300px;
+    width: 300px
 }
 
 .footer-info-title {
-    color: #666;
+    color: #666
 }
-
-/*PRODUCT*/
 
 .selections {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    position: relative;
+    position: relative
 }
 
-.selections div{
+.selections div {
     position: relative;
     height: 277px;
     margin-bottom: 25px;
-    background-color: black;
-    border-radius: 15px;
+    background-color: #000;
+    border-radius: 15px
 }
 
-.selections img{
+.selections img {
     width: 540px;
     border-radius: 15px;
     opacity: 0.7;
+    max-height: 277px;
+    overflow: hidden;
 }
 
-.selections h2{
+.selections h2 {
     position: absolute;
     bottom: 40px;
     left: 20px;
@@ -427,11 +434,11 @@ body {
     margin-bottom: 6px;
     font-size: 30px;
     line-height: 36px;
-    color: white;
-    opacity: 0.9;
+    color: #fff;
+    opacity: 0.9
 }
 
-.selections p{
+.selections p {
     position: absolute;
     bottom: 15px;
     left: 20px;
@@ -439,8 +446,8 @@ body {
     margin-bottom: 6px;
     font-size: 19px;
     line-height: 31px;
-    color: white;
-    opacity: 0.9;
+    color: #fff;
+    opacity: 0.9
 }
 
 .else {
@@ -451,27 +458,19 @@ body {
     text-align: center;
     line-height: 48px;
     font-size: 20px;
-    color: black;
-}
-
-.else:hover{
-    background-color: #ffd633;
-    text-decoration: none;
-    color: black;
+    color: #000
 }
 
 .content {
     padding: 0 30px;
-    /* min-width: 1260px; */
     width: 1260px;
-    margin: 0 auto;
+    margin: 0 auto
 }
 
 .event-block {
     position: relative;
-    /*background: url(../img/events_pic/little-big.s1260x500.webp) no-repeat;*/
     height: 450px;
-    background-size: cover;
+    background-size: cover
 }
 
 .event-block:after {
@@ -481,172 +480,150 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0,0,0,.5);
-    z-index: 2;
+    background: rgba(0, 0, 0, .5);
+    z-index: 2
 }
 
 .description-event {
     position: absolute;
     top: 40px;
-    left: 20%;
+    left: 20%
 }
 
-.description-event ul{
+.description-event ul {
     display: flex;
-    list-style-type: none;
-    padding: 10px 20px;
+    list-style: none;
+    padding: 10px 20px
 }
 
-.description-event li{
+.description-event li {
     margin: 0 10px 0 0;
-    text-transform: uppercase;
+    text-transform: uppercase
 }
 
-.event ul{
-    display: flex;
-    margin-left: 20px;
+.event ul {
+/ _3token_hck_1: * / margin-left: 20 px
 }
 
-.event-adress li{
-    list-style-type: none;
-    padding-right: 20px;
+.event-adress li {
+    list-style: none;
+    padding-right: 20px
 }
+
 .event-block-shadow {
     position: relative;
     z-index: 3;
     color: #fff;
-    padding: 50px;
-}
-
-.event-description-title h1{
-    letter-spacing: 72px;
-    font-size: 72px;
-    line-height: 76px;
-}
-
-.event-description-title {
-    margin-top: 150px;
+    padding: 50px
 }
 
 .event-concert-description-quests {
     margin-top: 18px;
     font-size: 18px;
     line-height: 21px;
-    opacity: .5;
+    opacity: .5
 }
 
 .event-concert-description-tags {
     margin-top: 18px;
     font-size: 16px;
     font-weight: 400;
-    line-height: 19px;
+    line-height: 19px
 }
 
-.event-concert-description-tags a{
+.event-concert-description-tags a {
     text-decoration: none;
-    color: #fff;
+    color: #fff
 }
 
-.event-concert-description-tags a:hover{
-    opacity: 0.8;
+.event-concert-description-tags a:hover {
+    opacity: 0.8
 }
 
-.event-concert-description-tags span{
-    padding: 0 5px;
+.event-concert-description-tags span {
+    padding: 0 5px
 }
 
 .event-description {
     width: 70%;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 24px
 }
 
-.event-description p{
-    padding-bottom: 20px;
+.event-description p {
+    padding-bottom: 20px
 }
 
 .full p, .full [type="checkbox"] {
-    display: none;
+    display: none
 }
 
 .full [type="checkbox"]:checked ~ p {
-    display: block;
+    display: block
 }
 
 .full [type="checkbox"]:checked ~ span {
-    display: none;
+    display: none
 }
 
-.full span{
-    color: blue;
+.full span {
+    color: #00f
 }
 
-.event-block-places span{
+.event-block-places span {
     font-size: 18px;
     line-height: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 20px
 }
 
 .event-block-places {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 30px 0;
+    margin: 30px 0
 }
 
 .places {
     background-color: #d8cece;
     width: 95%;
-    height: 600px;
+    height: 600px
 }
 
 .event-adress {
     display: flex;
-    flex-direction: column;
+    flex-direction: column
 }
 
-.event-adress a{
-    color: black;
+.event-adress a {
+    color: #000;
     font-weight: 700;
-    margin: 20px 20px;
-
+    margin: 20px
 }
 
-.event-adress ul{
+.event-adress ul {
     display: flex;
-    margin-left: 20px;
+    margin-left: 20px
 }
 
-.event-adress li{
-    list-style-type: none;
-    padding-right: 20px;
+.category-link {
+    color: #fff
 }
 
-.event-category {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 25px;
-    padding-bottom: 28px;
-}
-
-.event-category a {
-    text-decoration: none;
-    color: black;
+.category-link:hover {
+    color: #fff
 }
 
 .view-all {
-    line-height: 40px;
+    line-height: 40px
 }
 
 .view-all:hover {
-    opacity: 0.8;
+    opacity: 0.8
 }
 
 .event-preview {
-    padding-bottom: 25px;
+    padding-bottom: 25px
 }
-
-/*Registration*/
 
 .registration-container {
     display: flex;
@@ -655,7 +632,7 @@ body {
     font-family: Arial, sans-serif;
     max-width: 1260px;
     margin: 0 auto;
-    min-height: 100%;
+    min-height: 100%
 }
 
 .registration-block {
@@ -664,11 +641,11 @@ body {
     margin-top: 86px;
     margin-bottom: 30px;
     border-radius: 4px;
-    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, .1)
 }
 
 .registration-header {
-    margin-bottom: 20px;
+    margin-bottom: 20px
 }
 
 .registration-header-descr {
@@ -676,7 +653,7 @@ body {
     color: #000;
     text-align: center;
     font-size: 40px;
-    font-weight: 300;
+    font-weight: 300
 }
 
 .registration-button {
@@ -684,53 +661,53 @@ body {
     width: 450px;
     height: 60px;
     border-radius: 3px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 25px;
-    outline: none;
-    border: 0 solid;
+    font: 25px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    outline: 0;
+    border: 0 solid
 }
 
 .registration-form {
+    justify-content: center;
     display: flex;
     padding-left: 80px;
-    flex-wrap: wrap;
+    flex-wrap: wrap
 }
 
 .registration-button:hover {
     background-color: #ffd633;
-    cursor: pointer;
+    cursor: pointer
 }
 
 .registration-auth {
     margin-top: 10px;
     margin-left: 70px;
-    color: #999;
+    color: #999
 }
 
 .registration-link {
-    text-decoration: none;
+    text-decoration: none
 }
 
 .registration-link:hover {
-    color: #e00;
+    color: #e00
 }
 
-.registration-link:visited{
-    color:  #0000FF;
+.registration-link:visited {
+    color: #00F
 }
 
 .registration-form-input {
     width: 450px;
     font-size: 20px;
-    outline: none;
+    outline: 0;
     border: none;
-    border-bottom: 1px silver solid;
+    border-bottom: 1px solid silver;
     margin-bottom: 40px;
-    padding-bottom: 5px;
+    padding-bottom: 5px
 }
 
 .registration-form-input:focus {
-    border-bottom: 2px #ffdb4d solid;
+    border-bottom: 2px solid #ffdb4d
 }
 
 .registration-footer {
@@ -738,107 +715,101 @@ body {
     color: #999;
     text-align: center;
     margin: 30px;
-    font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif
 }
 
-/*Login*/
-
-.login-container{
+.login-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     font-family: Arial, sans-serif;
     max-width: 1260px;
     margin: 0 auto;
-    min-height: 100%;
+    min-height: 100%
 }
 
-.login-logo-img{
+.login-logo-img {
     width: 150px;
-    margin-left: 60px;
+    margin-left: 60px
 }
 
-.login-title{
-    font-family: 'YS Text',Arial,sans-serif;
-    font-weight: 400;
-    font-size: 20px;
+.login-title {
+    font: 400 20px 'YS Text', Arial, sans-serif;
     text-align: left;
     margin-bottom: 50px;
     margin-top: -40px;
     margin-left: 72px;
-    color: #000;
+    color: #000
 }
 
-.login-social-block{
+.login-social-block {
     margin-bottom: 16px;
     margin-left: 70px;
-    margin-top: 70px;
-
+    margin-top: 70px
 }
 
-.login-social-title{
+.login-social-title {
     text-align: left;
     font-size: 20px;
     font-weight: 400;
-    color: rgba(0,0,0,.4);
+    color: rgba(0, 0, 0, .4)
 }
 
-.login-social-icons{
+.login-social-icons {
     display: flex;
     text-align: center;
-    line-height: 60px;
+    line-height: 60px
 }
 
-.login-social-link{
+.login-social-link {
     display: inline-block;
     position: relative;
     width: 50px;
     height: 50px;
     border-radius: 3px;
-    background-color: rgba(255,255,255,.3);
-    border: 1px solid rgba(0,0,0,.15);
+    background-color: rgba(255, 255, 255, .3);
+    border: 1px solid rgba(0, 0, 0, .15);
     cursor: pointer;
-    margin-left: 10px;
+    margin-left: 10px
 }
 
-.login-social-link:hover{
+.login-social-link:hover {
     background-color: #f7f7f7;
-    border-color: #c6c6c6;
+    border-color: #c6c6c6
 }
 
-.login-social-link-margin{
-    margin-left:0;
+.login-social-link-margin {
+    margin-left: 0
 }
 
-.social-color-ok{
-    color: #F2720C;
+.social-color-ok {
+    color: #F2720C
 }
 
-.social-color-twitter{
-    color: #00aced;
+.social-color-twitter {
+    color: #00aced
 }
 
-.social-color-vk{
+.social-color-vk {
     color: #45668e
 }
 
-.social-color-google{
+.social-color-google {
     color: #dd4b39
 }
 
-.social-color-facebook{
+.social-color-facebook {
     color: #3b5998
 }
 
-.social-color-telegram{
-    color: #0088cc;
+.social-color-telegram {
+    color: #08c
 }
 
-.edit-form{
+.edit-form {
     justify-content: center;
     display: flex;
-    flex-wrap: wrap;
-
+    flex-wrap: wrap
 }
 
 .edit-form-file {
@@ -847,57 +818,84 @@ body {
     text-transform: uppercase;
     margin-bottom: 20px;
     display: block;
-    width: 450px;
+    width: 450px
 }
 
 .edit-form-input {
     width: 450px;
     font-size: 20px;
-    outline: none;
+    outline: 0;
     border: none;
-    border-bottom: 1px silver solid;
+    border-bottom: 1px solid silver;
     margin-bottom: 40px;
-
     padding-bottom: 5px;
-    display: block;
+    display: block
 }
 
 .edit-form-input:focus {
-    border-bottom: 2px #ffdb4d solid;
+    border-bottom: 2px solid #ffdb4d
 }
 
-.edit-form label{
+.edit-form label {
     display: block;
     font-size: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 10px
 }
-.edit-form a{
+
+.edit-form a {
     width: 450px;
     font-size: 20px;
     padding-bottom: 5px;
-    display: block;
+    display: block
 }
 
-.user-avatar{
-    width: 50px;
+.user-avatar {
+    width: 50px
 }
 
-.verification-box{
-    margin: 50px;
+.verification-box {
+    margin: 50px
 }
 
-.verification-p{
+.verification-p {
     font-size: 20px;
-    color: grey;
+    color: grey
 }
 
-.sending_checkbox{
+.else:hover {
+    background-color: #ffd633;
+    text-decoration: none;
+    color: #000
+}
+
+.event-description-title h1 {
+    font-size: 72px;
+    line-height: 76px
+}
+
+.event-description-title {
+    margin-top: 150px
+}
+
+.event-category {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 25px;
+    padding-bottom: 28px
+}
+
+.event-category a {
+    text-decoration: none;
+    color: #000
+}
+
+.sending_checkbox {
     width: 50px;
     height: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 30px
 }
 
-.registration-form label{
+.registration-form label {
     font-size: 20px;
-    color: grey;
+    color: grey
 }

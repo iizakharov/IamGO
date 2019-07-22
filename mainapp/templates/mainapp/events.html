@@ -13,7 +13,9 @@
             <a href="{% url 'main:product' product.pk %}"><img src="{{ product.get_avatar }}" alt="bunner1"></a>
             <h2>{{ product.name }}</h2>
             <ul >
-                <li><a href="#">{{ product.location.name }}</a></li>
+                {% if product.get_location_name %}
+                <li><a href="#">{{ product.get_location_name }}</a></li>
+                {% endif %}
                 <li><a href="#">от {{ product.price }}руб.</a></li>
             </ul>
         </div>

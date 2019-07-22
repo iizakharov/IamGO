@@ -1,5 +1,6 @@
 ﻿{% extends 'mainapp/base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block container %}
 <div class="page-content" >
@@ -13,9 +14,15 @@
         <div class="event-preview">
             <a href="{% url 'main:product' event.pk %}"><img src="{{ event.get_avatar }}" alt="bunner1"></a>
             <h2>{{ event.name }}</h2>
-            <ul >
-<!--                <li><a href="#">{{ event.date }}</a></li>-->
-                <li><a href="#">{{ event.location.name }}</a></li>
+            <ul>
+            {% if event.get_dates %}
+                {% language 'ru' %}
+                <li><a href="#">{{ event.get_dates.first.date|date:"l, d E Y" }}</a></li>
+                {% endlanguage %}
+            {% endif %}
+                {% if event.get_location_name %}
+                <li><a href="#">{{ event.get_location_name }}</a></li>
+                {% endif %}
                 <li><a href="#">от {{ event.price }} руб.</a></li>
 
             </ul>

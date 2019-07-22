@@ -61,7 +61,7 @@
 				<h2>{{ event.name }}</h2>
 				<ul >
 	<!--                <li><a href="#">{{ event.date }}</a></li>-->
-					<li><a href="#">{{ event.location.name }}</a></li>
+					<li><a href="#">{{ event.get_location_name }}</a></li>
 					<li><a href="#">от {{ event.price }} руб.</a></li>
 
 				</ul>
@@ -81,7 +81,7 @@
 					<h2>{{ event.name }}</h2>
 					<ul >
 		<!--                <li><a href="#">{{ event.date }}</a></li>-->
-						<li><a href="#">{{ event.location.name }}</a></li>
+						<li><a href="#">{{ event.get_location_name }}</a></li>
 						<li><a href="#">от {{ event.price }} руб.</a></li>
 
 					</ul>
@@ -90,37 +90,16 @@
 		</div>
 		<h1 class="page-title">Подборки</h1>
 		<div class="selections">
+            {% for name, collection in collections.items %}
+                {% if collection|length > 0 %}
 			<div>
-				<a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
-				<h2>Lorem ipsum.</h2>
-				<p>12 событий</p>
+				<a href="{% url 'mainapp:collections' forloop.counter0 %}"><img src="{{ collection.0.get_avatar }}" alt="">
+				<h2>{{ name }}</h2>
+				<p>{{ collection|length }} событий</p>
+                </a>
 			</div>
-			<div>
-				<a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
-				<h2>Lorem ipsum.</h2>
-				<p>12 событий</p>
-			</div>
-			<div>
-				<a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
-				<h2>Lorem ipsum.</h2>
-				<p>12 событий</p>
-			</div>
-			<div>
-				<a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
-				<h2>Lorem ipsum.</h2>
-				<p>12 событий</p>
-			</div>
-			<div>
-				<a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
-				<h2>Lorem ipsum.</h2>
-				<p>12 событий</p>
-			</div>
-			<div>
-				<a href="#"><img src="{% static 'img/bunners/big.webp' %}" alt=""></a>
-				<h2>Lorem ipsum.</h2>
-				<p>12 событий</p>
-			</div>
-			<a class="else" href="#">Показать ещё</a>
+                {% endif %}
+            {% endfor %}
 		</div>
 		</div>
 	</div>

@@ -2,7 +2,8 @@ import datetime
 
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
-from .models import EventCategory, Event, EventCollection, EventDate
+from .models import EventCategory, Event, EventDate
+from .utils import weekend_events, kid_events, free_events, health_events
 
 
 def get_main_menu():
@@ -11,20 +12,6 @@ def get_main_menu():
 
 def get_event_by_date():
     return Event.objects.filter(is_active=True).order_by('date')
-
-
-# def get_date(date):
-#     # поиск по имени мероприятия:
-#     # event_today = EventDate.objects.filter(event__name__contains='eventname')
-#     today_events = EventDate.objects.filter(date__contains=datetime.date.today())
-#     # tomorrow = datetime.date.today() + datetime.timedelta(days=1)
-#     tomorrow_events = EventDate.objects.filter(date__contains=datetime.date.today() + datetime.timedelta(days=1))
-#     if date == today_events:
-#         return today_events
-#     elif date == tomorrow_events:
-#         return tomorrow_events
-#     else:
-#         return get_object_or_404
 
 
 def get_event_today():
@@ -41,7 +28,12 @@ def get_expect_concert():
 
 
 def get_collections():
-    return EventCollection.objects.filter(is_active=True)
+    return {
+        "Куда сходить в выходные": weekend_events(),
+        "Куда сходить с детьми": kid_events(),
+        "Бесплатно": free_events(),
+        "Здоровый образ жизни": health_events()
+    }
 
 
 def get_events():
@@ -75,8 +67,6 @@ def main(request):
 
 
 def product(request, pk=None):
-    print(pk)
-    # event = Event.objects.filter(pk=pk).prefetch_related().first()
     main_menu = get_main_menu()[:8]
     event = get_object_or_404(Event, pk=pk)
     related_events = Event.objects.filter(is_active=True).filter(~Q(pk=pk)).order_by("?")[:3]
@@ -92,15 +82,31 @@ def product(request, pk=None):
     return render(request, 'mainapp/product.html', content)
 
 
-def events(request, pk=None):
-    print(pk)
-
-    title = 'мероприятие'
+def collections_view(request, pk):
+    collections = get_collections()
+    if pk >= len(collections):
+        pk = 0
+    title = 'Мероприятия'
+    category = dict()
+    category['name'] = list(collections.keys())[pk]
+    events = list(collections.values())[pk]
     links_menu = EventCategory.objects.all()
     main_menu = get_main_menu()[:8]
-    dates = get_object_or_404(EventDate, pk=pk)
-    events_by_date = Event.objects.filter(dates__pk=pk).order_by('price')
+    content = {
+        'title': title,
+        'links_menu': links_menu,
+        'category': category,
+        'events': events,
+        'main_menu': main_menu,
+        # 'events_by_date': events_by_date,
+    }
+    return render(request, 'mainapp/events_list.html', content)
 
+
+def events(request, pk=None):
+    title = 'мероприятия'
+    links_menu = EventCategory.objects.all()
+    main_menu = get_main_menu()[:8]
     if pk is not None:
         if pk == 0:
             events = Event.objects.all().order_by('price')
@@ -108,29 +114,22 @@ def events(request, pk=None):
         else:
             category = get_object_or_404(EventCategory, pk=pk)
             events = Event.objects.filter(category__pk=pk).order_by('price')
-
         content = {
             'title': title,
             'links_menu': links_menu,
             'category': category,
             'events': events,
             'main_menu': main_menu,
-            'events_by_date': events_by_date,
         }
-
         return render(request, 'mainapp/events_list.html', content)
-
     events_all = get_events()
     today = get_event_today()
     tomorrow = get_events_tomorrow()
-
     content = {
         'title': title,
         'links_menu': links_menu,
         'events_all': events_all,
         'main_menu': main_menu,
-        'dates': dates,
-        'events_by_date': events_by_date,
         'today': today,
         'tomorrow': tomorrow,
     }

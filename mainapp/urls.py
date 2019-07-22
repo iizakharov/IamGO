@@ -12,4 +12,5 @@ urlpatterns = [
     path('product/<int:pk>/', mainapp.product, name='product'),
     path('events/', mainapp.events, name='events'),
     path('category/<int:pk>/', mainapp.events, name='category'),
+    path('collection/<int:pk>/', mainapp.collections_view, name='collections')
 ]
