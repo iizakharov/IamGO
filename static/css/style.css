@@ -27,7 +27,6 @@ body {
 }
 
 .logo-img {
-    width: 141px;
     width: 150px;
     height: 110px
 }
@@ -167,7 +166,6 @@ body {
 }
 
 .menu-date a:hover {
-    top: -1px;
     top: -5px;
     box-shadow: 5px 10px 9px 3px rgba(0, 0, 0, 0.2)
 }
@@ -288,7 +286,6 @@ body {
 
 .subscribe-btn {
     height: 46px;
-    line-height: 46px;
     width: 140px;
     margin-left: 20px;
     border: 0;
@@ -366,8 +363,6 @@ body {
 
 .social-btn {
     font-size: 12px;
-    width: 26px;
-    height: 26px;
     padding: 8px 6px 6px;
     display: inline-block;
     text-align: center;
@@ -510,8 +505,6 @@ body {
 
 .event-adress li {
     list-style: none;
-    padding-right: 20px;
-    list-style-type: none;
     padding-right: 20px
 }
 
