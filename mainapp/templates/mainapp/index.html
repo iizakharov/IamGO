@@ -61,7 +61,7 @@
 				<h2>{{ event.name }}</h2>
 				<ul >
 	<!--                <li><a href="#">{{ event.date }}</a></li>-->
-					<li><a href="#">{{ event.location.name }}</a></li>
+					<li><a href="#">{{ event.get_location_name }}</a></li>
 					<li><a href="#">от {{ event.price }} руб.</a></li>
 
 				</ul>
@@ -81,7 +81,7 @@
 					<h2>{{ event.name }}</h2>
 					<ul >
 		<!--                <li><a href="#">{{ event.date }}</a></li>-->
-						<li><a href="#">{{ event.location.name }}</a></li>
+						<li><a href="#">{{ event.get_location_name }}</a></li>
 						<li><a href="#">от {{ event.price }} руб.</a></li>
 
 					</ul>
