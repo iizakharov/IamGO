@@ -51,8 +51,7 @@ def main(request):
     first_filter = get_events_first_filter()
     expect_concert = get_expect_concert()[1:4]
     collections = get_collections()
-    today = get_event_today()
-    tomorrow = get_events_tomorrow()
+    weekend = get_weekends_dates()
     context = {
         'title': title,
         "main_menu": main_menu,
@@ -60,8 +59,11 @@ def main(request):
         'expect_concert': expect_concert,
         'collections': collections,
         'first_filter': first_filter,
-        'today': today,
-        'tomorrow': tomorrow,
+        'today': date.today().strftime('%d.%m.%Y'),
+        'tomorrow': (date.today() + timedelta(1)).strftime('%d.%m.%Y'),
+        'first_date': weekend['first_date'],
+        'second_date': weekend['last_date'],
+        'redirect_search': True
     }
     return render(request, 'mainapp/index.html', context)
 
