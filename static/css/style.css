@@ -15,7 +15,6 @@ body {
 }
 
 .header {
-    height: 88px;
     display: flex;
     justify-content: space-around;
     align-items: center
@@ -27,8 +26,7 @@ body {
 }
 
 .logo-img {
-    width: 150px;
-    height: 110px
+    width: 115px
 }
 
 .header form {
