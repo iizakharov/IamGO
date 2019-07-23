@@ -40,7 +40,9 @@
 			<div class="nearest">
                 {% for related in related_events %}
 				<div>
-					<a href="{% url 'mainapp:product' related.pk %}"><img src="{{ related.get_avatar }}" alt="bunner1"></a>
+                    <div class="small-event-div">
+					    <a href="{% url 'mainapp:product' related.pk %}"><img src="{{ related.get_avatar }}" alt="bunner1"></a>
+                    </div>
 					<h2>{{ related.name }}</h2>
 					<ul>
                         {% language 'ru' %}
