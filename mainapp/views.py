@@ -3,7 +3,7 @@ from datetime import timedelta, date
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from .models import EventCategory, Event, EventDate
-from .utils import weekend_events, kid_events, free_events, health_events, get_filter_events, get_weekends_dates
+from .utils import weekend_events, kid_events, free_events, health_events, get_filter_events, get_weekends_dates, promo_events
 
 
 def get_main_menu():
@@ -63,7 +63,8 @@ def main(request):
         'tomorrow': (date.today() + timedelta(1)).strftime('%d.%m.%Y'),
         'first_date': weekend['first_date'],
         'second_date': weekend['last_date'],
-        'redirect_search': True
+        'redirect_search': True,
+        'promo_events': promo_events()
     }
     return render(request, 'mainapp/index.html', context)
 

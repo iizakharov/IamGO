@@ -51,3 +51,7 @@ def get_filter_events(pk=None, begin_date=None, end_date=None, is_active=True):
         else:
             events = Event.objects.filter(category__pk=pk).order_by('price')
     return events
+
+
+def promo_events():
+    return Event.objects.filter(is_promo=True, is_active=True)[:5]
