@@ -42,12 +42,18 @@ def get_filter_events(pk=None, begin_date=None, end_date=None, is_active=True):
                                               dates__date__range=(first_date, second_date + timedelta(1))).order_by('price')
         else:
             if pk == 0 or pk is None:
-                events = Event.objects.filter(is_active=is_active, dates__date=first_date).order_by('price')
+                events = Event.objects.filter(is_active=is_active,
+                                              dates__date__range=(first_date, first_date + timedelta(1))).order_by('price')
             else:
-                events = Event.objects.filter(is_active=is_active, category__pk=pk, dates__date=first_date).order_by('price')
+                events = Event.objects.filter(is_active=is_active, category__pk=pk,
+                                              dates__date__range=(first_date, first_date + timedelta(1))).order_by('price')
     else:
         if pk == 0 or pk is None:
             events = Event.objects.all().order_by('price')
         else:
             events = Event.objects.filter(category__pk=pk).order_by('price')
     return events
+
+
+def promo_events():
+    return Event.objects.filter(is_promo=True, is_active=True)[:5]

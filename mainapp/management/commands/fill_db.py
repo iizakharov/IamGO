@@ -124,17 +124,6 @@ def create_events():
             print(f"{event['name']} created")
         else:
             print(f"{event['name']}: {request.status_code}\t{request.text}")
-        # print('{0} created.'.format(event['name']))
-        # Add locations to event
-        # for location in locations:
-        #     if event['name'] == location['event']:
-        #         event_object.location.add(EventLocation.objects.get(name=location['name']))
-        # # Add categories to event
-        # for category in categories:
-        #     if event['name'] == category['event']:
-        #         event_object.category.add(EventCategory.objects.get(name=category['name']))
-        #
-        # # print('{0} is done.'.format(event['name']))
     print(10 * "=", "Events created", 10 * "=")
 
 
