@@ -1,9 +1,9 @@
-import datetime
+from datetime import datetime, timedelta, date
 
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from .models import EventCategory, Event, EventDate
-from .utils import weekend_events, kid_events, free_events, health_events, get_filter_events
+from .utils import weekend_events, kid_events, free_events, health_events, get_filter_events, get_weekends_dates
 
 
 def get_main_menu():
@@ -15,11 +15,11 @@ def get_event_by_date():
 
 
 def get_event_today():
-    return EventDate.objects.filter(date__contains=datetime.date.today())
+    return EventDate.objects.filter(date__contains=date.today())
 
 
 def get_events_tomorrow():
-    return EventDate.objects.filter(date__contains=datetime.date.today() + datetime.timedelta(days=1))
+    return EventDate.objects.filter(date__contains=date.today() + timedelta(days=1))
 
 
 def get_expect_concert():
@@ -122,13 +122,16 @@ def events(request, pk=None):
         if pk != 0:
             category = get_object_or_404(EventCategory, pk=pk)
     current_events = get_filter_events(pk=pk, begin_date=first_date, end_date=second_date)
+    weekend = get_weekends_dates()
     content = {
         'title': title,
         'links_menu': links_menu,
         'category': category,
         'events': current_events,
         'main_menu': main_menu,
-        'first_date': first_date,
-        'second_date': second_date
+        'today': date.today().strftime('%d.%m.%Y'),
+        'tomorrow': (date.today() + timedelta(1)).strftime('%d.%m.%Y'),
+        'first_date': weekend['first_date'],
+        'second_date': weekend['last_date']
     }
     return render(request, 'mainapp/events_list.html', content)
