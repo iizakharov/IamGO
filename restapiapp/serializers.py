@@ -40,7 +40,7 @@ class EventCategorySerializer(serializers.ModelSerializer):
 class EventGallerySerializer(serializers.ModelSerializer):
     class Meta:
         model = EventGallery
-        fields = ('__all__')
+        fields = '__all__'
         read_only_fields = ['image']
 
 
@@ -51,18 +51,20 @@ class EventGalleryImageSerializer(serializers.ModelSerializer):
 
 
 class EventDateSerializer(serializers.ModelSerializer):
+    url_in_model = serializers.URLField(source='url')
+
     class Meta:
         model = EventDate
-        fields = ('__all__')
+        fields = '__all__'
 
 
 class EventLocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = EventLocation
-        fields = ('__all__')
+        fields = '__all__'
 
 
 class EventAgentSerializer(serializers.ModelSerializer):
     class Meta:
         model = EventAgent
-        fields = ('__all__')
+        fields = '__all__'
