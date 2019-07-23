@@ -9,7 +9,7 @@ def get_main_menu():
 
 
 class SearchView(ListView):
-    template_name = 'searchapp/view.html'
+    template_name = 'searchapp/search.html'
     paginate_by = 20
     count = 0
 
