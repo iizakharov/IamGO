@@ -95,13 +95,18 @@ def collections_view(request, pk):
     events = list(collections.values())[pk]
     links_menu = EventCategory.objects.all()
     main_menu = get_main_menu()[:8]
+    weekend = get_weekends_dates()
     content = {
         'title': title,
         'links_menu': links_menu,
         'category': category,
         'events': events,
         'main_menu': main_menu,
-        # 'events_by_date': events_by_date,
+        'today': date.today().strftime('%d.%m.%Y'),
+        'tomorrow': (date.today() + timedelta(1)).strftime('%d.%m.%Y'),
+        'first_date': weekend['first_date'],
+        'second_date': weekend['last_date'],
+        'redirect_search': True,
     }
     return render(request, 'mainapp/events_list.html', content)
 
@@ -125,6 +130,8 @@ def events(request, pk=None):
         if pk != 0:
             category = get_object_or_404(EventCategory, pk=pk)
     current_events = get_filter_events(pk=pk, begin_date=first_date, end_date=second_date)
+    for event in current_events:
+        print(event.name)
     weekend = get_weekends_dates()
     content = {
         'title': title,
