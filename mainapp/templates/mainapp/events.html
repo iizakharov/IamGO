@@ -11,7 +11,9 @@
     <div class="nearest all">
         {% for product in events_all %}
         <div class="event-preview">
-            <a href="{% url 'main:product' product.pk %}"><img src="{{ product.get_avatar }}" alt="bunner1"></a>
+            <div class="small-event-div">
+                <a href="{% url 'main:product' product.pk %}"><img src="{{ product.get_avatar }}" alt="bunner1"></a>
+            </div>
             <h2>{{ product.name }}</h2>
             <ul >
                 {% if product.get_location_name %}
