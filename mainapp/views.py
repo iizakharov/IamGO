@@ -3,7 +3,7 @@ import datetime
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from .models import EventCategory, Event, EventDate
-from .utils import weekend_events, kid_events, free_events, health_events
+from .utils import weekend_events, kid_events, free_events, health_events, get_filter_events
 
 
 def get_main_menu():
@@ -108,36 +108,27 @@ def events(request, pk=None):
     links_menu = EventCategory.objects.all()
     main_menu = get_main_menu()[:8]
     # Check date filter
-    if 'date' in request.GET.keys():
-        date_filter = request.GET['date']
+    if 'first_date' in request.GET.keys():
+        first_date = request.GET['first_date']
     else:
-        date_filter = None
-    print(f'Date filter: {date_filter}')
+        first_date = None
+    if 'second_date' in request.GET.keys():
+        second_date = request.GET['second_date']
+    else:
+        second_date = None
+    print(f'Date filter: {first_date} -- {second_date}')
+    category = {'name': 'Все события'}
     if pk is not None:
-        if pk == 0:
-            events = Event.objects.all().order_by('price')
-            category = {'name': 'все'}
-        else:
+        if pk != 0:
             category = get_object_or_404(EventCategory, pk=pk)
-            events = Event.objects.filter(category__pk=pk).order_by('price')
-        content = {
-            'title': title,
-            'links_menu': links_menu,
-            'category': category,
-            'events': events,
-            'main_menu': main_menu,
-        }
-        return render(request, 'mainapp/events_list.html', content)
-    events_all = get_events()
-    today = get_event_today()
-    tomorrow = get_events_tomorrow()
+    current_events = get_filter_events(pk=pk, begin_date=first_date, end_date=second_date)
     content = {
         'title': title,
         'links_menu': links_menu,
-        'events_all': events_all,
+        'category': category,
+        'events': current_events,
         'main_menu': main_menu,
-        'today': today,
-        'tomorrow': tomorrow,
+        'first_date': first_date,
+        'second_date': second_date
     }
-
-    return render(request, 'mainapp/events.html', content)
+    return render(request, 'mainapp/events_list.html', content)
