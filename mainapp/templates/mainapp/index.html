@@ -14,7 +14,7 @@
                     <li data-target="#carouselExampleCaptions" data-slide-to="{{ forloop.counter0 }}"{% if forloop.first %} class="active">{% endif %}</li>
                     {% endfor %}
                 </ol>
-                <div class="carousel-inner">
+                <div class="carousel-inner" style="overflow: hidden; max-height: 452px;">
                     {% for event in promo_events %}
                     {% if forloop.first %}
                         <div class="carousel-item active">
