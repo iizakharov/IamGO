@@ -1,9 +1,9 @@
-import datetime
+from datetime import timedelta, date
 
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from .models import EventCategory, Event, EventDate
-from .utils import weekend_events, kid_events, free_events, health_events
+from .utils import weekend_events, kid_events, free_events, health_events, get_filter_events, get_weekends_dates
 
 
 def get_main_menu():
@@ -15,11 +15,11 @@ def get_event_by_date():
 
 
 def get_event_today():
-    return EventDate.objects.filter(date__contains=datetime.date.today())
+    return EventDate.objects.filter(date__contains=date.today())
 
 
 def get_events_tomorrow():
-    return EventDate.objects.filter(date__contains=datetime.date.today() + datetime.timedelta(days=1))
+    return EventDate.objects.filter(date__contains=date.today() + timedelta(days=1))
 
 
 def get_expect_concert():
@@ -51,8 +51,7 @@ def main(request):
     first_filter = get_events_first_filter()
     expect_concert = get_expect_concert()[1:4]
     collections = get_collections()
-    today = get_event_today()
-    tomorrow = get_events_tomorrow()
+    weekend = get_weekends_dates()
     context = {
         'title': title,
         "main_menu": main_menu,
@@ -60,8 +59,11 @@ def main(request):
         'expect_concert': expect_concert,
         'collections': collections,
         'first_filter': first_filter,
-        'today': today,
-        'tomorrow': tomorrow,
+        'today': date.today().strftime('%d.%m.%Y'),
+        'tomorrow': (date.today() + timedelta(1)).strftime('%d.%m.%Y'),
+        'first_date': weekend['first_date'],
+        'second_date': weekend['last_date'],
+        'redirect_search': True
     }
     return render(request, 'mainapp/index.html', context)
 
@@ -107,31 +109,31 @@ def events(request, pk=None):
     title = 'мероприятия'
     links_menu = EventCategory.objects.all()
     main_menu = get_main_menu()[:8]
+    # Check date filter
+    if 'first_date' in request.GET.keys():
+        first_date = request.GET['first_date']
+    else:
+        first_date = None
+    if 'second_date' in request.GET.keys():
+        second_date = request.GET['second_date']
+    else:
+        second_date = None
+    print(f'Date filter: {first_date} -- {second_date}')
+    category = {'name': 'Все события'}
     if pk is not None:
-        if pk == 0:
-            events = Event.objects.all().order_by('price')
-            category = {'name': 'все'}
-        else:
+        if pk != 0:
             category = get_object_or_404(EventCategory, pk=pk)
-            events = Event.objects.filter(category__pk=pk).order_by('price')
-        content = {
-            'title': title,
-            'links_menu': links_menu,
-            'category': category,
-            'events': events,
-            'main_menu': main_menu,
-        }
-        return render(request, 'mainapp/events_list.html', content)
-    events_all = get_events()
-    today = get_event_today()
-    tomorrow = get_events_tomorrow()
+    current_events = get_filter_events(pk=pk, begin_date=first_date, end_date=second_date)
+    weekend = get_weekends_dates()
     content = {
         'title': title,
         'links_menu': links_menu,
-        'events_all': events_all,
+        'category': category,
+        'events': current_events,
         'main_menu': main_menu,
-        'today': today,
-        'tomorrow': tomorrow,
+        'today': date.today().strftime('%d.%m.%Y'),
+        'tomorrow': (date.today() + timedelta(1)).strftime('%d.%m.%Y'),
+        'first_date': weekend['first_date'],
+        'second_date': weekend['last_date']
     }
-
-    return render(request, 'mainapp/events.html', content)
+    return render(request, 'mainapp/events_list.html', content)

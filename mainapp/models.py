@@ -136,7 +136,6 @@ class Event(models.Model):
     @property
     def get_location_name(self):
         try:
-            print(self.location.first())
             return self.location.first().name
         except AttributeError:
             return None

@@ -1,6 +1,13 @@
 <ul class="menu-date">
-	<li><a href="#">Дата</a></li>
-	<li><a href="#">Сегодня</a></li>
-	<li><a href="#">Завтра</a></li>
-	<li><a href="#">На выходных</a></li>
+    {% if redirect_search %}
+	<li><a href="{% url 'mainapp:events' %}">Все</a></li>
+	<li><a href="{% url 'mainapp:events' %}?first_date={{ today }}">Сегодня</a></li>
+	<li><a href="{% url 'mainapp:events' %}?first_date={{ tomorrow }}">Завтра</a></li>
+	<li><a href="{% url 'mainapp:events' %}?first_date={{ first_date }}&second_date={{ second_date }}">На выходных</a></li>
+    {% else %}
+	<li><a href="{{ request.path }}">Все</a></li>
+	<li><a href="{{ request.path }}?first_date={{ today }}">Сегодня</a></li>
+	<li><a href="{{ request.path }}?first_date={{ tomorrow }}">Завтра</a></li>
+	<li><a href="{{ request.path }}?first_date={{ first_date }}&second_date={{ second_date }}">На выходных</a></li>
+    {% endif %}
 </ul>
