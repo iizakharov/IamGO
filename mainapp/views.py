@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta, date
+from datetime import timedelta, date
 
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
