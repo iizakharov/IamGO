@@ -107,6 +107,12 @@ def events(request, pk=None):
     title = 'мероприятия'
     links_menu = EventCategory.objects.all()
     main_menu = get_main_menu()[:8]
+    # Check date filter
+    if 'date' in request.GET.keys():
+        date_filter = request.GET['date']
+    else:
+        date_filter = None
+    print(f'Date filter: {date_filter}')
     if pk is not None:
         if pk == 0:
             events = Event.objects.all().order_by('price')
