@@ -1,0 +1,71 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block event-block %}
+{% include 'mainapp/includes/inc_event_block.html' %}
+{% endblock %}
+{% block container %}
+	<div class="container wrapper">
+		<div class="event">
+            <div class="event-description">
+                <h1 class="page-title">Подробная информация на сайте организатора
+                    <a href="https://{{ event.agent.name }}">{{ event.agent.name }}</a>
+                </h1>
+                <h1 class="page-title">Даты проведения</h1>
+                {% for date in event.dates.all %}
+                    {% language 'ru' %}
+                <p>{{ date.date|date:"l, d E Y" }}</p>
+                    {% endlanguage %}
+                {% endfor %}
+                <h1 class="page-title">Цены</h1>
+                <p> от {{ event.price }} рублей</p>
+            </div>
+			<h1 class="page-title">О событии</h1>
+			<div class="event-description">
+            {% if event.body_text|length < 60 %}
+                <p>{{ event.body_text }}</p>
+            {% else %}
+			   <p>{{ event.body_text|slice:"0:400" }}</p>
+				<div class="full">
+					<input type="checkbox" id="slide1"/>
+                    <p>{{ event.body_text|slice:"400:" }}</p>
+                    <label for="slide1">
+					<span>Развернуть/Скрыть полное описание</span>
+					</label>
+                    {% endif %}
+				</div>
+			</div>
+			<h1 class="page-title">Что может понравиться</h1>
+			<div class="nearest">
+                {% for related in related_events %}
+				<div>
+                    <div class="small-event-div">
+					    <a href="{% url 'mainapp:product' related.pk %}"><img src="{{ related.get_avatar }}" alt="bunner1"></a>
+                    </div>
+					<h2>{{ related.name }}</h2>
+					<ul>
+                        {% language 'ru' %}
+						<li><a href="{% url 'mainapp:product' related.pk %}">{{ related.dates.first.date|date:"d E" }}</a></li>
+                        {%  endlanguage %}
+						<li><a href="{% url 'mainapp:product' related.pk %}">{{ related.location.first.name }}</a></li>
+					</ul>
+				</div>
+                {% endfor %}
+			</div>
+			<div class="event-adress">
+				<h1 class="page-title">Адрес</h1>
+                {% if event.get_location_url %}
+				    <iframe src="{{ event.get_location_url }}" width="1200" height="450" frameborder="1" style="border:1" allowfullscreen></iframe>
+                {% endif %}
+                {% for place in event.location.all %}
+                <a href="#">{{ place.name }}</a>
+				<ul>
+					<li>{{ place.location }}</li>
+{#					<li>метро: Петровский парк, Динамо</li>#}
+				</ul>
+                {% endfor %}
+			</div>
+		</div>
+    </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block container %}
+    <div class="page-content">
+        <h1 class="page-title first-title">Поиск</h1>
+        {% if object_list %}
+            <p>По вашему запросу &laquo;{{ query }}&raquo; обнаружено совпадений: {{ count }} </p>
+            <div class="nearest all">
+                {% for object in object_list %}
+                    <div class="event-preview">
+                        <a href="{% url 'main:product' object.pk %}"><img src="{{ object.get_avatar }}"
+                                                                          alt="bunner1"></a>
+                        <h2>{{ object.name }}</h2>
+                        <ul>
+                            <li><a href="#">{{ object.location.name }}</a></li>
+                            <li><a href="#">от {{ object.price }}руб.</a></li>
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>
+                Не найдено мероприятий по вашему запросу &laquo;{{ query }}&raquo;<br>
+                Попробуйте повторить запрос с другой формулировкой
+            </p>
+        {% endif %}
+
+    </div>
+{% endblock %}

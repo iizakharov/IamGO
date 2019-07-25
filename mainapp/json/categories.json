@@ -1,0 +1,458 @@
+[
+    {
+        "event": "Todd",
+        "name": "Мюзикл",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Todd",
+        "name": "Рок",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Todd",
+        "name": "12+",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Леди Совершенство с Нонной Гришаевой",
+        "name": "Мюзикл",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Леди Совершенство с Нонной Гришаевой",
+        "name": "Детям",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Леди Совершенство с Нонной Гришаевой",
+        "name": "6+",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Все оттенки голубого",
+        "name": "Спектакль",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Все оттенки голубого",
+        "name": "Драма",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Все оттенки голубого",
+        "name": "21+",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Сияние",
+        "name": "Спектакль",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Сияние",
+        "name": "18+",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Russian Tattoo Expo",
+        "name": "Фестиваль",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Russian Tattoo Expo",
+        "name": "Концерт",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Russian Tattoo Expo",
+        "name": "Выставка",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Russian Tattoo Expo",
+        "name": "Мастер-класс",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Russian Tattoo Expo",
+        "name": "Шоу",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Russian Tattoo Expo",
+        "name": "16+",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Чемпионат Европы по пляжному волейболу 2019",
+        "name": "Спорт",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Чемпионат Европы по пляжному волейболу 2019",
+        "name": "Волейбол",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Чемпионат Европы по пляжному волейболу 2019",
+        "name": "0+",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Park Live 2019",
+        "name": "Фестиваль",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Park Live 2019",
+        "name": "Концерт",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Park Live 2019",
+        "name": "На воздухе",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Park Live 2019",
+        "name": "Рок",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Park Live 2019",
+        "name": "Инди",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Park Live 2019",
+        "name": "Электронная музыка",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Park Live 2019",
+        "name": "16+",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Песчаная сказка",
+        "name": "Шоу",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Песчаная сказка",
+        "name": "Цирк",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Песчаная сказка",
+        "name": "Детям",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Песчаная сказка",
+        "name": "0+",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Moscow Classic 2019. 2 этап",
+        "name": "Авто-мото",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Дикая мята 2019",
+        "name": "Концерт",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Джазовые сезоны",
+        "name": "Фестиваль",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Джазовые сезоны",
+        "name": "Концерт",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Джазовые сезоны",
+        "name": "На воздухе",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Джазовые сезоны",
+        "name": "Джаз и блюз",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "Джазовые сезоны",
+        "name": "0+",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Todd",
+        "name": "Мюзикл",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Todd",
+        "name": "Рок",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Todd",
+        "name": "12+",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Леди Совершенство с Нонной Гришаевой",
+        "name": "Мюзикл",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Леди Совершенство с Нонной Гришаевой",
+        "name": "Детям",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Леди Совершенство с Нонной Гришаевой",
+        "name": "6+",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Все оттенки голубого",
+        "name": "Спектакль",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Все оттенки голубого",
+        "name": "Драма",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Все оттенки голубого",
+        "name": "21+",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Сияние",
+        "name": "Спектакль",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Сияние",
+        "name": "18+",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Russian Tattoo Expo",
+        "name": "Фестиваль",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Russian Tattoo Expo",
+        "name": "Концерт",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Russian Tattoo Expo",
+        "name": "Выставка",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Russian Tattoo Expo",
+        "name": "Мастер-класс",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Russian Tattoo Expo",
+        "name": "Шоу",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Russian Tattoo Expo",
+        "name": "16+",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Чемпионат Европы по пляжному волейболу 2019",
+        "name": "Спорт",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Чемпионат Европы по пляжному волейболу 2019",
+        "name": "Волейбол",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Чемпионат Европы по пляжному волейболу 2019",
+        "name": "0+",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Park Live 2019",
+        "name": "Фестиваль",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Park Live 2019",
+        "name": "Концерт",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Park Live 2019",
+        "name": "На воздухе",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Park Live 2019",
+        "name": "Рок",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Park Live 2019",
+        "name": "Инди",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Park Live 2019",
+        "name": "Электронная музыка",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Park Live 2019",
+        "name": "16+",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Песчаная сказка",
+        "name": "Шоу",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Песчаная сказка",
+        "name": "Цирк",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Песчаная сказка",
+        "name": "Детям",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Песчаная сказка",
+        "name": "0+",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Moscow Classic 2019. 2 этап",
+        "name": "Авто-мото",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Дикая мята 2019",
+        "name": "Концерт",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Джазовые сезоны",
+        "name": "Фестиваль",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Джазовые сезоны",
+        "name": "Концерт",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Джазовые сезоны",
+        "name": "На воздухе",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Джазовые сезоны",
+        "name": "Джаз и блюз",
+        "description": "Lorem",
+        "is_active": "True"
+    },
+    {
+        "event": "1_Джазовые сезоны",
+        "name": "0+",
+        "description": "Lorem",
+        "is_active": "True"
+    }
+]

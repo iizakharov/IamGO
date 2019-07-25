@@ -1,0 +1,34 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block container %}
+<div class="page-content" >
+    <h1 class="page-title first-title">{{ category.name }} в Москве</h1>
+    <div>
+        {% include 'mainapp/includes/inc_date_menu.html' %}
+    </div>
+    <div class="nearest all">
+        {% for event in events %}
+        <div class="event-preview">
+            <div class="small-event-div">
+                <a href="{% url 'main:product' event.pk %}"><img src="{{ event.get_avatar }}" alt="bunner1"></a>
+            </div>
+            <h2>{{ event.name }}</h2>
+            <ul>
+            {% if event.get_dates %}
+                {% language 'ru' %}
+                <li><a href="#">{{ event.get_dates.first.date|date:"l, d E Y" }}</a></li>
+                {% endlanguage %}
+            {% endif %}
+                {% if event.get_location_name %}
+                <li><a href="#">{{ event.get_location_name }}</a></li>
+                {% endif %}
+                <li><a href="#">от {{ event.price }} руб.</a></li>
+
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
